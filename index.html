@@ -1,11 +1,272 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>BuCepte</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bucepte | Teknoloji Cebinizde</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #222;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.hero {
+    padding: 70px 8%;
+    text-align: center;
+    background: white;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.button {
+    background: #111;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.categories {
+    padding: 40px 8%;
+}
+
+.categories h2,
+.products h2 {
+    margin-bottom: 25px;
+}
+
+.category-box {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.category {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.products {
+    padding: 40px 8%;
+}
+
+.product-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 250px;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product h3 {
+    margin: 15px 0;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+@media(max-width:700px){
+
+header {
+    flex-direction: column;
+    gap:15px;
+}
+
+.hero h1 {
+    font-size:32px;
+}
+
+}
+</style>
+
 </head>
-<body style="font-family:Arial;text-align:center;margin-top:100px;">
-    <h1>BuCepte</h1>
-    <p>Yakında hizmetinizde.</p>
+
+<body>
+
+<header>
+
+<div class="logo">
+bucepte
+</div>
+
+<nav>
+<a href="#">Ana Sayfa</a>
+<a href="#">Kategoriler</a>
+<a href="#">İletişim</a>
+</nav>
+
+</header>
+
+
+<section class="hero">
+
+<h1>Teknoloji Cebinizde</h1>
+
+<p>
+Telefon aksesuarları, şarj ürünleri ve günlük teknoloji ihtiyaçları.
+</p>
+
+<a class="button" href="#urunler">
+Ürünleri Keşfet
+</a>
+
+</section>
+
+
+<section class="categories">
+
+<h2>Kategoriler</h2>
+
+<div class="category-box">
+
+<div class="category">📱 Telefon Aksesuarları</div>
+
+<div class="category">🔌 Şarj Aletleri</div>
+
+<div class="category">🎧 Kulaklıklar</div>
+
+<div class="category">🔋 Powerbank</div>
+
+</div>
+
+</section>
+
+
+<section class="products" id="urunler">
+
+<h2>Öne Çıkan Ürünler</h2>
+
+
+<div class="product-list">
+
+
+<div class="product">
+
+<img src="https://via.placeholder.com/300">
+
+<h3>Hızlı Şarj Adaptörü</h3>
+
+<div class="price">
+249 TL
+</div>
+
+<a class="button" href="#">
+Satın Al
+</a>
+
+</div>
+
+
+
+<div class="product">
+
+<img src="https://via.placeholder.com/300">
+
+<h3>Bluetooth Kulaklık</h3>
+
+<div class="price">
+399 TL
+</div>
+
+<a class="button" href="#">
+Satın Al
+</a>
+
+</div>
+
+
+
+<div class="product">
+
+<img src="https://via.placeholder.com/300">
+
+<h3>Type-C Kablo</h3>
+
+<div class="price">
+149 TL
+</div>
+
+<a class="button" href="#">
+Satın Al
+</a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<footer>
+
+© 2026 bucepte - Teknoloji Cebinizde
+
+</footer>
+
+
 </body>
 </html>
