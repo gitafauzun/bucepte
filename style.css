@@ -38,11 +38,13 @@ body {
     margin-bottom: 40px;
 }
 
-.logo {
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: var(--koyu-renk);
+.logo-alani {
+    margin-bottom: 10px;
+}
+
+.site-logo {
+    max-width: 200px; /* Logonun genişliğini buradan ayarlayabilirsin */
+    height: auto;
 }
 
 .subtitle {
