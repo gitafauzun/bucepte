@@ -35,16 +35,29 @@ body {
     border-bottom: 1px solid #eee;
 }
 
+/* Bu kısımları style.css içinde bul ve güncelle */
+
 .header-container {
     display: flex;
-    align-items: center; /* Dikeyde hizalar */
-    justify-content: center; /* Logoyu merkeze alır */
-    position: relative; /* Menüyü mutlak konumlandırmak için gerekli */
+    flex-direction: column; /* Öğeleri alt alta dizer */
+    align-items: center;    /* Tam merkeze hizalar */
+    justify-content: center;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .nav-menu {
-    position: absolute; /* Sitenin en soluna yapıştırmak için */
-    left: 20px;
+    position: static; /* Sol taraftan kurtardık */
+    margin-top: 15px; /* Logo ile arasına boşluk koyduk */
+}
+
+.nav-menu a {
+    margin: 0 15px; /* Butonların yan yana olması için boşluk */
+    text-decoration: none;
+    color: var(--koyu-renk);
+    font-weight: 600;
 }
 
 .logo-alani {
