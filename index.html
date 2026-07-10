@@ -4,36 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuCepte - Telefon Aksesuarları</title>
-    <style>
-        /* Sadece ürünlerin yan yana durması için çok basit bir grid */
-        #urun-vitrini {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        .urun-karti {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .satin-al-btn {
-            display: inline-block;
-            background-color: #ff5000; /* Dolap'a uygun bir renk */
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-    </style>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>En Yeni Aksesuarlar</h1>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">BuCepte</h1>
+            <p class="subtitle">Premium Cep Telefonu Aksesuarları</p>
+        </div>
+    </header>
     
-    <div id="urun-vitrini"></div>
+    <main class="container">
+        <div id="urun-vitrini" class="grid-layout"></div>
+    </main>
 
     <script src="app.js"></script>
 </body>
