@@ -2,48 +2,70 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Hakkımızda - BuCepte</title>
-    <link rel="stylesheet" href="style.css"> </head>
-    <link rel="icon" type="image/png" href="logbey.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome ikonları için (opsiyonel ama öneririm) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 <body>
-    <div class="container" style="max-width: 800px; margin-top: 50px;">
+
+<main class="container hakkimizda-container">
+    <div class="hakkimizda-kart">
         <h1>BuCepte Hakkında</h1>
-        <p>Telefon aksesuarları dünyasında kalite ve uygun fiyatı bir araya getiriyoruz. Tüm ürünlerimiz özenle seçilmiş olup, güvenliğiniz için satışlarımızı <b>Dolap</b> altyapısı üzerinden gerçekleştiriyoruz.</p>
+        <p class="ozet-yazi">
+            Teknoloji dünyasının hızına ayak uydururken, telefonunuzu sadece korumakla kalmıyor, tarzınızı da yansıtmanızı sağlıyoruz. 
+            <strong>BuCepte</strong> olarak, kaliteyi ve estetiği uygun fiyatla buluşturmayı misyon edindik.
+        </p>
+
+        <h2 class="alt-baslik">Neden Bizi Tercih Etmelisiniz?</h2>
         
-        <h2>Neden Bizi Tercih Etmelisiniz?</h2>
-        <ul>
-            <li>Hızlı Kargo</li>
-            <li>Orijinal ve Uyumlu Aksesuarlar</li>
-            <li>Dolap Güvencesiyle İade Kolaylığı</li>
-        </ul>
+        <div class="ozellikler-grid">
+            <div class="ozellik">
+                <i class="fas fa-truck-fast"></i>
+                <h3>Hızlı Kargo</h3>
+                <p>Ürünleriniz, özenle paketlenip en kısa sürede adresinize doğru yola çıkar.</p>
+            </div>
+            <div class="ozellik">
+                <i class="fas fa-shield-halved"></i>
+                <h3>Güvenli Alışveriş</h3>
+                <p>Tüm satış süreçlerimizi, şeffaflık ve güvenlik garantisiyle <strong>Dolap</strong> üzerinden yürütüyoruz.</p>
+            </div>
+            <div class="ozellik">
+                <i class="fas fa-check-double"></i>
+                <h3>Kalite Kontrol</h3>
+                <p>Sadece kendi telefonumuzda kullanacağımız, onaylanmış aksesuarları listeliyoruz.</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="satin-al-btn" style="width: 200px; margin: 30px auto;">Ana Sayfaya Dön</a>
+    </div>
+</main>
+<section class="footer-iletisim" style="margin-top: 40px; padding: 20px; text-align: center;">
+        <p style="margin-bottom: 15px; color: var(--gri-metin);">Bizi sosyal medyada takip edin:</p>
         
-        <br>
-        <a href="index.html" class="satin-al-btn" style="width: 200px;">Ana Sayfaya Dön</a>
-   <div class="sosyal-medya" style="margin-top: 20px; text-align: center;">
-    
-    <!-- WhatsApp Business -->
-    <!-- '905XXXXXXXXXX' kısmını numaranla değiştir (Örn: 905321234567) -->
-    <a href="https://wa.me/905319813938?text=Merhaba, ürünleriniz hakkında bilgi almak istiyorum." target="_blank" style="margin: 0 10px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="35" alt="WhatsApp Business">
-    </a>
+        <div class="sosyal-medya">
+            <a href="https://wa.me/905319813938?text=Merhaba, ürünleriniz hakkında bilgi almak istiyorum." target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="35" alt="WhatsApp">
+            </a>
 
-    <!-- Facebook -->
-    <!-- 'kullaniciadi' kısmını kendi Facebook sayfanın adresiyle değiştir -->
-    <a href="https://www.facebook.com/profile.php?id=61591525273576" target="_blank" style="margin: 0 10px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="35" alt="Facebook">
-    </a>
+            <a href="https://www.facebook.com/profile.php?id=61591525273576" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="35" alt="Facebook">
+            </a>
 
-    <!-- Instagram (Daha önce eklemiştik) -->
-    <a href="https://instagram.com/buceptecom" target="_blank" style="margin: 0 10px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="35" alt="Instagram">
-    </a>
+            <a href="https://instagram.com/buceptecom" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="35" alt="Instagram">
+            </a>
 
-    <!-- TikTok (Daha önce eklemiştik) -->
-    <a href="https://tiktok.com/@buceptte.com" target="_blank" style="margin: 0 10px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="35" alt="TikTok">
-    </a>
+            <a href="https://tiktok.com/@buceptte.com" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="35" alt="TikTok">
+            </a>
+        </div>
+    </section>
 
-</div>
+    <div style="text-align: center; margin-bottom: 40px;">
+        <a href="index.html" class="satin-al-btn" style="width: 200px; display: inline-block;">Ana Sayfaya Dön</a>
+    </div>
+
 </body>
 </html>
-
+</body>
+</html>
