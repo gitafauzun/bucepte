@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "isim": "iPhone 15 Pro Magsafe Şeffaf Kılıf",
+    "fiyat": "249.90 TL",
+    "gorsel": "resimler/kilif-1.jpg",
+    "kategori": "Kılıf",
+    "dolapLink": "https://dolap.com/urun/ornek-link-1"
+  },
+  {
+    "id": 2,
+    "isim": "20W Type-C Hızlı Şarj Adaptörü",
+    "fiyat": "399.00 TL",
+    "gorsel": "resimler/sarj-1.jpg",
+    "kategori": "Şarj Cihazı",
+    "dolapLink": "https://dolap.com/urun/ornek-link-2"
+  },
+  {
+    "id": 3,
+    "isim": "Samsung S24 Ultra Tam Kaplayan Ekran Koruyucu",
+    "fiyat": "150.00 TL",
+    "gorsel": "resimler/ekran-1.jpg",
+    "kategori": "Ekran Koruyucu",
+    "dolapLink": "https://dolap.com/urun/ornek-link-3"
+  }
+]
