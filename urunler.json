@@ -41,6 +41,14 @@
   },
   {
     "id": 6,
+    "isim": "Galaxy S25 FE Kılıf Magsafe Wireless Kablosuz Şarj Destekli Kılıf",
+    "fiyat": "320.00 TL",
+    "gorsel": "images/s25fe.png",
+    "kategori": "Kılıf",
+    "dolapLink": "https://link.dolap.com/scs8tk"
+  },
+  {
+    "id": 7,
     "isim": "Bluetooth 5.0 Kulaklık",
     "fiyat": "499.00 TL",
     "gorsel": "resimler/kulaklik.jpg",
