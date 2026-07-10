@@ -31,26 +31,36 @@ body {
 
 /* --- 3. HEADER (ÜST BİLGİ) --- */
 .site-header {
-    background-color: var(--kart-arkaplan);
-    padding: 30px 0;
-    text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.header-container {
+    display: flex;
+    align-items: center; /* Dikeyde hizalar */
+    justify-content: center; /* Logoyu merkeze alır */
+    position: relative; /* Menüyü mutlak konumlandırmak için gerekli */
+}
+
+.nav-menu {
+    position: absolute; /* Sitenin en soluna yapıştırmak için */
+    left: 20px;
 }
 
 .logo-alani {
-    margin-bottom: 10px;
+    text-align: center; /* Slogan ve logonun ortalanması için */
 }
 
 .site-logo {
-    max-width: 100px; /* Logonun genişliğini buradan ayarlayabilirsin */
-    height: auto;
+    max-width: 150px; /* Boyutunu buradan ayarlayabilirsin */
+    display: block;
+    margin: 0 auto;
 }
 
-.subtitle {
-    color: var(--gri-metin);
-    font-size: 14px;
+.slogan {
     margin-top: 5px;
+    font-size: 14px;
+    color: #666;
 }
 
 /* --- 4. IZGARA (GRID) YAPISI VE MOBİL UYUM --- */
