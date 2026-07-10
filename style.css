@@ -131,3 +131,37 @@ body {
 .satin-al-btn:hover {
     background-color: #e64800; /* Hover durumunda bir ton koyulaşır */
 }
+/* --- 7. KATEGORİ MENÜSÜ --- */
+.kategori-menusu {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap; /* Ekrana sığmazsa alt satıra geçer (Mobil uyum) */
+}
+
+.kategori-btn {
+    background-color: transparent;
+    color: var(--koyu-renk);
+    border: 2px solid #e5e7eb;
+    padding: 8px 24px;
+    border-radius: 30px; /* Hap şeklinde tasarım */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--font-ailesi);
+    transition: var(--gecis);
+}
+
+/* Butonun üzerine gelince */
+.kategori-btn:hover {
+    border-color: var(--ana-renk);
+    color: var(--ana-renk);
+}
+
+/* Seçili (Aktif) kategori butonu */
+.kategori-btn.aktif {
+    background-color: var(--ana-renk);
+    color: white;
+    border-color: var(--ana-renk);
+}
