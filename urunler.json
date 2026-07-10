@@ -22,5 +22,21 @@
     "gorsel": "resimler/ekran-1.jpg",
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://dolap.com/urun/ornek-link-3"
+  },
+  {
+    "id": 1,
+    "isim": "iPhone 15 Pro Kamera Koruyucu",
+    "fiyat": "99.90 TL",
+    "gorsel": "resimler/kamera-koruyucu.jpg",
+    "kategori": "Kamera Koruyucu",
+    "dolapLink": "https://dolap.com/urun/kamera-koruyucu-link"
+  },
+  {
+    "id": 2,
+    "isim": "Bluetooth 5.0 Kulaklık",
+    "fiyat": "499.00 TL",
+    "gorsel": "resimler/kulaklik.jpg",
+    "kategori": "Kulaklık",
+    "dolapLink": "https://dolap.com/urun/kulaklik-link"
   }
 ]
