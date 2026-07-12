@@ -70,14 +70,17 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
     const favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
     
     urunler.forEach(urun => {
-        const isFavori = favoriler.includes(urun.id);
-        const etiketHTML = (urun.etiket) ? `<span class="urun-etiket">${urun.etiket}</span>` : '';
+        // Favori durumuna göre kalp ikonunu seç
+const kalpIkonu = isFavori ? '❤️' : '🤍';
+const favoriYazi = isFavori ? 'Favorilerden Çıkar' : 'Favorilere Ekle';
         
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
         kart.innerHTML = `
             ${etiketHTML}
-            <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="favoriDegistir(${urun.id})">❤️</button>
+           <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="favoriDegistir(${urun.id})" title="${favoriYazi}">
+    ${kalpIkonu}
+</button>
             <img src="${urun.gorsel}" alt="${urun.isim}">
             <h3>${urun.isim}</h3>
             <h2>${urun.fiyat}</h2>
