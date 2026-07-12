@@ -4,7 +4,11 @@
     "id": 1,
     "isim": "iPhone 17 Promax Magsafe Şeffaf Kılıf",
     "fiyat": "320 TL",
-    "gorsel": "images/17promax.png",
+"gorseller": [
+      "images/17promax.png",
+      "images/17promax.png",
+      "images/17promax.png"
+    ], 
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/7z121"
   },
