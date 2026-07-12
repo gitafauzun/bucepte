@@ -78,9 +78,29 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
 
         // Yeni eklenen 3'lü Görsel Carousel Yapısı
         let gorselWrapperHTML = '';
-        if (urun.gorseller && urun.gorseller.length > 0) {
+        
+        // AKILLI KONTROL: Yeni 'gorseller' listesi varsa onu al, yoksa eski 'gorsel'i alıp listeye çevir
+        let resimDizisi = urun.gorseller || (urun.gorsel ? [urun.gorsel] : []);
+
+        if (resimDizisi.length > 0) {
             let resimlerHTML = '';
-            urun.gorseller.forEach((gorsel) => {
+            resimDizisi.forEach((gorsel) => {
+                resimlerHTML += `<img src="${gorsel}" alt="${urun.isim}" class="urun-resim">`;
+            });
+
+            // Sadece 1'den fazla resim varsa okları göster (tek resimse ok çıkmaz)
+            const oklarHTML = resimDizisi.length > 1 ? `
+                <button class="carousel-btn onceki" onclick="carouselKaydir(this, -1)">❮</button>
+                <button class="carousel-btn sonraki" onclick="carouselKaydir(this, 1)">❯</button>
+            ` : '';
+
+            gorselWrapperHTML = `
+                <div class="urun-resim-wrapper">
+                    <div class="urun-resim-carousel">${resimlerHTML}</div>
+                    ${oklarHTML}
+                </div>
+            `;
+        }
                 resimlerHTML += `<img src="${gorsel}" alt="${urun.isim}" class="urun-resim">`;
             });
 
