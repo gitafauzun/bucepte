@@ -109,3 +109,12 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     box-shadow: 0 4px 12px rgba(255, 80, 0, 0.3);
     transform: scale(1.05);
 }
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+.whatsapp-float:hover { transform: scale(1.1); }
