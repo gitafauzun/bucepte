@@ -22,48 +22,41 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="60" alt="WhatsApp">
 </a>
 <body>
+    <!-- WhatsApp Butonu (body içinde en üstte) -->
+    <a href="https://wa.me/905319813938" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="60" alt="WhatsApp">
+    </a>
 
-   <header class="site-header">
-    <div class="header-container" style="flex-direction: column;">
-        <!-- Logo ve Slogan (Üstte) -->
-        <div class="logo-alani">
-            <img src="logosiyah.png" alt="BuCepte Logo" class="site-logo">
-            <p class="slogan">Cep Telefonu Aksesuarları ve Elektronik Ürünler</p>
+    <header class="site-header">
+        <div class="header-container" style="flex-direction: column;">
+            <div class="logo-alani">
+                <img src="logosiyah.png" alt="BuCepte Logo" class="site-logo">
+                <p class="slogan">Cep Telefonu Aksesuarları ve Elektronik Ürünler</p>
+            </div>
+            <nav class="nav-menu" style="position: static; margin-top: 15px;">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="hakkimizda.html">Hakkımızda</a>
+            </nav>
         </div>
-
-        <!-- Menü (Logo'nun altında, ortalı) -->
-        <nav class="nav-menu" style="position: static; margin-top: 15px;">
-            <a href="index.html">Ana Sayfa</a>
-            <a href="hakkimizda.html">Hakkımızda</a>
-        </nav>
-    </div>
-</header>
+    </header>
     
     <main class="container">
-        <main class="container">
-        
-        <!-- YENİ EKLENEN ARAMA VE SIRALAMA ALANI -->
+        <!-- Arama ve Sıralama -->
         <div class="filtre-alani">
-            <input type="text" id="arama-kutusu" placeholder="Ürün ara... (Örn: iphone 13 kılıf, kulaklık)" class="arama-input">
+            <input type="text" id="arama-kutusu" placeholder="Ürün ara..." class="arama-input">
             <select id="siralama-kutusu" class="siralama-select">
                 <option value="varsayilan">Varsayılan Sıralama</option>
                 <option value="artan">Fiyat: Düşükten Yükseğe</option>
                 <option value="azalan">Fiyat: Yüksekten Düşüğe</option>
             </select>
         </div>
-        <!-- YENİ ALAN BİTİŞİ -->
 
         <div id="kategori-menusu" class="kategori-menusu"></div>
-        <div id="urun-vitrini" class="grid-layout"></div>
-    </main>
-        <div id="kategori-menusu" class="kategori-menusu"></div>
-        
         <div id="urun-vitrini" class="grid-layout"></div>
     </main>
 
     <script src="app.js"></script>
-
-    <footer style="margin-top: 60px; padding: 40px 0; border-top: 1px solid #eee; text-align: center; color: #888;">
+      <footer style="margin-top: 60px; padding: 40px 0; border-top: 1px solid #eee; text-align: center; color: #888;">
         
     <div class="sosyal-medya" style="margin-top: 20px; text-align: center;">
     
@@ -97,4 +90,6 @@
     </p>
 </footer>
 </body>
+
 </html>
+
