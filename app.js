@@ -62,28 +62,26 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
     
     vitrin.innerHTML = '';
     
-    if (urunler.length === 0) {
-        vitrin.innerHTML = '<p style="text-align:center; width:100%;">Henüz favori ürünün yok.</p>';
-        return;
-    }
-
     const favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
     
     urunler.forEach(urun => {
-        // Favori durumuna göre kalp ikonunu seç
-const kalpIkonu = isFavori ? '❤️' : '🤍';
-const favoriYazi = isFavori ? 'Favorilerden Çıkar' : 'Favorilere Ekle';
+        // Hatanın çözümü: isFavori burada tanımlanıyor
+        const isFavori = favoriler.includes(urun.id);
+        const etiketHTML = (urun.etiket) ? `<span class="urun-etiket">${urun.etiket}</span>` : '';
+        const kalpIkonu = isFavori ? '❤️' : '🤍';
+        const favoriYazi = isFavori ? 'Favorilerden Çıkar' : 'Favorilere Ekle';
         
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
         kart.innerHTML = `
             ${etiketHTML}
-           <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="favoriDegistir(${urun.id})" title="${favoriYazi}">
-    ${kalpIkonu}
-</button>
+            <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="favoriDegistir(${urun.id})" title="${favoriYazi}">
+                ${kalpIkonu}
+            </button>
             <img src="${urun.gorsel}" alt="${urun.isim}">
-            <h3>${urun.isim}</h3>
-            <h2>${urun.fiyat}</h2>
+            <p style="color:var(--gri-metin); font-size:14px;">${urun.kategori}</p>
+            <h3 style="margin: 10px 0; font-size:16px;">${urun.isim}</h3>
+            <h2 style="color:var(--ana-renk); margin-bottom:15px;">${urun.fiyat}</h2>
             <a href="${urun.dolapLink}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>
         `;
         vitrin.appendChild(kart);
