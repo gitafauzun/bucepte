@@ -90,8 +90,10 @@ function urunleriEkranaBas(urunler) {
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
         
-        // Etiket varsa ekle
-        const etiketHTML = urun.etiket ? `<span class="urun-etiket">${urun.etiket}</span>` : '';
+        // GÜNCELLEME: Eğer urun.etiket tanımlıysa (undefined değilse) etiketHTML'i oluştur
+        const etiketHTML = (urun.etiket && urun.etiket.trim() !== "") 
+            ? `<span class="urun-etiket">${urun.etiket}</span>` 
+            : '';
         
         kart.innerHTML = `
             ${etiketHTML}
