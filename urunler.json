@@ -10,6 +10,14 @@
   },
   {
     "id": 2,
+    "isim": "iphone 13 Mat Şeffaf Siyah Magsafe Telefon Kılıfı",
+    "fiyat": "249.00 TL",
+    "gorsel": "resimler/sarj-1.jpg",
+    "kategori": "Şarj Cihazı",
+    "dolapLink": "https://dolap.com/urun/ornek-link-2"
+  },
+   {
+    "id": 3,
     "isim": "20W Type-C Hızlı Şarj Adaptörü",
     "fiyat": "399.00 TL",
     "gorsel": "resimler/sarj-1.jpg",
@@ -17,7 +25,7 @@
     "dolapLink": "https://dolap.com/urun/ornek-link-2"
   },
   {
-    "id": 3,
+    "id": 4,
     "isim": "Samsung S24 Ultra Tam Kaplayan Ekran Koruyucu",
     "fiyat": "150.00 TL",
     "gorsel": "resimler/ekran-1.jpg",
@@ -25,7 +33,7 @@
     "dolapLink": "https://dolap.com/urun/ornek-link-3"
   },
   {
-    "id": 4,
+    "id": 5,
     "isim": "iPhone 15 Pro Kamera Koruyucu",
     "fiyat": "99.90 TL",
     "gorsel": "resimler/kamera-koruyucu.jpg",
@@ -33,7 +41,7 @@
     "dolapLink": "https://dolap.com/urun/kamera-koruyucu-link"
   },
   {
-    "id": 5,
+    "id": 6,
     "isim": "Iphone 13 Silikon Lansman Telefon Kılıfı",
     "fiyat": "180.00 TL",
     "gorsel": "images/ip13.png",
@@ -42,7 +50,7 @@
     "etiket": "Çok Satan"
   },
   {
-    "id": 6,
+    "id": 7,
     "isim": "Galaxy S25 FE Kılıf Magsafe Wireless Kablosuz Şarj Destekli Kılıf",
     "fiyat": "320.00 TL",
     "gorsel": "images/s25fe.png",
@@ -50,7 +58,7 @@
     "dolapLink": "https://link.dolap.com/l5pr9v"
   },
   {
-    "id": 7,
+    "id": 8,
     "isim": "Bluetooth 5.0 Kulaklık",
     "fiyat": "499.00 TL",
     "gorsel": "resimler/kulaklik.jpg",
@@ -58,7 +66,7 @@
     "dolapLink": "https://dolap.com/urun/kulaklik-link"
   },
    {
-    "id": 8,
+    "id": 9,
     "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı",
     "fiyat": "189.00 TL",
     "gorsel": "images/kedi1.png",
@@ -67,7 +75,7 @@
      "etiket": "Yeni"
   },
    {
-    "id": 8,
+    "id": 10,
     "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı",
     "fiyat": "189.00 TL",
     "gorsel": "images/kedi2.png",
