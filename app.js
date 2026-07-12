@@ -82,16 +82,22 @@ function urunleriEkranaBas(urunler) {
     const vitrin = document.getElementById('urun-vitrini');
     vitrin.innerHTML = '';
     
-    // Eğer filtreleme sonucu ürün bulunamazsa uyarı göster
-    if(urunler.length === 0) {
-        vitrin.innerHTML = '<p style="text-align:center; width:100%; color:#888; font-size:18px; margin-top:20px;">Aradığınız kriterlere uygun ürün bulunamadı.</p>';
-        return;
-    }
+    // Favorileri yerel hafızadan al
+    const favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
     
     urunler.forEach(urun => {
+        const isFavori = favoriler.includes(urun.id);
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
+        
+        // Etiket varsa ekle
+        const etiketHTML = urun.etiket ? `<span class="urun-etiket">${urun.etiket}</span>` : '';
+        
         kart.innerHTML = `
+            ${etiketHTML}
+            <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="favoriDegistir(${urun.id})">
+                ❤️
+            </button>
             <img src="${urun.gorsel}" alt="${urun.isim}">
             <p style="color:var(--gri-metin); font-size:14px;">${urun.kategori}</p>
             <h3 style="margin: 10px 0; font-size:16px;">${urun.isim}</h3>
@@ -100,6 +106,18 @@ function urunleriEkranaBas(urunler) {
         `;
         vitrin.appendChild(kart);
     });
+}
+
+// Favori ekleme/çıkarma fonksiyonu
+function favoriDegistir(id) {
+    let favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
+    if (favoriler.includes(id)) {
+        favoriler = favoriler.filter(fId => fId !== id);
+    } else {
+        favoriler.push(id);
+    }
+    localStorage.setItem('favoriler', JSON.stringify(favoriler));
+    urunleriGuncelle(); // Ekranı tazele
 }
 
 // Sayfa yüklendiğinde başlat
