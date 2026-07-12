@@ -1,1 +1,34 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorilerim - bucepte.com</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container"><a href="index.html">Ana Sayfaya Dön</a></div>
+    </header>
+
+    <main class="container">
+        <h2 style="text-align: center; margin: 40px 0;">Favori Ürünlerin</h2>
+        <div id="favori-vitrini" class="grid-layout"></div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        // Sayfa yüklendiğinde favorileri getir
+        document.addEventListener('DOMContentLoaded', () => {
+            const favoriIds = JSON.parse(localStorage.getItem('favoriler') || '[]');
+            // Tüm ürünleri çek ve filtrele
+            fetch('urunler.json')
+                .then(res => res.json())
+                .then(tumUrunler => {
+                    const favoriUrunler = tumUrunler.filter(u => favoriIds.includes(u.id));
+                    urunleriEkranaBas(favoriUrunler, 'favori-vitrini');
+                });
+        });
+    </script>
+</body>
+</html>
