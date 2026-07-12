@@ -59,11 +59,20 @@
   },
    {
     "id": 8,
-    "isim": "iphone 13 Kedi Figürlü Telefon Kılıfı",
+    "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı",
     "fiyat": "189.00 TL",
     "gorsel": "images/kedi1.png",
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/muoflf",
+     "etiket": "Yeni"
+  },
+   {
+    "id": 8,
+    "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı",
+    "fiyat": "189.00 TL",
+    "gorsel": "images/kedi2.png",
+    "kategori": "Kılıf",
+    "dolapLink": "https://link.dolap.com/pzsyk6",
      "etiket": "Yeni"
   }
 ]
