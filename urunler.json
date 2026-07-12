@@ -17,7 +17,7 @@
     "isim": "iphone 13 Mat Şeffaf Siyah Magsafe Telefon Kılıfı",
     "fiyat": "249.00 TL",
     "gorsel": [
-      "images/buzmag1.png",
+      "images/buzmag1.png"
       ],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/0whmzx"
@@ -25,9 +25,9 @@
    {
     "id": 3,
     "isim": "20W Type-C Hızlı Şarj Adaptörü",
-    "fiyat": "",
+    "fiyat": "0 TL",
     "gorsel": [
-      "resimler/sarj-1.jpg",
+      "resimler/sarj-1.jpg"
      ],
     "kategori": "Şarj Cihazı",
     "dolapLink": "",
@@ -38,7 +38,7 @@
     "isim": "Samsung S24 Ultra Tam Kaplayan Ekran Koruyucu",
     "fiyat": "150.00 TL",
     "gorsel": [
-      "resimler/ekran-1.jpg",
+      "resimler/ekran-1.jpg"
     ],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://dolap.com/urun/ornek-link-3"
@@ -48,7 +48,7 @@
     "isim": "iPhone 15 Pro Kamera Koruyucu",
     "fiyat": "99.90 TL",
     "gorsel": [
-      "resimler/kamera-koruyucu.jpg",
+      "resimler/kamera-koruyucu.jpg"
     ],
     "kategori": "Kamera Koruyucu",
     "dolapLink": "https://dolap.com/urun/kamera-koruyucu-link"
@@ -58,7 +58,7 @@
     "isim": "Iphone 13 Silikon Lansman Telefon Kılıfı",
     "fiyat": "180.00 TL",
     "gorsel": [
-      "images/ip13.png",
+      "images/ip13.png"
     ],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/scs8tk",
@@ -69,7 +69,7 @@
     "isim": "Galaxy S25 FE Kılıf Magsafe Wireless Kablosuz Şarj Destekli Kılıf",
     "fiyat": "320.00 TL",
     "gorsel": [
-      "images/s25fe.png",
+      "images/s25fe.png"
     ],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/l5pr9v"
@@ -79,7 +79,7 @@
     "isim": "Bluetooth 5.0 Kulaklık",
     "fiyat": "499.00 TL",
     "gorsel": [
-      "resimler/kulaklik.jpg",
+      "resimler/kulaklik.jpg"
     ],
     "kategori": "Kulaklık",
     "dolapLink": "https://dolap.com/urun/kulaklik-link"
@@ -89,7 +89,7 @@
     "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı",
     "fiyat": "189.00 TL",
     "gorsel": [
-      "images/kedi1.png",
+      "images/kedi1.png"
      ],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/muoflf",
@@ -100,7 +100,7 @@
     "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı",
     "fiyat": "189.00 TL",
     "gorsel": [
-      "images/kedi2.png",
+      "images/kedi2.png"
      ],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/pzsyk6",
