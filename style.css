@@ -134,8 +134,16 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
 }
 
 /* Ürün kartını kapsayan elementin position: relative olması lazım */
-.urun-karti {
-    position: relative; 
+.urun-karti { 
+    background-color: #fff; 
+    border-radius: 16px; 
+    padding: 20px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    transition: var(--gecis); 
+    display: flex; 
+    flex-direction: column; 
+    position: relative; /* Bu mutlaka kalmalı */
+    overflow: hidden;   /* Eğer görsel dışarı taşıyorsa bunu ekle */
 }
 
 /* --- Favori Butonu --- */
