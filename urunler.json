@@ -19,10 +19,11 @@
    {
     "id": 3,
     "isim": "20W Type-C Hızlı Şarj Adaptörü",
-    "fiyat": "399.00 TL",
+    "fiyat": "",
     "gorsel": "resimler/sarj-1.jpg",
     "kategori": "Şarj Cihazı",
-    "dolapLink": "https://dolap.com/urun/ornek-link-2"
+    "dolapLink": "",
+     "etiket": "Yakında"
   },
   {
     "id": 4,
