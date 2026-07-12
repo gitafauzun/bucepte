@@ -55,11 +55,18 @@ function urunleriGuncelle() {
     urunleriEkranaBas(filtrelenmis);
 }
 
-function urunleriEkranaBas(urunler) {
-    const vitrin = document.getElementById('urun-vitrini');
+// ürünleri ekrana bas
+function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
+    const vitrin = document.getElementById(hedefId);
     if (!vitrin) return;
     
     vitrin.innerHTML = '';
+    
+    if (urunler.length === 0) {
+        vitrin.innerHTML = '<p style="text-align:center; width:100%;">Henüz favori ürünün yok.</p>';
+        return;
+    }
+
     const favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
     
     urunler.forEach(urun => {
@@ -72,9 +79,8 @@ function urunleriEkranaBas(urunler) {
             ${etiketHTML}
             <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="favoriDegistir(${urun.id})">❤️</button>
             <img src="${urun.gorsel}" alt="${urun.isim}">
-            <p style="color:var(--gri-metin); font-size:14px;">${urun.kategori}</p>
-            <h3 style="margin: 10px 0; font-size:16px;">${urun.isim}</h3>
-            <h2 style="color:var(--ana-renk); margin-bottom:15px;">${urun.fiyat}</h2>
+            <h3>${urun.isim}</h3>
+            <h2>${urun.fiyat}</h2>
             <a href="${urun.dolapLink}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>
         `;
         vitrin.appendChild(kart);
