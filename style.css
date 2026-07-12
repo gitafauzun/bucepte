@@ -151,16 +151,19 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(255,255,255,0.8);
-    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #eee;
     cursor: pointer;
-    font-size: 20px;
-    padding: 5px;
-    border-radius: 50%;
-    transition: var(--gecis);
+    font-size: 18px; /* Kalp boyutu */
+    padding: 6px 10px;
+    border-radius: 20px; /* Hap şeklinde tasarım */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.favori-btn.aktif {
-    background: #fee2e2;
-    transform: scale(1.1);
+/* Kalbin üzerine gelince biraz büyümesi için */
+.favori-btn:hover {
+    transform: scale(1.05);
 }
