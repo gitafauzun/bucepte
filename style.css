@@ -227,76 +227,123 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
 .favori-btn:hover {
     transform: scale(1.05);
 }
-/* --- MOBİL CİHAZLAR İÇİN 2'Lİ SIRA GÖRÜNÜMÜ (768px ve altı ekranlar) --- */
+/* --- MOBİL CİHAZLAR İÇİN HATASIZ 2'Lİ SIRA GÖRÜNÜMÜ (768px ve altı) --- */
 @media (max-width: 768px) {
     #urun-vitrini {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Ürünleri yan yana 2 sütun yapar */
-        gap: 10px; /* Kartların arasındaki boşluğu mobilde daraltır */
+        grid-template-columns: repeat(2, 1fr); /* Tam yan yana 2 sütun */
+        gap: 12px; /* Kartların arasındaki nefes alma boşluğu */
         padding: 10px;
     }
 
     .urun-karti {
-        padding: 10px; /* Kartın iç boşluğunu azaltır */
-        border-radius: 8px;
+        position: relative; /* Kalp ve etiket konumlaması için zorunlu */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Butonların hepsini en alta hizalar */
+        height: 100%; /* Tüm kart boylarını otomatik olarak eşitler */
+        padding: 10px;
+        border-radius: 12px;
+        box-sizing: border-box;
     }
 
-    /* Resim alanı yan yana gelince çok uzun kalmasın diye yüksekliği düşürüyoruz */
+    /* --- 1. GÖRSEL BOZULMA DÜZELTMESİ --- */
     .urun-resim-wrapper {
-        height: 150px; 
+        position: relative;
+        width: 100%;
+        height: 140px; /* Mobilde ideal görsel yüksekliği */
         margin-bottom: 8px;
+        border-radius: 8px;
+        overflow: hidden;
     }
 
-    /* Ürün başlığı mobilde çok yer kaplamasın ve taşmasın */
+    .urun-resim-carousel {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    .urun-resim {
+        flex: 0 0 100%;
+        width: 100%;
+        height: 100%;
+        /* object-fit: contain; -> Resmin orijinal oranını korur, ASLA uzatıp basıklaştırmaz */
+        object-fit: contain; 
+        background-color: #f9f9f9; /* Resim kenarlarında boşluk kalırsa temiz dursun diye */
+    }
+
+    /* --- 2. KALP (FAVORİ) BUTONU MERKEZLEME DÜZELTMESİ --- */
+    .favori-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: none;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        z-index: 10;
+        
+        /* Emojiyi (❤️) butonun tam ortasına kusursuz yerleştirme formülü: */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        padding: 0 !important;
+        font-size: 14px !important;
+    }
+
+    /* --- 3. ÜRÜN İSMİ VE YAZI DÜZELTMELERİ --- */
+    .urun-karti p {
+        font-size: 11px !important;
+        margin: 2px 0 !important;
+    }
+
     .urun-karti h3 {
-        font-size: 13px;
-        margin: 5px 0;
-        line-height: 1.3;
-        height: 34px; /* Başlıkların aynı hizada kalması için sabit yükseklik (2 satır) */
-        overflow: hidden;
+        font-size: 13px !important;
+        margin: 6px 0 !important;
+        line-height: 1.4 !important;
+        
+        /* Uzun isimler tasarımı parçalamasın diye 2 satırla sınırlar ve sonuna ... koyar */
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        flex-grow: 1; /* Kısa isimli kartlarda boşluğu doldurarak buton hizasını korur */
     }
 
-    /* Ürün fiyatı */
     .urun-karti h2 {
-        font-size: 15px;
-        margin-bottom: 8px;
+        font-size: 15px !important;
+        margin: 4px 0 10px 0 !important;
     }
 
-    /* Kategori yazısı */
-    .urun-karti p {
-        font-size: 11px !important;
-    }
-
-    /* Dolap'tan Satın Al butonu */
+    /* --- BUTON VE ETİKET DÜZENLEMELERİ --- */
     .satin-al-btn {
-        padding: 8px 4px;
-        font-size: 12px;
+        width: 100%;
+        padding: 8px 2px !important;
+        font-size: 12px !important;
+        text-align: center;
         border-radius: 6px;
-    }
-
-    /* Favori ve Etiket butonlarını mobil boyutuna göre küçültme */
-    .favori-btn {
-        width: 26px;
-        height: 26px;
-        font-size: 12px;
-        top: 5px;
-        right: 5px;
+        box-sizing: border-box;
     }
 
     .urun-etiket {
-        font-size: 10px;
-        padding: 3px 6px;
-        top: 5px;
-        left: 5px;
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        font-size: 10px !important;
+        padding: 3px 6px !important;
+        border-radius: 4px;
+        z-index: 10;
     }
 
-    /* Carousel (kaydırma) ok butonlarını mobilde biraz küçültüyoruz */
     .carousel-btn {
         width: 24px;
         height: 24px;
-        font-size: 11px;
+        font-size: 10px;
+        background: rgba(255, 255, 255, 0.8);
     }
 }
