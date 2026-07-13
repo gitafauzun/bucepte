@@ -347,3 +347,85 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
         background: rgba(255, 255, 255, 0.8);
     }
 }
+/* --- ÜRÜN DETAY MODAL (POP-UP) STİLLERİ --- */
+.modal {
+    display: none; /* İlk başta gizli */
+    position: fixed;
+    z-index: 2000; /* Her şeyin üstünde dursun */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Arka planı karartma */
+    backdrop-filter: blur(5px); /* Arkayı hafif buğulu yapar (Modern görünüm) */
+    overflow-y: auto;
+}
+
+.modal-icerik {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 25px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 700px; /* Maksimum genişlik */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalAcilisAnimasyonu 0.3s ease-out;
+}
+
+@keyframes modalAcilisAnimasyonu {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-kapat {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 100;
+}
+
+.modal-kapat:hover {
+    color: #333;
+}
+
+/* Modal İç Düzeni (Masaüstü için Yan Yana) */
+.modal-detay-tasarim {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.modal-bilgi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-aciklama {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+/* Mobilde modal alanını alt alta getirir */
+@media (max-width: 768px) {
+    .modal-icerik {
+        margin: 15% auto;
+        padding: 20px;
+    }
+    .modal-detay-tasarim {
+        grid-template-columns: 1fr; /* Mobilde alt alta */
+        gap: 15px;
+    }
+    .modal-resim-wrapper {
+        height: 200px !important; /* Mobilde pop-up resim boyutu */
+    }
+}
