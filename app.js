@@ -3,7 +3,6 @@ let aktifKategori = "Tümü";
 let aramaMetni = "";
 let siralamaTipi = "varsayilan";
 
-// Sayfa tamamen yüklendiğinde kodları çalıştırır
 document.addEventListener('DOMContentLoaded', () => {
     urunleriYukle();
 });
@@ -11,21 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
 async function urunleriYukle() {
     try {
         const response = await fetch('urunler.json');
-        if (!response.ok) throw new Error("urunler.json dosyası bulunamadı veya yüklenemedi!");
-        
+        if (!response.ok) throw new Error("urunler.json yüklenemedi!");
         tumUrunler = await response.json();
-        
         kategoriMenuOlustur(tumUrunler);
         urunleriGuncelle(); 
     } catch (error) {
-        console.error("Kritik Hata:", error);
-        // Eğer JSON dosyasında hata varsa ekrana beyaz sayfa yerine uyarı basar:
+        console.error("Hata:", error);
         const vitrin = document.getElementById('urun-vitrini');
         if (vitrin) {
-            vitrin.innerHTML = `<p style="color:red; text-align:center; grid-column: 1/-1; padding:20px; font-weight:bold;">
-                Ürünler yüklenemedi! <br> Muhtemelen urunler.json dosyasında bir yazım hatası (virgül, parantez eksikliği) var. <br>
-                Detaylı hata: ${error.message}
-            </p>`;
+            vitrin.innerHTML = `<p style="color:red; text-align:center; grid-column:1/-1;">Ürünler yüklenirken JSON hatası oluştu!</p>`;
         }
     }
 }
@@ -33,7 +26,6 @@ async function urunleriYukle() {
 function kategoriMenuOlustur(urunler) {
     const menu = document.getElementById('kategori-menusu');
     if (!menu) return;
-    
     menu.innerHTML = '';
     const kategoriler = ["Tümü", ...new Set(urunler.map(u => u.kategori).filter(Boolean))];
     
@@ -42,7 +34,6 @@ function kategoriMenuOlustur(urunler) {
         btn.textContent = kat;
         btn.className = 'kategori-btn';
         if(kat === "Tümü") btn.classList.add('aktif');
-
         btn.onclick = (e) => {
             document.querySelectorAll('.kategori-btn').forEach(b => b.classList.remove('aktif'));
             e.target.classList.add('aktif');
@@ -54,12 +45,10 @@ function kategoriMenuOlustur(urunler) {
 }
 
 function urunleriGuncelle() {
-    let filtrelenmis = [...tumUrunler]; // Orijinal listeyi bozmamak için kopyasını alıyoruz
-    
+    let filtrelenmis = [...tumUrunler];
     if (aktifKategori !== "Tümü") filtrelenmis = filtrelenmis.filter(u => u.kategori === aktifKategori);
     if (aramaMetni !== "") filtrelenmis = filtrelenmis.filter(u => u.isim && u.isim.toLowerCase().includes(aramaMetni));
     
-    // Fiyattaki TL yazılarını temizleyip sadece sayıya göre sıralama yapan güvenli fonksiyon
     const fiyatNum = (fiyatStr) => {
         if (!fiyatStr) return 0;
         return parseFloat(fiyatStr.toString().replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
@@ -71,14 +60,13 @@ function urunleriGuncelle() {
     urunleriEkranaBas(filtrelenmis);
 }
 
-function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
-    const vitrin = document.getElementById(hedefId);
+function urunleriEkranaBas(urunler) {
+    const vitrin = document.getElementById('urun-vitrini');
     if (!vitrin) return;
-    
     vitrin.innerHTML = '';
     
     if (urunler.length === 0) {
-        vitrin.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color:var(--gri-metin); padding:20px;">Aranan kriterde ürün bulunamadı.</p>`;
+        vitrin.innerHTML = `<p style="text-align:center; grid-column:1/-1; color:var(--gri-metin);">Ürün bulunamadı.</p>`;
         return;
     }
     
@@ -88,61 +76,99 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
         const isFavori = favoriler.includes(urun.id);
         const etiketHTML = (urun.etiket) ? `<span class="urun-etiket">${urun.etiket}</span>` : '';
         const kalpIkonu = isFavori ? '❤️' : '🤍';
-        const favoriYazi = isFavori ? 'Favorilerden Çıkar' : 'Favorilere Ekle';
         
         const satinAlHTML = (urun.etiket === "Tükendi") 
-            ? `<button class="satin-al-btn" style="background-color: var(--gri-metin); cursor: not-allowed;" disabled>Tükendi</button>`
+            ? `<button class="satin-al-btn" style="background-color:var(--gri-metin); cursor:not-allowed;" disabled>Tükendi</button>`
             : `<a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>`;
 
-        // --- AKILLI GÖRSEL KONTROLÜ (Hem tek resim hem 3 resim destekler) ---
         let gorselWrapperHTML = '';
-        let resimDizisi = [];
-        
-        if (urun.gorseller && Array.isArray(urun.gorseller)) {
-            resimDizisi = urun.gorseller; // Yeni 3'lü sistem
-        } else if (urun.gorsel) {
-            resimDizisi = [urun.gorsel]; // Eski tekli sistem otomatik listeye dönüşüyor
-        }
+        let resimDizisi = urun.gorseller && Array.isArray(urun.gorseller) ? urun.gorseller : (urun.gorsel ? [urun.gorsel] : []);
 
         if (resimDizisi.length > 0) {
             let resimlerHTML = '';
             resimDizisi.forEach((gorsel) => {
-                resimlerHTML += `<img src="${gorsel}" alt="${urun.isim || 'Ürün'}" class="urun-resim">`;
+                resimlerHTML += `<img src="${gorsel}" alt="" class="urun-resim">`;
             });
-
-            // Sadece birden fazla resim varsa ok butonlarını koyar
             const oklarHTML = resimDizisi.length > 1 ? `
-                <button class="carousel-btn onceki" onclick="carouselKaydir(this, -1)">❮</button>
-                <button class="carousel-btn sonraki" onclick="carouselKaydir(this, 1)">❯</button>
+                <button class="carousel-btn onceki" onclick="event.stopPropagation(); carouselKaydir(this, -1)">❮</button>
+                <button class="carousel-btn sonraki" onclick="event.stopPropagation(); carouselKaydir(this, 1)">❯</button>
             ` : '';
 
+            // Resim alanına tıklandığında detay pop-up'ını açar (event.stopPropagation butonları korur)
             gorselWrapperHTML = `
-                <div class="urun-resim-wrapper">
+                <div class="urun-resim-wrapper" onclick="detayModalAc(${urun.id})">
                     <div class="urun-resim-carousel">${resimlerHTML}</div>
                     ${oklarHTML}
                 </div>
             `;
-        } else {
-            // Eğer üründe hiç resim tanımlanmamışsa boş kalmasın
-            gorselWrapperHTML = `<div class="urun-resim-wrapper" style="background:#eee; display:flex; align-items:center; justify-content:center; color:#999;">Görsel Yok</div>`;
         }
 
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
         kart.innerHTML = `
             ${etiketHTML}
-            <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="favoriDegistir(${urun.id})" title="${favoriYazi}">
+            <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="event.stopPropagation(); favoriDegistir(${urun.id})">
                 ${kalpIkonu}
             </button>
             ${gorselWrapperHTML}
             <p style="color:var(--gri-metin); font-size:14px;">${urun.kategori || ''}</p>
-            <h3 style="margin: 10px 0; font-size:16px;">${urun.isim || ''}</h3>
+            <h3 style="margin:10px 0; font-size:16px; cursor:pointer;" onclick="detayModalAc(${urun.id})">${urun.isim || ''}</h3>
             <h2 style="color:var(--ana-renk); margin-bottom:15px;">${urun.fiyat || '0 TL'}</h2>
             ${satinAlHTML}
         `;
         vitrin.appendChild(kart);
     });
 }
+
+// --- YENİ EKLENEN POP-UP (MODAL) FONKSİYONLARI ---
+function detayModalAc(id) {
+    const urun = tumUrunler.find(u => u.id === id);
+    if (!urun) return;
+    
+    const modal = document.getElementById('urun-detay-modal');
+    const alani = document.getElementById('modal-detay-alani');
+    
+    let resimDizisi = urun.gorseller && Array.isArray(urun.gorseller) ? urun.gorseller : (urun.gorsel ? [urun.gorsel] : []);
+    let resimlerHTML = '';
+    resimDizisi.forEach(g => {
+        resimlerHTML += `<img src="${g}" alt="" class="urun-resim">`;
+    });
+    
+    const oklarHTML = resimDizisi.length > 1 ? `
+        <button class="carousel-btn onceki" onclick="carouselKaydir(this, -1)">❮</button>
+        <button class="carousel-btn sonraki" onclick="carouselKaydir(this, 1)">❯</button>
+    ` : '';
+
+    alani.innerHTML = `
+        <div class="modal-detay-tasarim">
+            <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px;">
+                <div class="urun-resim-carousel">${resimlerHTML}</div>
+                ${oklarHTML}
+            </div>
+            <div class="modal-bilgi">
+                <p style="color:var(--gri-metin); margin:0;">${urun.kategori || ''}</p>
+                <h2 style="margin: 10px 0; font-size: 20px;">${urun.isim || ''}</h2>
+                <h3 style="color:var(--ana-renk); margin: 0; font-size: 22px;">${urun.fiyat || '0 TL'}</h3>
+                <div class="modal-aciklama">${urun.aciklama || 'Bu ürün için detaylı açıklama girilmemiştir.'}</div>
+                <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none;">Dolap'tan Satın Al</a>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden"; // Detay açıkken arka plan kaymasın
+}
+
+function detayModalKapat() {
+    document.getElementById('urun-detay-modal').style.display = "none";
+    document.body.style.overflow = "auto"; // Kaydırmayı geri aç
+}
+
+// Dışarı tıklayınca kapatma
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('urun-detay-modal');
+    if (e.target === modal) detayModalKapat();
+});
 
 function favoriDegistir(id) {
     let favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
@@ -152,7 +178,6 @@ function favoriDegistir(id) {
     urunleriGuncelle();
 }
 
-// Arama kutusu ve Sıralama dinleyicilerini sayfa hazır olunca bağla
 window.addEventListener('load', () => {
     const aramaInput = document.getElementById('arama-kutusu');
     if(aramaInput) {
@@ -161,7 +186,6 @@ window.addEventListener('load', () => {
             urunleriGuncelle();
         });
     }
-
     const siralamaSelect = document.getElementById('siralama-kutusu');
     if(siralamaSelect) {
         siralamaSelect.addEventListener('change', (e) => {
@@ -171,15 +195,10 @@ window.addEventListener('load', () => {
     }
 });
 
-// Kaydırma fonksiyonu
 function carouselKaydir(btn, yon) {
     const wrapper = btn.parentElement;
     const carousel = wrapper.querySelector('.urun-resim-carousel');
     if(!carousel) return;
     const kaydirmaMiktari = carousel.offsetWidth;
-    
-    carousel.scrollBy({ 
-        left: yon * kaydirmaMiktari, 
-        behavior: 'smooth' 
-    });
+    carousel.scrollBy({ left: yon * kaydirmaMiktari, behavior: 'smooth' });
 }
