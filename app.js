@@ -120,7 +120,6 @@ function urunleriEkranaBas(urunler) {
     });
 }
 
-// --- YENİ EKLENEN POP-UP (MODAL) FONKSİYONLARI ---
 function detayModalAc(id) {
     const urun = tumUrunler.find(u => u.id === id);
     if (!urun) return;
@@ -128,6 +127,7 @@ function detayModalAc(id) {
     const modal = document.getElementById('urun-detay-modal');
     const alani = document.getElementById('modal-detay-alani');
     
+    // 1. Ürün görsellerini hazırla
     let resimDizisi = urun.gorseller && Array.isArray(urun.gorseller) ? urun.gorseller : (urun.gorsel ? [urun.gorsel] : []);
     let resimlerHTML = '';
     resimDizisi.forEach(g => {
@@ -139,6 +139,35 @@ function detayModalAc(id) {
         <button class="carousel-btn sonraki" onclick="carouselKaydir(this, 1)">❯</button>
     ` : '';
 
+    // 2. OTOMATİK BENZER ÜRÜNLERİ BUL (Aynı kategorideki diğer ürünlerden ilk 3 tanesi)
+    let benzerUrunler = tumUrunler.filter(u => u.kategori === urun.kategori && u.id !== urun.id).slice(0, 3);
+    let benzerlerHTML = '';
+    
+    if (benzerUrunler.length > 0) {
+        benzerlerHTML = `
+            <div class="benzer-urunler-alani">
+                <h4>Bunlar da İlginizi Çekebilir:</h4>
+                <div class="benzer-urunler-izgara">
+        `;
+        
+        benzerUrunler.forEach(b => {
+            let bResim = b.gorseller && Array.isArray(b.gorseller) ? b.gorseller[0] : (b.gorsel ? b.gorsel : 'resim-yok.jpg');
+            benzerlerHTML += `
+                <div class="benzer-urun-kart" onclick="detayModalAc(${b.id})">
+                    <img src="${bResim}" alt="">
+                    <h5>${b.isim || ''}</h5>
+                    <span>${b.fiyat || '0 TL'}</span>
+                </div>
+            `;
+        });
+        
+        benzerlerHTML += `
+                </div>
+            </div>
+        `;
+    }
+
+    // 3. Tüm parçaları birleştirip Pop-up içine basıyoruz
     alani.innerHTML = `
         <div class="modal-detay-tasarim">
             <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px;">
@@ -152,11 +181,13 @@ function detayModalAc(id) {
                 <div class="modal-aciklama">${urun.aciklama || 'Bu ürün için detaylı açıklama girilmemiştir.'}</div>
                 <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none;">Dolap'tan Satın Al</a>
             </div>
+            
+            ${benzerlerHTML}
         </div>
     `;
     
     modal.style.display = "block";
-    document.body.style.overflow = "hidden"; // Detay açıkken arka plan kaymasın
+    document.body.style.overflow = "hidden";
 }
 
 function detayModalKapat() {
