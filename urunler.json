@@ -105,5 +105,18 @@
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/pzsyk6",
      "etiket": "Yeni"
-  }
+  },
+   {
+    "id": 11,
+    "isim": "iPhone 13 Desenli Pembe Kılıf",
+    "fiyat": "249 TL",
+"gorseller": [
+      "images/pembe1.png",
+      "images/pembe2.png",
+      "images/pembe3.png"
+    ], 
+    "kategori": "Kılıf",
+    "dolapLink": "https://link.dolap.com/t2aumz",
+    "etiket": "Yeni"
+  },
 ]
