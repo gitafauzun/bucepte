@@ -121,5 +121,17 @@
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/t2aumz",
     "etiket": "Yeni"
+  },
+  {
+    "id": 1,
+    "isim": "iPhone 11 Taşlı ve Parlak Kılıf",
+    "fiyat": "220 TL",
+"gorseller": [
+      "images/17promax.png",
+      "images/17promax.png",
+      "images/17promax.png"
+    ], 
+    "kategori": "Kılıf",
+    "dolapLink": "https://link.dolap.com/7z121"
   }
 ]
