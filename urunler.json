@@ -35,16 +35,6 @@
      "etiket": "Yakında"
   },
   {
-    "id": 4,
-    "isim": "Samsung S24 Ultra Tam Kaplayan Ekran Koruyucu",
-    "fiyat": "150.00 TL",
-    "gorsel": [
-      "resimler/ekran-1.jpg"
-    ],
-    "kategori": "Ekran Koruyucu",
-    "dolapLink": "https://dolap.com/urun/ornek-link-3"
-  },
-  {
     "id": 5,
     "isim": "iPhone 15 Pro Kamera Koruyucu",
     "fiyat": "249 TL",
@@ -65,7 +55,8 @@
     ],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/scs8tk",
-    "etiket": "Çok Satan"
+    "etiket": "Çok Satan",
+    "aciklama": "iPhone 13 ile tam uyumlu Apple logolu lansman silikon kılıf; silikon malzemesi, mikrofiber iç yüzeyi, darbe emici yapısı ve ince tasarımıyla telefonunuza hem şık bir görünüm hem de etkili koruma sunar."
   },
   {
     "id": 7,
@@ -75,7 +66,8 @@
       "images/s25fe.png"
     ],
     "kategori": "Kılıf",
-    "dolapLink": "https://link.dolap.com/l5pr9v"
+    "dolapLink": "https://link.dolap.com/l5pr9v",
+     "aciklama": "Galaxy S25 FE MagSafe uyumlu kılıf ile telefonunuzu güvenle koruyun. Güçlü manyetik halka, kablosuz şarj desteği, darbe emici TPU malzeme ve ince tasarımı sayesinde hem şıklık hem de maksimum kullanım konforu sunar."
   },
   {
     "id": 8,
@@ -96,7 +88,8 @@
      ],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/muoflf",
-     "etiket": "Yeni"
+     "etiket": "Yeni",
+      "aciklama": "Sevimli kedi figürü ile şık ve eğlenceli görünüme sahiptir."
   },
    {
     "id": 10,
@@ -107,7 +100,8 @@
      ],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/pzsyk6",
-     "etiket": "Yeni"
+     "etiket": "Yeni",
+      "aciklama": "Sevimli kedi figürü ile şık ve eğlenceli görünüme sahiptir."
   },
    {
     "id": 11,
@@ -120,7 +114,9 @@
     ], 
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/t2aumz",
-    "etiket": "Yeni"
+    "etiket": "Yeni",
+      "aciklama": "Pembe zemin üzerinde fiyonk ve çiçek desenleri bulunan kapitone kılıfdır."
+     
   },
   {
     "id": 12,
@@ -132,18 +128,20 @@
       "images/dalgali5.png"
     ], 
     "kategori": "Kılıf",
-    "dolapLink": "https://link.dolap.com/n9ssoj"
+    "dolapLink": "https://link.dolap.com/n9ssoj",
+     "aciklama": "Kamera çerçevesi taşlıdır.Dalgalı parlak görüntüsü ile tarzınızı yansıtır."
   },
     {
     "id": 13,
-    "isim": "iPhone 11 Taşlı ve Parlak Kılıf",
-    "fiyat": "220 TL",
+    "isim": "iPhone 17 ProMax Premium Ekran Koruyucu",
+    "fiyat": "499 TL",
 "gorseller": [
-      "images/dalgali1.png",
-      "images/dalgali3.png",
-      "images/dalgali5.png"
+      "images/cam1.png",
+      "images/cam2.png",
+      "images/cam3.png"
     ], 
     "kategori": "Ekran Koruyucu",
-    "dolapLink": "https://link.dolap.com/n9ssoj"
+    "dolapLink": "https://link.dolap.com/xvch71",
+      "aciklama": "Kaliteli üretim malzemesi ile telefon ekranını premium koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
   }
 ]
