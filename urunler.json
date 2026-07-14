@@ -48,9 +48,11 @@
     "id": 5,
     "isim": "iPhone 15 Pro Kamera Koruyucu",
     "fiyat": "249 TL",
-    "gorsel": [
-      "resimler/kamera-koruyucu.jpg"
-    ],
+    "gorseller": [
+      "images/lens1.png",
+      "images/lens2.png",
+      "images/lens3.png"
+    ], 
     "kategori": "Kamera Koruyucu",
     "dolapLink": "https://dolap.com/urun/kamera-koruyucu-link"
   },
