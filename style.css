@@ -13,7 +13,26 @@
 
 body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color: var(--koyu-renk); line-height: 1.5; }
 
-.container { max-width: 1450px; margin: 0 auto; padding: 0 20px; } /* 6 kart sığsın diye genişliği artırdık */
+.container { 
+    max-width: 1450px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+/* --- ÜRÜN KARTLARI --- */
+.grid-layout { 
+    display: grid; 
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 15px; 
+    padding: 40px 20px; 
+}
+
+@media (max-width: 1200px) {
+    .grid-layout { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 992px) {
+    .grid-layout { grid-template-columns: repeat(3, 1fr); }
+}
 
 /* --- HEADER --- */
 .site-header { padding: 30px 0; background: #fff; border-bottom: 1px solid #eee; }
