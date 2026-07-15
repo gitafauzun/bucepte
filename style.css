@@ -13,10 +13,7 @@
 
 body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color: var(--koyu-renk); line-height: 1.5; }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* --- ÜRÜN KARTLARI --- */
-.grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 50px 20px; }
+.container { max-width: 1450px; margin: 0 auto; padding: 0 20px; } /* 6 kart yan yana sığsın diye genişletildi */
 
 /* --- HEADER --- */
 .site-header { padding: 30px 0; background: #fff; border-bottom: 1px solid #eee; }
@@ -26,29 +23,30 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
 .site-logo { max-width: 150px; display: block; margin: 0 auto; }
 .slogan { margin-top: 5px; font-size: 14px; color: #666; text-align: center; }
 
-/* --- ÜRÜN KARTLARI --- */
-/* --- ÜRÜN KARTLARI --- */
+/* --- ÜRÜN KARTLARI IZGARA SİSTEMİ --- */
 .grid-layout { 
     display: grid; 
-    grid-template-columns: repeat(6, 1fr); /* Masaüstünde tam 6 kart gösterir */
+    grid-template-columns: repeat(6, 1fr); /* Masaüstünde kusursuz yan yana 6 kart */
     gap: 15px; /* Kartların arasına zarif bir boşluk verir */
     padding: 40px 20px; 
 }
 
-/* Tablet ve Orta Boy Ekranlar İçin (Görüntü bozulmasın diye 4'e ve 3'e düşürür) */
+/* Tablet ve Orta Boy Ekranlar İçin (Görüntü bozulmasın diye sırayla 4'e ve 3'e düşürür) */
 @media (max-width: 1200px) {
     .grid-layout { grid-template-columns: repeat(4, 1fr); }
 }
 @media (max-width: 992px) {
     .grid-layout { grid-template-columns: repeat(3, 1fr); }
-/* --- ÜRÜN KARTLARI CAROUSEL (DÜZELTİLMİŞ) --- */
+} /* <-- UNUTULAN VE SİTEYİ BOZAN PARANTEZ BURAYA EKLENDİ! */
+
+/* --- ÜRÜN KARTLARI CAROUSEL --- */
 .urun-resim-wrapper {
     position: relative;
     width: 100%;
     height: 250px;
     margin-bottom: 15px;
     border-radius: 8px;
-    overflow: hidden; /* Dışarı taşan (diğer 2 resim) resimleri gizler */
+    overflow: hidden; /* Dışarı taşan resimleri gizler */
 }
 
 .urun-resim-carousel {
@@ -208,7 +206,7 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     z-index: 1;
 }
 
-/* Ürün kartını kapsayan elementin position: relative olması lazım */
+/* Ürün kartını kapsayan element */
 .urun-karti { 
     background-color: #fff; 
     border-radius: 16px; 
@@ -217,8 +215,8 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     transition: var(--gecis); 
     display: flex; 
     flex-direction: column; 
-    position: relative; /* Bu mutlaka kalmalı */
-    overflow: hidden;   /* Eğer görsel dışarı taşıyorsa bunu ekle */
+    position: relative; 
+    overflow: hidden;   
 }
 
 /* --- Favori Butonu --- */
@@ -238,10 +236,10 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     gap: 5px;
 }
 
-/* Kalbin üzerine gelince biraz büyümesi için */
 .favori-btn:hover {
     transform: scale(1.05);
 }
+
 /* --- MOBİL CİHAZLAR İÇİN HATASIZ 2'Lİ SIRA GÖRÜNÜMÜ (768px ve altı) --- */
 @media (max-width: 768px) {
     #urun-vitrini {
@@ -262,7 +260,7 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
         box-sizing: border-box;
     }
 
-    /* --- 1. GÖRSEL BOZULMA DÜZELTMESİ --- */
+    /* --- GÖRSEL BOZULMA DÜZELTMESİ --- */
     .urun-resim-wrapper {
         position: relative;
         width: 100%;
@@ -282,12 +280,11 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
         flex: 0 0 100%;
         width: 100%;
         height: 100%;
-        /* object-fit: contain; -> Resmin orijinal oranını korur, ASLA uzatıp basıklaştırmaz */
         object-fit: contain; 
         background-color: #f9f9f9; /* Resim kenarlarında boşluk kalırsa temiz dursun diye */
     }
 
-    /* --- 2. KALP (FAVORİ) BUTONU MERKEZLEME DÜZELTMESİ --- */
+    /* --- KALP (FAVORİ) BUTONU MERKEZLEME DÜZELTMESİ --- */
     .favori-btn {
         position: absolute;
         top: 8px;
@@ -300,7 +297,6 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
         box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         z-index: 10;
         
-        /* Emojiyi (❤️) butonun tam ortasına kusursuz yerleştirme formülü: */
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -309,7 +305,7 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
         font-size: 14px !important;
     }
 
-    /* --- 3. ÜRÜN İSMİ VE YAZI DÜZELTMELERİ --- */
+    /* --- ÜRÜN İSMİ VE YAZI DÜZELTMELERİ --- */
     .urun-karti p {
         font-size: 11px !important;
         margin: 2px 0 !important;
@@ -362,6 +358,7 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
         background: rgba(255, 255, 255, 0.8);
     }
 }
+
 /* =======================================================
    ÜRÜN DETAY MODAL (POP-UP) VE BENZER ÜRÜNLER STİLLERİ (GÜNCEL)
 ======================================================== */
@@ -442,7 +439,7 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     display: none;
 }
 .modal-resim-wrapper .urun-resim {
-    flex: 0 0 100%; /* Resimlerin yan yana ezilmesini engeller, %100 genişliğe zorlar */
+    flex: 0 0 100%;
     min-width: 100%;
     height: 100%;
     object-fit: contain;
@@ -491,7 +488,7 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
 
 .benzer-urun-kart img {
     width: 100%;
-    height: 130px; /* Resim boyutunu kutuya tam oturacak şekilde büyüttük */
+    height: 130px;
     object-fit: contain;
     background: #ffffff;
     margin-bottom: 10px;
@@ -502,7 +499,6 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     margin: 0 0 6px 0;
     line-height: 1.4;
     color: #333;
-    /* Uzun isimler tek satıra sıkışıp taşmasın, 2 satırda düzgünce kırılsın */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -518,24 +514,24 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     margin-top: auto;
 }
 
-/* --- MOBİL UYUM (768px ve altı) --- */
+/* --- POP-UP MOBİL UYUM (768px ve altı) --- */
 @media (max-width: 768px) {
     .modal-icerik {
         margin: 10% auto;
         padding: 20px;
     }
     .modal-detay-tasarim {
-        grid-template-columns: 1fr; /* Mobilde alt alta gelsinler */
+        grid-template-columns: 1fr;
         gap: 15px;
     }
     .modal-resim-wrapper {
         height: 250px !important; 
     }
     .benzer-urunler-izgara {
-        grid-template-columns: repeat(2, 1fr); /* Mobilde önerileri yan yana 2'li yapar */
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
     .benzer-urun-kart img {
-        height: 100px; /* Mobilde resim yüksekliği orantılı küçülür */
+        height: 100px;
     }
 }
