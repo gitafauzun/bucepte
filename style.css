@@ -34,16 +34,60 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
 @media (max-width: 1200px) { .grid-layout { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 992px) { .grid-layout { grid-template-columns: repeat(3, 1fr); } }
 
-/* --- ÜRÜN KARTI TASARIMI --- */
+/* --- ÜRÜN KARTI TASARIMI - GÜNCELLENMİŞ --- */
 .urun-karti { 
-    background-color: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-    transition: var(--gecis); display: flex; flex-direction: column; position: relative; overflow: hidden; 
+    background-color: #fff; 
+    border-radius: 16px; 
+    padding: 15px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    transition: var(--gecis); 
+    display: flex; 
+    flex-direction: column; 
+    position: relative; /* Bu çok önemli */
+    overflow: visible;  /* Burayı 'hidden' yerine 'visible' yapıyoruz ki etiketler taşmasın */
 }
 
-.urun-resim-wrapper { position: relative; width: 100%; height: 250px; margin-bottom: 15px; border-radius: 8px; overflow: hidden; }
-.urun-resim-carousel { display: flex; width: 100%; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
-.urun-resim { flex: 0 0 100%; min-width: 100%; height: 100%; object-fit: contain; scroll-snap-align: center; }
+/* --- ETİKETLERİ ÖNE ÇIKAR --- */
+.urun-etiket { 
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    z-index: 10; /* Katman sırasını en üste taşıyoruz */
+    background-color: var(--ana-renk); 
+    color: white; 
+    padding: 4px 10px; 
+    border-radius: 20px; 
+    font-size: 11px; 
+    font-weight: bold;
+    pointer-events: none;
+}
 
+/* --- FAVORİ BUTONU DÜZELTMESİ --- */
+.favori-btn { 
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    z-index: 10; /* Etiketle aynı seviyede en üstte */
+    background: rgba(255, 255, 255, 0.9); 
+    border: 1px solid #ddd; 
+    cursor: pointer; 
+    padding: 8px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    transition: var(--gecis);
+}
+
+.urun-resim-wrapper { 
+    position: relative; 
+    width: 100%; 
+    height: 200px; 
+    margin-bottom: 10px; 
+    border-radius: 8px; 
+    overflow: hidden;
+    z-index: 1; /* Görselin etiketlerin altında kalmasını sağlar */
+}
 .satin-al-btn { background-color: var(--ana-renk); color: white; text-decoration: none; text-align: center; padding: 14px; border-radius: 8px; display: block; font-weight: 600; margin-top: auto; }
 
 /* --- HİKAYE (STORY) MENÜ SİSTEMİ --- */
