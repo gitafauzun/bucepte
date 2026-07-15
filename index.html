@@ -5,22 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bucepte - Telefon Aksesuarları ve Elektronik Ürünler</title>
 
-    <!-- Sosyal Medya Paylaşım (Open Graph) Ayarları -->
     <meta property="og:title" content="bucepte - Telefon Aksesuarları ve Elektronik">
     <meta property="og:description" content="En uygun fiyatlı telefon aksesuarları, kılıflar ve teknolojik ürünler için bucepte.com'u ziyaret edin.">
-    <meta property="og:image" content="https://bucepte.com/logbey.png"> <!-- Buraya logonun linkini koy -->
+    <meta property="og:image" content="https://bucepte.com/logbey.png">
     <meta property="og:url" content="https://bucepte.com">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logbey.png">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- WhatsApp Butonu (body içinde en üstte) -->
     <a href="https://wa.me/905319813938" class="whatsapp-float" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="60" alt="WhatsApp">
     </a>
@@ -39,37 +35,45 @@
     </header>
     
     <main class="container">
-        
-       <!-- --- HİKAYE (STORY) MENÜSÜ --- -->
-<div class="story-alan-container">
-    <div class="story-wrapper">
-        
-        <!-- 1. Yeni Gelenler -->
-        <a href="#urun-vitrini" class="story-item" data-etiket="Yeni Gelen" style="text-decoration: none;">
-            <div class="story-ring yeni-ring">
-                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=150" alt="Yeni">
-                <span class="story-rozet yeni">Yeni</span>
-            </div>
-            <span class="story-baslik">Yeni Gelen</span>
-        </a>
+        <div class="story-alan-container">
+            <div class="story-wrapper">
+                <a href="#urun-vitrini" class="story-item" data-etiket="Yeni Gelen" style="text-decoration: none;">
+                    <div class="story-ring yeni-ring">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=150" alt="Yeni">
+                        <span class="story-rozet yeni">Yeni</span>
+                    </div>
+                    <span class="story-baslik">Yeni Gelen</span>
+                </a>
 
-        <!-- 2. İndirimde -->
-        <a href="#urun-vitrini" class="story-item" data-etiket="İndirimde" style="text-decoration: none;">
-            <div class="story-ring indirim-ring">
-                <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=150" alt="İndirim">
-                <span class="story-rozet">%</span>
-            </div>
-            <span class="story-baslik">İndirimde</span>
-        </a>
+                <a href="#urun-vitrini" class="story-item" data-etiket="İndirimde" style="text-decoration: none;">
+                    <div class="story-ring indirim-ring">
+                        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=150" alt="İndirim">
+                        <span class="story-rozet">%</span>
+                    </div>
+                    <span class="story-baslik">İndirimde</span>
+                </a>
 
-        <!-- 3. Avantajlı -->
-        <a href="#urun-vitrini" class="story-item" data-etiket="Avantajlı" style="text-decoration: none;">
-            <div class="story-ring populer-ring">
-                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=150" alt="Avantajlı">
-                <span class="story-rozet populer">★</span>
+                <a href="#urun-vitrini" class="story-item" data-etiket="Avantajlı" style="text-decoration: none;">
+                    <div class="story-ring populer-ring">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=150" alt="Avantajlı">
+                        <span class="story-rozet populer">★</span>
+                    </div>
+                    <span class="story-baslik">Avantajlı</span>
+                </a>
             </div>
-            <span class="story-baslik">Avantajlı</span>
-        </a>
+        </div>
 
+        <div id="urun-vitrini" class="grid-layout">
+            </div>
+    </main>
+
+    <div id="urun-modal" class="modal">
+        <div class="modal-icerik">
+            <span class="modal-kapat">&times;</span>
+            <div id="modal-govde"></div>
+        </div>
     </div>
-</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
