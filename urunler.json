@@ -1,410 +1,322 @@
-
 [
   {
     "id": 1,
     "isim": "iPhone 17 Promax Magsafe Şeffaf Kılıf",
     "fiyat": "320 TL",
-"gorseller": [
-      "images/17promax.png",
-      "images/17promax.png",
-      "images/17promax.png"
-    ], 
+    "gorseller": ["images/17promax.png", "images/17promax.png", "images/17promax.png"],
     "kategori": "Kılıf",
-    "dolapLink": "https://link.dolap.com/7z121"
+    "dolapLink": "https://link.dolap.com/7z121",
+    "etiket": "yeni",
+    "aciklama": "Şeffaf yapısı ile telefonunuzun rengini gösterir, Magsafe uyumludur."
   },
   {
     "id": 2,
     "isim": "iphone 13 Mat Şeffaf Siyah Magsafe Telefon Kılıfı",
-    "fiyat": "249.00 TL",
-    "gorsel": [
-      "images/buzmag1.png"
-      ],
+    "fiyat": "249 TL",
+    "gorseller": ["images/buzmag1.png"],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/0whmzx",
-    "aciklama": "Kaliteli silikonu sayesinde telefonunuzu korur.Şık tasarımı ve mat duruşuyla estetik katar.Magsafe özelliği ile telefonunuzu kablosuz şarj etmeye uygundur."
-},
-   {
+    "etiket": "indirimde",
+    "aciklama": "Kaliteli silikonu sayesinde telefonunuzu korur. Şık tasarımı ve mat duruşuyla estetik katar. Magsafe özelliği ile telefonunuzu kablosuz şarj etmeye uygundur."
+  },
+  {
     "id": 3,
     "isim": "20W Type-C Hızlı Şarj Adaptörü",
     "fiyat": "0 TL",
-    "gorsel": [
-      "resimler/sarj-1.jpg"
-     ],
+    "gorseller": ["resimler/sarj-1.jpg"],
     "kategori": "Şarj Cihazı",
     "dolapLink": "",
-     "etiket": "avantajlı"
+    "etiket": "avantajlı",
+    "aciklama": "Hızlı şarj destekli güç adaptörü."
   },
   {
     "id": 5,
     "isim": "iPhone 15 Pro Kamera Koruyucu",
     "fiyat": "249 TL",
-    "gorseller": [
-      "images/lens1.png",
-      "images/lens2.png",
-      "images/lens3.png"
-    ], 
+    "gorseller": ["images/lens1.png", "images/lens2.png", "images/lens3.png"],
     "kategori": "Kamera Koruyucu",
-    "dolapLink": "https://dolap.com/urun/kamera-koruyucu-link"
+    "dolapLink": "https://dolap.com/urun/kamera-koruyucu-link",
+    "etiket": "yeni",
+    "aciklama": "Kamera lenslerinizi çizilmelere karşı korur."
   },
   {
     "id": 6,
     "isim": "Iphone 13 Silikon Lansman Telefon Kılıfı",
-    "fiyat": "180.00 TL",
-    "gorsel": [
-      "images/ip13.png"
-    ],
+    "fiyat": "180 TL",
+    "gorseller": ["images/ip13.png"],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/scs8tk",
     "etiket": "avantajlı",
-    "aciklama": "iPhone 13 ile tam uyumlu Apple logolu lansman silikon kılıf; silikon malzemesi, mikrofiber iç yüzeyi, darbe emici yapısı ve ince tasarımıyla telefonunuza hem şık bir görünüm hem de etkili koruma sunar."
+    "aciklama": "iPhone 13 ile tam uyumlu Apple logolu lansman silikon kılıf; mikrofiber iç yüzeyi, darbe emici yapısı ve ince tasarımıyla telefonunuza koruma sunar."
   },
   {
     "id": 7,
     "isim": "Galaxy S25 FE Kılıf Magsafe Wireless Kablosuz Şarj Destekli Kılıf",
-    "fiyat": "320.00 TL",
-    "gorsel": [
-      "images/s25fe.png"
-    ],
+    "fiyat": "320 TL",
+    "gorseller": ["images/s25fe.png"],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/l5pr9v",
-     "aciklama": "Galaxy S25 FE MagSafe uyumlu kılıf ile telefonunuzu güvenle koruyun. Güçlü manyetik halka, kablosuz şarj desteği, darbe emici TPU malzeme ve ince tasarımı sayesinde hem şıklık hem de maksimum kullanım konforu sunar."
+    "etiket": "yeni",
+    "aciklama": "Galaxy S25 FE MagSafe uyumlu kılıf ile telefonunuzu güvenle koruyun."
   },
-   {
+  {
     "id": 9,
-    "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı",
-    "fiyat": "189.00 TL",
-    "gorsel": [
-      "images/kedi1.png"
-     ],
+    "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı (Model 1)",
+    "fiyat": "189 TL",
+    "gorseller": ["images/kedi1.png"],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/muoflf",
-     "etiket": "yeni",
-      "aciklama": "Sevimli kedi figürü ile şık ve eğlenceli görünüme sahiptir."
+    "etiket": "yeni",
+    "aciklama": "Sevimli kedi figürü ile şık ve eğlenceli görünüme sahiptir."
   },
-   {
+  {
     "id": 10,
-    "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı",
-    "fiyat": "189.00 TL",
-    "gorsel": [
-      "images/kedi2.png"
-     ],
+    "isim": "iphone 13 Sevimli Kedi Figürlü Telefon Kılıfı (Model 2)",
+    "fiyat": "189 TL",
+    "gorseller": ["images/kedi2.png"],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/pzsyk6",
-     "etiket": "yeni",
-      "aciklama": "Sevimli kedi figürü ile şık ve eğlenceli görünüme sahiptir."
+    "etiket": "yeni",
+    "aciklama": "Sevimli kedi figürü ile şık ve eğlenceli görünüme sahiptir."
   },
-   {
+  {
     "id": 11,
     "isim": "iPhone 13 Desenli Pembe Kılıf",
     "fiyat": "249 TL",
-"gorseller": [
-      "images/pembe1.png",
-      "images/pembe2.png",
-      "images/pembe3.png"
-    ], 
+    "gorseller": ["images/pembe1.png", "images/pembe2.png", "images/pembe3.png"],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/t2aumz",
     "etiket": "indirimde",
-      "aciklama": "Pembe zemin üzerinde fiyonk ve çiçek desenleri bulunan kapitone kılıfdır."
-     
+    "aciklama": "Pembe zemin üzerinde fiyonk ve çiçek desenleri bulunan kapitone kılıfdır."
   },
   {
     "id": 12,
     "isim": "iPhone 11 Taşlı ve Parlak Kılıf",
     "fiyat": "220 TL",
-"gorseller": [
-      "images/dalgali1.png",
-      "images/dalgali3.png",
-      "images/dalgali5.png"
-    ], 
+    "gorseller": ["images/dalgali1.png", "images/dalgali3.png", "images/dalgali5.png"],
     "kategori": "Kılıf",
     "dolapLink": "https://link.dolap.com/n9ssoj",
-     "aciklama": "Kamera çerçevesi taşlıdır.Dalgalı parlak görüntüsü ile tarzınızı yansıtır."
+    "etiket": "yeni",
+    "aciklama": "Kamera çerçevesi taşlıdır. Dalgalı parlak görüntüsü ile tarzınızı yansıtır."
   },
-    {
+  {
     "id": 13,
     "isim": "iPhone 17 ProMax Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/q47vy",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar."
   },
-   {
+  {
     "id": 14,
-    "isim": "Linkage Pro9S modeli Airpods Kulakiçi Bluetooth Kulaklık",
+    "isim": "Linkage Pro9S Airpods Bluetooth Kulaklık",
     "fiyat": "799 TL",
-"gorseller": [
-      "images/airpods2.png",
-      "images/airpods1.png",
-      "images/airpods3.png"
-    ], 
+    "gorseller": ["images/airpods2.png", "images/airpods1.png", "images/airpods3.png"],
     "kategori": "Kulaklık",
     "dolapLink": "https://link.dolap.com/qwoy5j",
+    "etiket": "yeni",
     "aciklama": "Kaliteli ve temiz sesi, ideal şarj süresi ile müziğin keyfini çıkarın."
   },
-   {
+  {
     "id": 15,
     "isim": "iPhone 17 Pro Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/47txb",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 16,
     "isim": "iPhone 17 Air Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/pl92s8",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 17,
     "isim": "iPhone 17 Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/gjxhcm",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 18,
     "isim": "iPhone 16e Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/6zqtp",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 19,
     "isim": "iPhone 16 Promax Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/grk2e",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 20,
     "isim": "iPhone 16 Pro Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/qb5rffj",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 21,
     "isim": "iPhone 16 Plus Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/pkfpb2",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 22,
     "isim": "iPhone 16 Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/xgfmdi",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 23,
     "isim": "iPhone 15 ProMax Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/dbpc1l",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 24,
     "isim": "iPhone 15 Pro Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/zfrh27",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 25,
     "isim": "iPhone 15 Plus Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/ylvoif",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 26,
     "isim": "iPhone 15 Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/i1oku7",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 27,
     "isim": "iPhone 14Promax Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/fxgcbq",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 28,
     "isim": "iPhone 14 Pro Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/jwpwfn",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 29,
     "isim": "iPhone 14 Plus Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/yaoyhg",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 30,
     "isim": "iPhone 14 Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/eftnsd",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 31,
     "isim": "iPhone 13 ProMax Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/sbp7pk",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 32,
     "isim": "iPhone 13 Pro Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/oo2xrt",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 33,
     "isim": "iPhone 13 Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/9pbmgv",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   },
-   {
+  {
     "id": 34,
     "isim": "iPhone 11 Premium Ekran Koruyucu",
     "fiyat": "499 TL",
-"gorseller": [
-      "images/cam1.png",
-      "images/cam22.png",
-      "images/cam3.png"
-    ], 
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
     "dolapLink": "https://link.dolap.com/ujwczm",
-    "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar.Ürün cinsi camdır.Şeffaf görüntüsü ile ekranın kendisine dokunma hissiyatı verir."
+    "etiket": "yeni",
+    "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
   }
 ]
