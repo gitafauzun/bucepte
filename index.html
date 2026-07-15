@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bucepte - Telefon Aksesuarları ve Elektronik Ürünler</title>
+    <title>bucepte - Telefon Aksesuarları ve Elektronik Ürünler </title>
 
+    <!-- Sosyal Medya Paylaşım (Open Graph) Ayarları -->
     <meta property="og:title" content="bucepte - Telefon Aksesuarları ve Elektronik">
     <meta property="og:description" content="En uygun fiyatlı telefon aksesuarları, kılıflar ve teknolojik ürünler için bucepte.com'u ziyaret edin.">
-    <meta property="og:image" content="https://bucepte.com/logbey.png">
+    <meta property="og:image" content="https://bucepte.com/logbey.png"> <!-- Buraya logonun linkini koy -->
     <meta property="og:url" content="https://bucepte.com">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logbey.png">
+    
     <link rel="stylesheet" href="style.css">
 </head>
-
+    <a href="https://wa.me/905319813938" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="60" alt="WhatsApp">
+</a>
 <body>
+    <!-- WhatsApp Butonu (body içinde en üstte) -->
     <a href="https://wa.me/905319813938" class="whatsapp-float" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="60" alt="WhatsApp">
     </a>
@@ -27,53 +33,64 @@
                 <img src="logosiyah.png" alt="BuCepte Logo" class="site-logo">
                 <p class="slogan">Cep Telefonu Aksesuarları ve Elektronik Ürünler</p>
             </div>
-            <nav class="nav-menu" style="position: static; margin-top: 15px;">
-                <a href="index.html">Ana Sayfa</a>
-                <a href="hakkimizda.html">Hakkımızda</a>
-            </nav>
+           <nav class="nav-menu" style="position: static; margin-top: 15px;">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+</nav>
         </div>
     </header>
     
     <main class="container">
-        <div class="story-alan-container">
-            <div class="story-wrapper">
-                <a href="#urun-vitrini" class="story-item" data-etiket="Yeni Gelen" style="text-decoration: none;">
-                    <div class="story-ring yeni-ring">
-                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=150" alt="Yeni">
-                        <span class="story-rozet yeni">Yeni</span>
-                    </div>
-                    <span class="story-baslik">Yeni Gelen</span>
-                </a>
-
-                <a href="#urun-vitrini" class="story-item" data-etiket="İndirimde" style="text-decoration: none;">
-                    <div class="story-ring indirim-ring">
-                        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=150" alt="İndirim">
-                        <span class="story-rozet">%</span>
-                    </div>
-                    <span class="story-baslik">İndirimde</span>
-                </a>
-
-                <a href="#urun-vitrini" class="story-item" data-etiket="Avantajlı" style="text-decoration: none;">
-                    <div class="story-ring populer-ring">
-                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=150" alt="Avantajlı">
-                        <span class="story-rozet populer">★</span>
-                    </div>
-                    <span class="story-baslik">Avantajlı</span>
-                </a>
-            </div>
+        <!-- Arama ve Sıralama -->
+        <div class="filtre-alani">
+            <input type="text" id="arama-kutusu" placeholder="Ürün ara... Örn: iphone 13 kılıf" class="arama-input">
+            <select id="siralama-kutusu" class="siralama-select">
+                <option value="varsayilan">Varsayılan Sıralama</option>
+                <option value="artan">Fiyat: Düşükten Yükseğe</option>
+                <option value="azalan">Fiyat: Yüksekten Düşüğe</option>
+            </select>
         </div>
 
-        <div id="urun-vitrini" class="grid-layout">
-            </div>
+        <div id="kategori-menusu" class="kategori-menusu"></div>
+        <div id="urun-vitrini" class="grid-layout"></div>
     </main>
 
-    <div id="urun-modal" class="modal">
-        <div class="modal-icerik">
-            <span class="modal-kapat">&times;</span>
-            <div id="modal-govde"></div>
-        </div>
-    </div>
-
     <script src="app.js"></script>
+      <footer style="margin-top: 60px; padding: 40px 0; border-top: 1px solid #eee; text-align: center; color: #888;">
+          
+<div class="footer-links" style="margin-bottom: 20px;">
+        <a href="favoriler.html" style="color: #666; text-decoration: none; font-weight: 600;">❤️ Favorilerim</a>
+    </div>
+          
+    <div class="sosyal-medya" style="margin-top: 20px; text-align: center;">
+    
+    <!-- WhatsApp Business -->
+    <a href="https://wa.me/905319813938?text=Merhaba, ürünleriniz hakkında bilgi almak istiyorum." target="_blank" style="margin: 0 10px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="35" alt="WhatsApp Business">
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61591525273576" target="_blank" style="margin: 0 10px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="35" alt="Facebook">
+    </a>
+
+    <!-- Instagram (Daha önce eklemiştik) -->
+    <a href="https://instagram.com/buceptecom" target="_blank" style="margin: 0 10px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="35" alt="Instagram">
+    </a>
+
+    <!-- TikTok (Daha önce eklemiştik) -->
+    <a href="https://tiktok.com/@buceptte.com" target="_blank" style="margin: 0 10px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="35" alt="TikTok">
+    </a>
+
+</div>
+    
+    <p>&copy; 2026 www.bucepte.com | Tüm hakları saklıdır.</p>
+    <p style="font-size: 12px; margin-top: 10px;">
+         www.bucepte.com üzerinden görüntülenen ürünlerin satın alma işlemleri güvenli ödeme altyapısı için Dolap platformu üzerinden gerçekleştirilmektedir.
+    </p>
+</footer>
 </body>
+
 </html>
