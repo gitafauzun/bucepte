@@ -233,3 +233,18 @@ function carouselKaydir(btn, yon) {
     const kaydirmaMiktari = carousel.offsetWidth;
     carousel.scrollBy({ left: yon * kaydirmaMiktari, behavior: 'smooth' });
 }
+document.querySelectorAll('.story-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        // Tıklanan hikayenin etiketini al
+        const secilenEtiket = this.getAttribute('data-etiket');
+        
+        // Ürünleri filtrele (urunler dizisi app.js içinde tanımlı olmalı)
+        // urun.etiket alanı, JSON dosyanızdaki etiket alanı ile aynı olmalıdır.
+        const filtrelenmisUrunler = urunler.filter(urun => 
+            urun.etiket === secilenEtiket
+        );
+
+        // Vitrini güncelle
+        urunleriGoster(filtrelenmisUrunler);
+    });
+});
