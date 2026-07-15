@@ -536,7 +536,7 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     }
 }
 /* =======================================================
-   HİKAYE (STORY) MENÜ SİSTEMİ STİLLERİ
+   HİKAYE (STORY) MENÜ SİSTEMİ STİLLERİ (MASAÜSTÜ VE MOBİL)
 ======================================================== */
 .story-alan-container {
     max-width: 1450px;
@@ -546,17 +546,18 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
 
 .story-wrapper {
     display: flex;
+    flex-direction: row; /* Yan yana dizilmeye zorlar */
     gap: 20px;
     overflow-x: auto;
     padding: 15px 5px;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox için alt kaydırma çubuğunu gizler */
+    scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
 .story-wrapper::-webkit-scrollbar {
-    display: none; /* Chrome/Safari için alt kaydırma çubuğunu gizler */
+    display: none;
 }
 
 .story-item {
@@ -564,7 +565,7 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    flex: 0 0 auto; /* Esnemeyi engeller, sabit boyutta tutar */
+    flex: 0 0 auto;
     width: 80px;
     transition: transform 0.2s ease;
     scroll-snap-align: start;
@@ -574,39 +575,32 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     transform: translateY(-4px);
 }
 
-/* --- Hikaye Yuvarlağı ve Çerçevesi --- */
 .story-ring {
     position: relative;
     width: 76px;
     height: 76px;
     border-radius: 50%;
     padding: 3px;
-    background: #e5e7eb; /* Standart gri çerçeve */
+    background: #e5e7eb;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
-/* Öne çıkanlara özel Instagram/Trendyol tarzı renkli çerçeveler */
-.indirim-ring {
-    background: linear-gradient(45deg, #ff0000, #ff8c00);
-}
-.yeni-ring {
-    background: linear-gradient(45deg, #00c6ff, #0072ff);
-}
-.populer-ring {
-    background: linear-gradient(45deg, #ff5000, #ffcc00);
-}
+.indirim-ring { background: linear-gradient(45deg, #ff0000, #ff8c00); }
+.yeni-ring { background: linear-gradient(45deg, #00c6ff, #0072ff); }
+.populer-ring { background: linear-gradient(45deg, #ff5000, #ffcc00); }
 
 .story-ring img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #ffffff; /* Görsel ile renkli çerçeve arasında beyaz boşluk */
+    object-fit: cover; /* Resmi yuvarlağın içine hapseder */
+    border-radius: 50%; /* Kesin yuvarlak yapar */
+    border: 2px solid #ffffff;
     background-color: #fff;
 }
 
@@ -615,7 +609,6 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     transform: scale(1.05);
 }
 
-/* --- Hikaye Yazısı --- */
 .story-baslik {
     font-size: 13px;
     font-weight: 600;
@@ -628,7 +621,6 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     font-family: var(--font-ailesi);
 }
 
-/* --- Hikaye Üzerindeki Küçük Etiketler (Rozetler) --- */
 .story-rozet {
     position: absolute;
     bottom: -2px;
@@ -640,12 +632,13 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     border-radius: 10px;
     border: 1.5px solid white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 2;
 }
 
 .story-rozet.yeni { background-color: #0284c7; }
 .story-rozet.populer { background-color: #ff5000; }
 
-/* --- MOBİL EKRAN UYUMU (768px ve altı) --- */
+/* --- SADECE MOBİL EKRANLAR İÇİN UYARLAMA --- */
 @media (max-width: 768px) {
     .story-alan-container {
         margin: 5px auto 15px auto;
