@@ -2,28 +2,38 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>bucepte - Telefon Aksesuarları</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuCepte - Telefona dair her şey BuCepte</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header class="site-header">
         <nav class="nav-container">
             <a href="index.html" class="logo">bucepte</a>
             <div class="nav-links">
                 <a href="index.html">Mağaza</a>
-                <a href="hakkimizda.html">Hakkımızda</a>
+                <a href="#">Hakkımızda</a>
             </div>
         </nav>
     </header>
 
     <main class="container">
         <section class="hero">
-            <h1>Yeni nesil koruma.</h1>
-            <p>Telefonunuz için en şık ve dayanıklı aksesuarlar.</p>
+            <h1>BuCepte</h1>
+            <p>Telefona dair her şey BuCepte</p>
         </section>
+
+        <div id="kategori-menusu" class="kategori-menusu"></div>
 
         <div id="urun-vitrini" class="grid-layout">
             </div>
     </main>
+
+    <div id="urun-detay-modal" class="modal">
+        <div class="modal-content" id="modal-detay-alani"></div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
