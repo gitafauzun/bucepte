@@ -2,29 +2,43 @@
     --text-color: #1d1d1f;
     --bg-color: #ffffff;
     --card-bg: #f5f5f7;
-    --accent: #0066cc;
+    --accent: #0071e3; /* Apple Mavi */
 }
 
-body { font-family: -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); margin: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg-color); color: var(--text-color); margin: 0; }
 .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
+/* Header */
 .site-header { padding: 20px 0; border-bottom: 1px solid #d2d2d7; }
 .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
 .logo { font-weight: 600; font-size: 20px; text-decoration: none; color: var(--text-color); }
 
-.hero { text-align: center; padding: 60px 0; }
-.hero h1 { font-size: 48px; letter-spacing: -0.003em; }
+/* Grid */
+.grid-layout { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
+@media (min-width: 1024px) { .grid-layout { grid-template-columns: repeat(4, 1fr); } }
 
-.grid-layout { display: grid; gap: 30px; grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
-@media (min-width: 1024px) { .grid-layout { grid-template-columns: repeat(6, 1fr); } }
-
-.urun-karti { background: var(--card-bg); border-radius: 20px; padding: 20px; cursor: pointer; transition: 0.3s; position: relative; }
-.urun-karti:hover { transform: scale(1.02); }
-
+/* Kartlar */
+.urun-karti { background: var(--card-bg); border-radius: 20px; padding: 20px; cursor: pointer; transition: transform 0.3s ease; position: relative; }
+.urun-karti:hover { transform: translateY(-5px); }
 .urun-resim-tek { width: 100%; aspect-ratio: 1/1; object-fit: contain; }
-.kategori-etiket { font-size: 11px; color: #86868b; text-transform: uppercase; margin-bottom: 5px; }
-.urun-isim { font-size: 14px; font-weight: 600; margin: 0; }
-.urun-fiyat { font-size: 13px; color: #86868b; margin-top: 5px; }
+.kategori-etiket { font-size: 11px; color: #86868b; text-transform: uppercase; margin: 10px 0 5px 0; }
+.urun-isim { font-size: 15px; font-weight: 600; margin: 0; }
+.urun-fiyat { font-size: 14px; color: #515154; margin-top: 5px; }
 
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
-.modal-content { background: #fff; width: 80%; max-width: 600px; margin: 10% auto; padding: 40px; border-radius: 20px; }
+/* Modal Tasarımı */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1000; backdrop-filter: blur(5px); }
+.modal-content { background: #fff; width: 90%; max-width: 500px; margin: 5% auto; padding: 30px; border-radius: 25px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+
+.kapat-btn { background: none; border: none; font-size: 28px; cursor: pointer; position: absolute; right: 20px; top: 10px; }
+.modal-gorsel { width: 100%; border-radius: 15px; }
+.modal-metin h2 { margin: 20px 0; font-size: 24px; }
+.modal-aciklama { color: #515154; font-size: 15px; line-height: 1.5; }
+
+/* Buton ve Fiyat */
+.modal-fiyat-alani { margin: 20px 0; border-top: 1px solid #d2d2d7; padding-top: 15px; }
+.fiyat-etiketi { font-size: 12px; color: #86868b; }
+.fiyat-degeri { font-size: 28px; font-weight: 600; color: #1d1d1f; margin: 5px 0 0 0; }
+
+.satin-al-btn { display: block; width: 100%; padding: 15px; background-color: var(--accent); color: white; text-align: center; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+.satin-al-btn:hover { background-color: #0077ed; }
+.satin-al-btn.disabled { background-color: #e8e8ed; color: #86868b; cursor: not-allowed; pointer-events: none; }
