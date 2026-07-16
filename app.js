@@ -139,7 +139,7 @@ function detayModalAc(id) {
         <button class="carousel-btn sonraki" onclick="carouselKaydir(this, 1)">❯</button>
     ` : '';
 
-// 2. OTOMATİK BENZER ÜRÜNLERİ BUL (Tam buraya yapıştırın)
+    // 2. OTOMATİK BENZER ÜRÜNLERİ BUL
     let benzerUrunler = tumUrunler.filter(u => u.kategori === urun.kategori && u.id !== urun.id).slice(0, 3);
     let benzerlerHTML = '';
 
@@ -151,9 +151,7 @@ function detayModalAc(id) {
         `;
         
         benzerUrunler.forEach(b => {
-            // Görseli güvenli şekilde al (images/ ile başlamıyorsa ekle)
             let bResim = (b.gorseller && b.gorseller.length > 0) ? b.gorseller[0] : 'images/varsayilan.png';
-            
             benzerlerHTML += `
                 <div class="benzer-urun-kart" onclick="detayModalAc(${b.id})" style="flex: 0 0 90px; text-align: center; cursor: pointer; border: 1px solid #eee; padding: 5px; border-radius: 8px;">
                     <img src="${bResim}" alt="" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
@@ -162,28 +160,23 @@ function detayModalAc(id) {
                 </div>
             `;
         });
-        
         benzerlerHTML += `</div></div>`;
     }
 
-// 3. Tüm parçaları birleştirip Pop-up içine basıyoruz
-alani.innerHTML = `
-    <div class="modal-detay-tasarim">
-        <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px;">
-            <div class="urun-resim-carousel">${resimlerHTML}</div>
-            ${oklarHTML}
-        </div>
-        <div class="modal-bilgi">
-            <p style="color:var(--gri-metin); margin:0;">${urun.kategori || ''}</p>
-            <h2 style="margin: 10px 0; font-size: 20px;">${urun.isim || ''}</h2>
-            <h3 style="color:var(--ana-renk); margin: 0; font-size: 22px;">${urun.fiyat || '0 TL'}</h3>
-            <div class="modal-aciklama">${urun.aciklama || 'Açıklama girilmemiş.'}</div>
-            <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none;">Dolap'tan Satın Al</a>
-        </div>
-        ${benzerlerHTML}
-    </div>
-`;
-            
+    // 3. Tek seferde ve doğru şekilde basıyoruz
+    alani.innerHTML = `
+        <div class="modal-detay-tasarim">
+            <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px;">
+                <div class="urun-resim-carousel">${resimlerHTML}</div>
+                ${oklarHTML}
+            </div>
+            <div class="modal-bilgi">
+                <p style="color:var(--gri-metin); margin:0;">${urun.kategori || ''}</p>
+                <h2 style="margin: 10px 0; font-size: 20px;">${urun.isim || ''}</h2>
+                <h3 style="color:var(--ana-renk); margin: 0; font-size: 22px;">${urun.fiyat || '0 TL'}</h3>
+                <div class="modal-aciklama">${urun.aciklama || 'Açıklama girilmemiş.'}</div>
+                <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none;">Dolap'tan Satın Al</a>
+            </div>
             ${benzerlerHTML}
         </div>
     `;
