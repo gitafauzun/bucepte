@@ -21,12 +21,14 @@ async function urunleriYukle() {
     }
 }
 
+// 1. Anasayfa vitrini için güncelleme
 function urunleriEkranaBas(urunler) {
     const vitrin = document.getElementById('urun-vitrini');
     if (!vitrin) return;
     vitrin.innerHTML = '';
     
     urunler.forEach(urun => {
+        // İlk görseli vitrin için seç
         let gorsel = (urun.gorseller && urun.gorseller.length > 0) ? urun.gorseller[0] : 'placeholder.jpg';
         
         const kart = document.createElement('div');
@@ -42,27 +44,26 @@ function urunleriEkranaBas(urunler) {
                 <h3 class="urun-isim">${urun.isim || ''}</h3>
                 <p class="urun-fiyat">${urun.fiyat || '0 TL'}</p>
             </div>
-            <a href="${urun.dolapLink || '#'}" 
-               target="_blank" 
-               class="satin-al-btn-kucuk">
-               Dolap'tan Satın Al
-            </a>
+            <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn-kucuk">Satın Al</a>
         `;
         vitrin.appendChild(kart);
     });
 }
 
+// 2. Detay Modal için güncelleme (Çoklu Görsel Desteği)
 function detayModalAc(id) {
     const urun = tumUrunler.find(u => u.id === id);
     if (!urun) return;
     
     const modal = document.getElementById('urun-detay-modal');
     const modalDetay = document.getElementById('modal-detay-alani');
-    const isStoktaYok = urun.fiyat === "Stokta yok";
+    
+    // Görselleri yan yana dizmek için HTML oluştur
+    let gorsellerHTML = urun.gorseller ? urun.gorseller.map(img => `<img src="${img}" class="modal-gorsel-kucuk">`).join('') : '';
     
     modalDetay.innerHTML = `
         <button class="kapat-btn" onclick="detayModalKapat()">×</button>
-        <img src="${urun.gorseller ? urun.gorseller[0] : 'placeholder.jpg'}" class="modal-gorsel">
+        <div class="gorsel-galerisi">${gorsellerHTML}</div>
         <div class="modal-metin">
             <p class="kategori-etiket">${urun.kategori}</p>
             <h2>${urun.isim}</h2>
@@ -71,10 +72,7 @@ function detayModalAc(id) {
                 <span class="fiyat-etiketi">Fiyat</span>
                 <h3 class="fiyat-degeri">${urun.fiyat}</h3>
             </div>
-            <a href="${isStoktaYok ? '#' : urun.dolapLink}" target="_blank" 
-               class="satin-al-btn ${isStoktaYok ? 'disabled' : ''}">
-               ${isStoktaYok ? 'Stokta Yok' : 'Dolap\'tan Satın Al'}
-            </a>
+            <a href="${urun.dolapLink}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>
         </div>
     `;
     modal.style.display = "block";
