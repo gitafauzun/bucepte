@@ -83,3 +83,40 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
 .urun-karti h2, .modal-bilgi h3 { color: #CF0606 !important; }
 .whatsapp-float { position: fixed; bottom: 25px; right: 25px; z-index: 1000; transition: var(--gecis); }
 .whatsapp-float:hover { transform: scale(1.1); }
+
+/* --- MOBİL İÇİN GÜNCELLENMİŞ OPTİMİZASYONLAR --- */
+
+@media (max-width: 600px) {
+    /* Header kısmındaki menüleri daha kompakt yap */
+    .nav-menu {
+        flex-direction: row; /* Yan yana dizilimi koru */
+        flex-wrap: wrap;     /* Sığmazsa alt satıra geçsin */
+        justify-content: center;
+        gap: 10px;           /* Boşlukları daralt */
+        font-size: 13px;     /* Yazı boyutunu hafif küçült */
+    }
+    
+    .nav-menu a {
+        margin: 0 5px;       /* Marginleri azalt */
+    }
+
+    /* Kategori butonlarını mobilde daha şık sırala */
+    .kategori-menusu {
+        flex-wrap: nowrap;   /* Yatayda kaydırılabilir olsun */
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+    }
+    
+    .kategori-btn {
+        flex: 0 0 auto;      /* Butonların sıkışmasını engelle */
+        padding: 8px 16px;
+    }
+
+    /* Ürün kartları 2 sütun düzeni */
+    .grid-layout {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+}
