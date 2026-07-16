@@ -298,3 +298,8 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     object-fit: cover; /* Görselin bozulmasını engeller */
     border-radius: 4px;
 }
+/* Fiyatların rengini sadece kırmızı yap */
+.urun-karti h2, 
+.modal-bilgi h3 {
+    color: #CF0606 !important;
+}
