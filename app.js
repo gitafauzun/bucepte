@@ -212,10 +212,22 @@ window.addEventListener('click', (e) => {
 
 function favoriDegistir(id) {
     let favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
-    if (favoriler.includes(id)) favoriler = favoriler.filter(fId => fId !== id);
-    else favoriler.push(id);
+    const btn = event.currentTarget; // Tıklanan butonu yakala
+
+    if (favoriler.includes(id)) {
+        favoriler = favoriler.filter(fId => fId !== id);
+        btn.classList.remove('aktif');
+        btn.innerHTML = '🤍';
+    } else {
+        favoriler.push(id);
+        btn.classList.add('aktif');
+        btn.innerHTML = '❤️';
+    }
+    
     localStorage.setItem('favoriler', JSON.stringify(favoriler));
-    urunleriGuncelle();
+    
+    // Küçük bir görsel bildirim (Opsiyonel)
+    console.log("Favoriler güncellendi");
 }
 
 window.addEventListener('load', () => {
