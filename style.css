@@ -120,3 +120,17 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
         padding: 10px;
     }
 }
+/* Profil ve Genel Buton Güzelleştirmeleri */
+.satin-al-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: var(--gecis);
+}
+
+.satin-al-btn:hover { 
+    transform: scale(1.02); 
+    opacity: 0.9; 
+    cursor: pointer;
+}
