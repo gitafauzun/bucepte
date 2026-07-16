@@ -1,22 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Giriş Yap - bucepte.com</title>
+    <title>Giriş Yap | bucepte.com</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .login-box { max-width: 400px; margin: 100px auto; padding: 40px; background: #fff; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .input-field { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
-    </style>
 </head>
 <body>
-    <div class="login-box">
-        <h2 style="text-align: center; margin-bottom: 20px;">Giriş Yap</h2>
-        <input type="email" placeholder="E-posta" class="input-field">
-        <input type="password" placeholder="Şifre" class="input-field">
-        <button class="satin-al-btn" style="width: 100%; margin-top: 20px;">Giriş Yap</button>
-        <p style="text-align: center; margin-top: 20px;">Hesabın yok mu? <a href="#">Kayıt Ol</a></p>
+    <div class="container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="hakkimizda-kart" style="width: 100%; max-width: 400px;">
+            <h2>Giriş Yap</h2>
+            <input type="email" id="email" placeholder="E-posta" class="arama-input" style="width: 100%; margin: 10px 0;">
+            <input type="password" id="password" placeholder="Şifre" class="arama-input" style="width: 100%; margin: 10px 0;">
+            <button id="login-btn" class="satin-al-btn" style="width: 100%;">Giriş Yap</button>
+            <p style="margin-top: 15px;">Hesabın yok mu? <a href="kayit.html">Kayıt Ol</a></p>
+        </div>
     </div>
+
+    <script type="module">
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+        
+        // Buraya aynı config'i yapıştırman gerekecek
+        const auth = getAuth(); // Firebase zaten initialize olduğu için bunu kullanabiliriz
+
+        document.getElementById('login-btn').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    alert("Başarıyla giriş yapıldı!");
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    alert("Hata: " + error.message);
+                });
+        });
+    </script>
 </body>
 </html>
