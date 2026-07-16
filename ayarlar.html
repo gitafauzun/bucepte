@@ -19,5 +19,22 @@
             <button id="update-btn" class="satin-al-btn" style="width: 100%;">Değişiklikleri Kaydet</button>
         </div>
     </div>
+    <script type="module">
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+    
+    const auth = getAuth();
+    
+    // Sayfa yüklendiğinde kullanıcının giriş yapıp yapmadığını kontrol et
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Eğer giriş yapmışsa e-postasını alana yaz
+            const emailField = document.getElementById('email-field');
+            if(emailField) emailField.value = user.email;
+        } else {
+            // Giriş yapmamışsa login sayfasına at
+            window.location.href = "login.html";
+        }
+    });
+</script>
 </body>
 </html>
