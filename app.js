@@ -62,11 +62,15 @@ function detayModalAc(id) {
     const gorseller = (urun.gorseller && urun.gorseller.length > 0) ? urun.gorseller : ['placeholder.jpg'];
     let gorsellerHTML = gorseller.map(img => `<img src="${img}" class="modal-gorsel-kucuk" loading="lazy">`).join('');
     
-    modalDetay.innerHTML = `
-        <button class="kapat-btn" onclick="detayModalKapat()">×</button>
-        <div class="gorsel-galerisi" id="gorsel-slider">
-            ${gorsellerHTML}
-        </div>
+   // app.js içinde modal HTML'i oluştururken:
+modalDetay.innerHTML = `
+    <button class="kapat-btn" onclick="detayModalKapat()">×</button>
+    
+    <div class="gorsel-galerisi" id="gorsel-slider" style="justify-content: center;">
+        ${gorsellerHTML}
+    </div>
+    ...
+`;
         <div class="modal-metin">
             <p class="kategori-etiket">${urun.kategori}</p>
             <h2>${urun.isim}</h2>
