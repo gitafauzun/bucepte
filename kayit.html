@@ -17,9 +17,21 @@
     </div>
 
     <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
         
-        const auth = getAuth();
+        const firebaseConfig = {
+            apiKey: "AIzaSyARzZZuHOHe_kqOhqbPeIJDh5xTj1XtoGc",
+            authDomain: "bucepte-app.firebaseapp.com",
+            projectId: "bucepte-app",
+            storageBucket: "bucepte-app.firebasestorage.app",
+            messagingSenderId: "762991517276",
+            appId: "1:762991517276:web:72bd254af63b45c8241099",
+            measurementId: "G-Q7D83GT748"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
         document.getElementById('kayit-btn').addEventListener('click', () => {
             const email = document.getElementById('email').value;
