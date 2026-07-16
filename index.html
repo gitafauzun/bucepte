@@ -33,24 +33,11 @@
                 <img src="logosiyah.png" alt="BuCepte Logo" class="site-logo">
                 <p class="slogan">Cep Telefonu Aksesuarları ve Elektronik Ürünler</p>
             </div>
-          <nav class="nav-menu" style="position: static; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 20px;">
+           <nav class="nav-menu" style="position: static; margin-top: 15px;">
     <a href="index.html">Ana Sayfa</a>
     <a href="hakkimizda.html">Hakkımızda</a>
-    <a href="favoriler.html">❤️ Favorilerim</a>
-    
-  <div class="dropdown">
-    <a href="login.html" class="profile-link" style="text-decoration:none; color:var(--koyu-renk); font-weight:600;">👤 Profilim</a>
-    <div class="dropdown-content">
-        <a href="login.html">Giriş Yap</a>
-        <a href="kayit.html">Kayıt Ol</a>
-        
-        <a href="siparislerim.html">Siparişlerim</a>
-        <a href="ayarlar.html">Hesap Ayarları</a>
-        
-        <a href="#" id="cikis-yap">Çıkış Yap</a>
-    </div>
-</div>
 </nav>
+        </div>
     </header>
     
     <main class="container">
@@ -104,84 +91,6 @@
          www.bucepte.com üzerinden görüntülenen ürünlerin satın alma işlemleri güvenli ödeme altyapısı için Dolap platformu üzerinden gerçekleştirilmektedir.
     </p>
 </footer>
-    <div id="urun-detay-modal" class="modal-arkaplan">
-    <div class="modal-icerik">
-        <div id="modal-detay-alani">
-            </div>
-    </div>
-</div>
-
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-    // Firestore kütüphanelerini buraya ekledik:
-    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyARzZZuHOHe_kqOhqbPeIJDh5xTj1XtoGc",
-        authDomain: "bucepte-app.firebaseapp.com",
-        projectId: "bucepte-app",
-        storageBucket: "bucepte-app.firebasestorage.app",
-        messagingSenderId: "762991517276",
-        appId: "1:762991517276:web:72bd254af63b45c8241099",
-        measurementId: "G-Q7D83GT748"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app); // Firestore bağlantısı
-
-    // Sizin gönderdiğiniz fonksiyonu buraya ekliyoruz:
-    window.favoriyeEkle = async (id, ad, fiyat) => {
-        const user = auth.currentUser;
-        console.log("Kullanıcı kontrolü:", user);
-
-        if (!user) {
-            alert("Lütfen önce giriş yap.");
-            window.location.href = "login.html"; // Giriş sayfasına yönlendir
-            return;
-        }
-
-        try {
-            console.log("Firebase'e yazılıyor...");
-            await setDoc(doc(db, "favoriler", user.uid + "_" + id), {
-                userId: user.uid,
-                urunId: id,
-                urunAdi: ad,
-                fiyat: fiyat
-            });
-            alert("Ürün favorilere eklendi! ✨");
-        } catch (e) {
-            console.error("Firebase Hatası DETAYLI:", e);
-            alert("Hata: " + e.message);
-        }
-    };
-
-    // Mevcut profil ve çıkış kodlarınız...
-    const profillink = document.querySelector('.profile-link');
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            if(profillink) profillink.innerText = "👤 " + user.email.split('@')[0];
-        } else {
-            if(profillink) {
-                profillink.innerText = " Profilim";
-                profillink.href = "login.html";
-            }
-        }
-    });
-
-    const cikisBtn = document.getElementById('cikis-yap');
-    if (cikisBtn) {
-        cikisBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            signOut(auth).then(() => {
-                alert("Başarıyla çıkış yapıldı.");
-                window.location.href = "index.html";
-            });
-        });
-    }
-</script>
-    
 </body>
 
 </html>
