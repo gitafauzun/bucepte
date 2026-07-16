@@ -1,14 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorilerim - bucepte.com</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="site-header">
-        <div class="header-container"><a href="index.html">Ana Sayfaya Dön</a></div>
+        <div class="header-container">
+            <a href="index.html" style="text-decoration:none; color:var(--koyu-renk); font-weight:600;">← Ana Sayfaya Dön</a>
+        </div>
     </header>
 
     <main class="container">
@@ -20,15 +22,33 @@
     <script>
         // Sayfa yüklendiğinde favorileri getir
         document.addEventListener('DOMContentLoaded', () => {
+            yukle();
+        });
+
+        function yukle() {
             const favoriIds = JSON.parse(localStorage.getItem('favoriler') || '[]');
-            // Tüm ürünleri çek ve filtrele
+            
+            // Ürün verisini yükle
             fetch('urunler.json')
                 .then(res => res.json())
                 .then(tumUrunler => {
                     const favoriUrunler = tumUrunler.filter(u => favoriIds.includes(u.id));
+                    // app.js içindeki fonksiyonu hedefID ile çağırıyoruz
                     urunleriEkranaBas(favoriUrunler, 'favori-vitrini');
                 });
-        });
+        }
+
+        // Favoriden kaldırma fonksiyonu (sayfayı yenilemeden günceller)
+        function favoriDegistir(id) {
+            let favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
+            
+            // Kaldırma işlemi
+            favoriler = favoriler.filter(fId => fId !== id);
+            localStorage.setItem('favoriler', JSON.stringify(favoriler));
+            
+            // Ekranı tazele
+            yukle();
+        }
     </script>
 </body>
 </html>
