@@ -32,11 +32,33 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 
 .kapat-btn { background: #f5f5f7; border: none; font-size: 20px; cursor: pointer; position: absolute; right: 15px; top: 15px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-/* Modal Galeri */
-.gorsel-galerisi { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; -webkit-overflow-scrolling: touch; }
-.modal-gorsel-kucuk { width: 85px; height: 85px; object-fit: cover; border-radius: 12px; border: 1px solid #d2d2d7; flex-shrink: 0; }
-.gorsel-galerisi::-webkit-scrollbar { height: 6px; }
-.gorsel-galerisi::-webkit-scrollbar-thumb { background: #d2d2d7; border-radius: 10px; }
+/* Modal Galeri - Güncellenmiş Kaydırmalı Yapı */
+.gorsel-galerisi { 
+    display: flex; 
+    gap: 12px; 
+    overflow-x: auto; 
+    padding-bottom: 10px; 
+    margin-bottom: 20px; 
+    -webkit-overflow-scrolling: touch; 
+    /* Kaydırmayı kilitler, görseli tam oturtur */
+    scroll-snap-type: x mandatory; 
+    /* Scrollbar'ı tamamen gizler */
+    scrollbar-width: none; 
+}
+
+/* Chrome, Safari ve Edge için scrollbar gizleme */
+.gorsel-galerisi::-webkit-scrollbar { display: none; }
+
+.modal-gorsel-kucuk { 
+    width: 250px; /* Görselleri daha belirgin yaptık */
+    height: 250px; 
+    object-fit: cover; 
+    border-radius: 16px; 
+    border: 1px solid #d2d2d7; 
+    flex-shrink: 0; 
+    /* Görselin kaydırmada duracağı nokta */
+    scroll-snap-align: start; 
+}
 
 /* Metin ve Fiyat */
 .modal-metin h2 { margin: 12px 0; font-size: 22px; }
