@@ -126,6 +126,24 @@
   // Auth servisini burada tanımlıyoruz
   export const auth = getAuth(app);
 </script>
+
+    <script type="module">
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+    const auth = getAuth();
+    const profilLink = document.querySelector('.profile-link'); // Profilim linki
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Kullanıcı giriş yaptıysa
+            profilLink.innerText = "👤 " + user.email.split('@')[0]; // İsmini göster
+        } else {
+            // Kullanıcı çıkış yaptıysa
+            profilLink.innerText = "👤 Giriş Yap";
+            profilLink.href = "login.html";
+        }
+    });
+</script>
     
 </body>
 
