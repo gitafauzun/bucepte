@@ -72,15 +72,23 @@ function urunleriGuncelle() {
     urunleriEkranaBas(filtrelenmis);
 }
 
-function urunleriEkranaBas(urunler) {
-    const vitrin = document.getElementById('urun-vitrini');
+function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
+    const vitrin = document.getElementById(hedefId); // Artık gönderdiğiniz ID'yi kullanır
     if (!vitrin) return;
     vitrin.innerHTML = '';
     
+    // Eğer favoriler boşsa profesyonel bir mesaj göster
     if (urunler.length === 0) {
-        vitrin.innerHTML = `<p style="text-align:center; grid-column:1/-1; color:var(--gri-metin);">Ürün bulunamadı.</p>`;
+        vitrin.innerHTML = `
+            <div style="text-align:center; grid-column:1/-1; padding: 50px;">
+                <h3 style="color:var(--gri-metin);">Henüz favori ürünün yok.</h3>
+                <p style="margin:15px 0;">Beğendiğin ürünlerin yanındaki kalp butonuna tıkla, burada listelensin!</p>
+                <a href="index.html" class="satin-al-btn" style="display:inline-block; width:200px;">Alışverişe Başla</a>
+            </div>
+        `;
         return;
     }
+    // ... geri kalan kodlar aynı ...
     
     const favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
     
