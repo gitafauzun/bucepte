@@ -257,13 +257,14 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
 /* Modal İçerik Kutusu */
 .modal-icerik {
     background: #fff;
-    margin: 5% auto;
-    padding: 30px;
+    margin: 5vh auto; /* Ekranın %5'i kadar yukarıdan boşluk */
     width: 90%;
-    max-width: 800px;
+    max-width: 600px;
     border-radius: 20px;
     position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-height: 85vh; /* Ekran yüksekliğinin maksimum %85'ini kullan */
+    overflow-y: auto; /* İçerik taşarsa kendi içinde kaydırma çubuğu çıkar */
+    padding: 20px;
 }
 
 .kapat-btn {
