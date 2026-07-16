@@ -274,20 +274,26 @@ body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color
     color: var(--gri-metin);
 }
 .benzer-urunler-alani { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
-.benzer-urunler-izgara { 
-    display: flex; 
-    gap: 15px; 
-    overflow-x: auto; /* Çok ürün varsa yatay kaydırır */
+/* Pop-up içindeki benzer ürünler ızgarası */
+.benzer-urunler-izgara {
+    display: flex; /* Yan yana diz */
+    gap: 10px; /* Kartlar arası boşluk */
+    overflow-x: auto; /* Mobilde taşarsa yatay kaydırma çubuğu çıkar */
     padding-bottom: 10px;
+    width: 100%;
 }
-.benzer-urun-kart { 
-    min-width: 100px; 
-    text-align: center; 
-    cursor: pointer;
-    border: 1px solid #f0f0f0;
-    padding: 10px;
-    border-radius: 10px;
+
+.benzer-urun-kart {
+    flex: 0 0 90px; /* Kartlar mobilde 90px genişliğinde sabit kalsın */
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 5px;
 }
-.benzer-urun-kart img { width: 100%; height: 80px; object-fit: cover; border-radius: 5px; }
-.benzer-urun-kart h5 { font-size: 12px; margin: 5px 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+.benzer-urun-kart img {
+    width: 80px; 
+    height: 80px;
+    object-fit: cover; /* Görselin bozulmasını engeller */
+    border-radius: 4px;
 }
