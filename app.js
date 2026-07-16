@@ -1,16 +1,3 @@
-// app.js'in en üstüne ekle
-window.favoriDegistir = async (id, isim, fiyat) => {
-    console.log("Butona tıklandı! Ürün ID:", id);
-    
-    // index.html'deki fonksiyonu çağır
-    if (window.favoriyeEkle) {
-        await window.favoriyeEkle(id, isim, fiyat);
-    } else {
-        console.error("HATA: window.favoriyeEkle fonksiyonu bulunamadı!");
-        alert("Sistem hatası: Favori fonksiyonu yüklenmemiş.");
-    }
-};
-
 let tumUrunler = [];
 let aktifKategori = "Tümü";
 let aramaMetni = "";
@@ -58,67 +45,28 @@ function kategoriMenuOlustur(urunler) {
 }
 
 function urunleriGuncelle() {
-    // 1. ADIM: Listeyi ID'ye göre tersten sırala (En büyük ID en son eklenendir)
-    let filtrelenmis = [...tumUrunler].sort((a, b) => b.id - a.id); 
-
-    // 2. ADIM: Filtrelemeleri bu sıralanmış liste üzerinden yap
-    if (aktifKategori !== "Tümü") {
-        filtrelenmis = filtrelenmis.filter(u => u.kategori === aktifKategori);
-    }
+    let filtrelenmis = [...tumUrunler];
+    if (aktifKategori !== "Tümü") filtrelenmis = filtrelenmis.filter(u => u.kategori === aktifKategori);
+    if (aramaMetni !== "") filtrelenmis = filtrelenmis.filter(u => u.isim && u.isim.toLowerCase().includes(aramaMetni));
     
-    if (aramaMetni !== "") {
-        filtrelenmis = filtrelenmis.filter(u => u.isim && u.isim.toLowerCase().includes(aramaMetni));
-    }
-    
-    // 3. ADIM: Eğer kullanıcı fiyat sıralaması seçtiyse, mevcut sıralamayı ez
     const fiyatNum = (fiyatStr) => {
         if (!fiyatStr) return 0;
         return parseFloat(fiyatStr.toString().replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
     };
 
-    if (siralamaTipi === "artan") {
-        filtrelenmis.sort((a, b) => fiyatNum(a.fiyat) - fiyatNum(b.fiyat));
-    } else if (siralamaTipi === "azalan") {
-        filtrelenmis.sort((a, b) => fiyatNum(b.fiyat) - fiyatNum(a.fiyat));
-    }
+    if (siralamaTipi === "artan") filtrelenmis.sort((a, b) => fiyatNum(a.fiyat) - fiyatNum(b.fiyat));
+    else if (siralamaTipi === "azalan") filtrelenmis.sort((a, b) => fiyatNum(b.fiyat) - fiyatNum(a.fiyat));
 
     urunleriEkranaBas(filtrelenmis);
 }
 
-// Favori işlemini tetikleyen ana fonksiyon
-async function favoriDegistir(urunId, urunIsim, urunFiyat) {
-    // 1. Önce Firebase üzerinden veritabanına ekle
-    if (typeof window.favoriyeEkle === 'function') {
-        await window.favoriyeEkle(urunId, urunIsim, urunFiyat);
-    }
-
-    // 2. Yerel (localStorage) güncellemeyi yap
-    let favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
-    if (favoriler.includes(urunId)) {
-        favoriler = favoriler.filter(id => id !== urunId);
-    } else {
-        favoriler.push(urunId);
-    }
-    localStorage.setItem('favoriler', JSON.stringify(favoriler));
-    
-    // 3. Arayüzü güncelle
-    location.reload(); 
-}
-
-// Ürünleri ekrana basan ana fonksiyon
-function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
-    const vitrin = document.getElementById(hedefId);
+function urunleriEkranaBas(urunler) {
+    const vitrin = document.getElementById('urun-vitrini');
     if (!vitrin) return;
     vitrin.innerHTML = '';
     
     if (urunler.length === 0) {
-        vitrin.innerHTML = `
-            <div style="text-align:center; grid-column:1/-1; padding: 50px;">
-                <h3 style="color:var(--gri-metin);">Henüz favori ürünün yok.</h3>
-                <p style="margin:15px 0;">Beğendiğin ürünlerin yanındaki kalp butonuna tıkla, burada listelensin!</p>
-                <a href="index.html" class="satin-al-btn" style="display:inline-block; width:200px;">Alışverişe Başla</a>
-            </div>
-        `;
+        vitrin.innerHTML = `<p style="text-align:center; grid-column:1/-1; color:var(--gri-metin);">Ürün bulunamadı.</p>`;
         return;
     }
     
@@ -146,6 +94,7 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
                 <button class="carousel-btn sonraki" onclick="event.stopPropagation(); carouselKaydir(this, 1)">❯</button>
             ` : '';
 
+            // Resim alanına tıklandığında detay pop-up'ını açar (event.stopPropagation butonları korur)
             gorselWrapperHTML = `
                 <div class="urun-resim-wrapper" onclick="detayModalAc(${urun.id})">
                     <div class="urun-resim-carousel">${resimlerHTML}</div>
@@ -156,11 +105,9 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
 
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
-        // ÖNEMLİ: favoriDegistir fonksiyonuna ürün bilgilerini gönderiyoruz
         kart.innerHTML = `
             ${etiketHTML}
-            <button class="favori-btn ${isFavori ? 'aktif' : ''}" 
-                   onclick="event.stopPropagation(); favoriDegistir('${urun.id}', '${urun.isim}', '${urun.fiyat}')"
+            <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="event.stopPropagation(); favoriDegistir(${urun.id})">
                 ${kalpIkonu}
             </button>
             ${gorselWrapperHTML}
@@ -192,46 +139,49 @@ function detayModalAc(id) {
         <button class="carousel-btn sonraki" onclick="carouselKaydir(this, 1)">❯</button>
     ` : '';
 
-    // 2. OTOMATİK BENZER ÜRÜNLERİ BUL
+    // 2. OTOMATİK BENZER ÜRÜNLERİ BUL (Aynı kategorideki diğer ürünlerden ilk 3 tanesi)
     let benzerUrunler = tumUrunler.filter(u => u.kategori === urun.kategori && u.id !== urun.id).slice(0, 3);
     let benzerlerHTML = '';
-
+    
     if (benzerUrunler.length > 0) {
         benzerlerHTML = `
-            <div class="benzer-urunler-alani" style="margin-top: 20px;">
-                <h4 style="font-size: 16px; margin: 10px 0;">Bunlar da İlginizi Çekebilir:</h4>
-                <div class="benzer-urunler-izgara" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px;">
+            <div class="benzer-urunler-alani">
+                <h4>Bunlar da İlginizi Çekebilir:</h4>
+                <div class="benzer-urunler-izgara">
         `;
         
         benzerUrunler.forEach(b => {
-            let bResim = (b.gorseller && b.gorseller.length > 0) ? b.gorseller[0] : 'images/varsayilan.png';
+            let bResim = b.gorseller && Array.isArray(b.gorseller) ? b.gorseller[0] : (b.gorsel ? b.gorsel : 'resim-yok.jpg');
             benzerlerHTML += `
-                <div class="benzer-urun-kart" onclick="detayModalAc(${b.id})" style="flex: 0 0 90px; text-align: center; cursor: pointer; border: 1px solid #eee; padding: 5px; border-radius: 8px;">
-                    <img src="${bResim}" alt="" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
-                    <h5 style="font-size: 10px; margin: 5px 0 0 0; height: 25px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${b.isim || ''}</h5>
-                    <span style="color:var(--ana-renk); font-size: 11px; font-weight: bold;">${b.fiyat || '0 TL'}</span>
+                <div class="benzer-urun-kart" onclick="detayModalAc(${b.id})">
+                    <img src="${bResim}" alt="">
+                    <h5>${b.isim || ''}</h5>
+                    <span>${b.fiyat || '0 TL'}</span>
                 </div>
             `;
         });
-        benzerlerHTML += `</div></div>`;
+        
+        benzerlerHTML += `
+                </div>
+            </div>
+        `;
     }
 
-  // 3. Tek seferde ve doğru şekilde basıyoruz
+    // 3. Tüm parçaları birleştirip Pop-up içine basıyoruz
     alani.innerHTML = `
-        <button onclick="detayModalKapat()" style="position:absolute; top:10px; right:15px; border:none; background:none; font-size:30px; cursor:pointer; z-index:10000; color:#333;">&times;</button>
-        
         <div class="modal-detay-tasarim">
-            <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px; position:relative;">
+            <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px;">
                 <div class="urun-resim-carousel">${resimlerHTML}</div>
                 ${oklarHTML}
             </div>
-            <div class="modal-bilgi" style="padding: 15px;">
+            <div class="modal-bilgi">
                 <p style="color:var(--gri-metin); margin:0;">${urun.kategori || ''}</p>
                 <h2 style="margin: 10px 0; font-size: 20px;">${urun.isim || ''}</h2>
                 <h3 style="color:var(--ana-renk); margin: 0; font-size: 22px;">${urun.fiyat || '0 TL'}</h3>
-                <div class="modal-aciklama" style="margin: 15px 0;">${urun.aciklama || 'Açıklama girilmemiş.'}</div>
-                <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none; padding:10px; background:var(--ana-renk); color:white; border-radius:5px;">Dolap'tan Satın Al</a>
+                <div class="modal-aciklama">${urun.aciklama || 'Bu ürün için detaylı açıklama girilmemiştir.'}</div>
+                <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none;">Dolap'tan Satın Al</a>
             </div>
+            
             ${benzerlerHTML}
         </div>
     `;
@@ -253,22 +203,10 @@ window.addEventListener('click', (e) => {
 
 function favoriDegistir(id) {
     let favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
-    const btn = event.currentTarget; // Tıklanan butonu yakala
-
-    if (favoriler.includes(id)) {
-        favoriler = favoriler.filter(fId => fId !== id);
-        btn.classList.remove('aktif');
-        btn.innerHTML = '🤍';
-    } else {
-        favoriler.push(id);
-        btn.classList.add('aktif');
-        btn.innerHTML = '❤️';
-    }
-    
+    if (favoriler.includes(id)) favoriler = favoriler.filter(fId => fId !== id);
+    else favoriler.push(id);
     localStorage.setItem('favoriler', JSON.stringify(favoriler));
-    
-    // Küçük bir görsel bildirim (Opsiyonel)
-    console.log("Favoriler güncellendi");
+    urunleriGuncelle();
 }
 
 window.addEventListener('load', () => {
