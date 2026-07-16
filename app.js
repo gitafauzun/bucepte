@@ -167,21 +167,22 @@ function detayModalAc(id) {
     }
 
     // 3. Tüm parçaları birleştirip Pop-up içine basıyoruz (Bu kısım zaten kodunuzda vardı, dokunmayın)
-    alani.innerHTML = `...
-    // 3. Tüm parçaları birleştirip Pop-up içine basıyoruz
-    alani.innerHTML = `
-        <div class="modal-detay-tasarim">
-            <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px;">
-                <div class="urun-resim-carousel">${resimlerHTML}</div>
-                ${oklarHTML}
-            </div>
-            <div class="modal-bilgi">
-                <p style="color:var(--gri-metin); margin:0;">${urun.kategori || ''}</p>
-                <h2 style="margin: 10px 0; font-size: 20px;">${urun.isim || ''}</h2>
-                <h3 style="color:var(--ana-renk); margin: 0; font-size: 22px;">${urun.fiyat || '0 TL'}</h3>
-                <div class="modal-aciklama">${urun.aciklama || 'Bu ürün için detaylı açıklama girilmemiştir.'}</div>
-                <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none;">Dolap'tan Satın Al</a>
-            </div>
+   // 3. Tüm parçaları birleştirip Pop-up içine basıyoruz
+alani.innerHTML = `
+    <div class="modal-detay-tasarim">
+        <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px;">
+            <div class="urun-resim-carousel">${resimlerHTML}</div>${oklarHTML}
+        </div>
+        <div class="modal-bilgi">
+            <p style="color:var(--gri-metin); margin:0;">${urun.kategori || ''}</p>
+            <h2 style="margin: 10px 0; font-size: 20px;">${urun.isim || ''}</h2>
+            <h3 style="color:var(--ana-renk); margin: 0; font-size: 22px;">${urun.fiyat || '0 TL'}</h3>
+            <div class="modal-aciklama">${urun.aciklama || 'Bu ürün için detaylı açıklama girilmemiştir.'}</div>
+            <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none;">Dolap'tan Satın Al</a>
+        </div>
+        ${benzerlerHTML}
+    </div>
+`;
             
             ${benzerlerHTML}
         </div>
