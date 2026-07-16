@@ -50,7 +50,8 @@ function urunleriEkranaBas(urunler) {
     });
 }
 
-// 2. Detay Modal için güncelleme (Çoklu Görsel Desteği)
+// ... üst kısımlar aynı ...
+
 function detayModalAc(id) {
     const urun = tumUrunler.find(u => u.id === id);
     if (!urun) return;
@@ -58,12 +59,14 @@ function detayModalAc(id) {
     const modal = document.getElementById('urun-detay-modal');
     const modalDetay = document.getElementById('modal-detay-alani');
     
-    // Görselleri yan yana dizmek için HTML oluştur
-    let gorsellerHTML = urun.gorseller ? urun.gorseller.map(img => `<img src="${img}" class="modal-gorsel-kucuk">`).join('') : '';
+    const gorseller = (urun.gorseller && urun.gorseller.length > 0) ? urun.gorseller : ['placeholder.jpg'];
+    let gorsellerHTML = gorseller.map(img => `<img src="${img}" class="modal-gorsel-kucuk" loading="lazy">`).join('');
     
     modalDetay.innerHTML = `
         <button class="kapat-btn" onclick="detayModalKapat()">×</button>
-        <div class="gorsel-galerisi">${gorsellerHTML}</div>
+        <div class="gorsel-galerisi" id="gorsel-slider">
+            ${gorsellerHTML}
+        </div>
         <div class="modal-metin">
             <p class="kategori-etiket">${urun.kategori}</p>
             <h2>${urun.isim}</h2>
@@ -76,12 +79,34 @@ function detayModalAc(id) {
         </div>
     `;
     modal.style.display = "block";
+
+    // --- BURAYA EKLİYORUZ ---
+    const slider = document.getElementById('gorsel-slider');
+    
+    // Önceki interval varsa temizle (çakışmaması için)
+    clearInterval(sliderInterval); 
+    
+    // Otomatik Geçiş Başlatma
+    sliderInterval = setInterval(() => {
+        if (!slider) return;
+        // Eğer son görselde değilse kaydır, son görseldeyse başa dön
+        if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) {
+            slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            slider.scrollBy({ left: slider.offsetWidth, behavior: 'smooth' });
+        }
+    }, 3000); 
+    // -------------------------
 }
 
+// Global değişkeni dosyanın en başına (let tumUrunler = []; altına) ekle:
+let sliderInterval; 
+
+// ... detayModalKapat fonksiyonu ...
 function detayModalKapat() {
+    clearInterval(sliderInterval); // Modal kapanınca döngüyü durdur
     document.getElementById('urun-detay-modal').style.display = "none";
 }
-
 // Dışarı tıklayınca kapatma
 window.onclick = function(event) {
     const modal = document.getElementById('urun-detay-modal');
