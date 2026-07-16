@@ -21,9 +21,9 @@
   },
   {
     "id": 3,
-    "isim": "20W Type-C Hızlı Şarj Adaptörü",
+    "isim": "35W Type-C Hızlı Şarj Seti",
     "fiyat": "Stokta yok",
-    "gorseller": ["resimler/sarj-1.jpg"],
+    "gorseller": ["images/şarj1.png"],
     "kategori": "Şarj Cihazı",
     "dolapLink": "",
     "etiket": "yakında",
