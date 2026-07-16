@@ -44,7 +44,7 @@ function urunleriEkranaBas(urunler) {
                 <h3 class="urun-isim">${urun.isim || ''}</h3>
                 <p class="urun-fiyat">${urun.fiyat || '0 TL'}</p>
             </div>
-            <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn-kucuk">Satın Al</a>
+            <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn-kucuk">Dolap'tan Satın Al</a>
         `;
         vitrin.appendChild(kart);
     });
