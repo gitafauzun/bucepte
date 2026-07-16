@@ -139,33 +139,31 @@ function detayModalAc(id) {
         <button class="carousel-btn sonraki" onclick="carouselKaydir(this, 1)">❯</button>
     ` : '';
 
-    // 2. OTOMATİK BENZER ÜRÜNLERİ BUL (Aynı kategorideki diğer ürünlerden ilk 3 tanesi)
-    let benzerUrunler = tumUrunler.filter(u => u.kategori === urun.kategori && u.id !== urun.id).slice(0, 3);
-    let benzerlerHTML = '';
+   // 2. OTOMATİK BENZER ÜRÜNLERİ BUL
+let benzerUrunler = tumUrunler.filter(u => u.kategori === urun.kategori && u.id !== urun.id).slice(0, 3);
+let benzerlerHTML = '';
+
+if (benzerUrunler.length > 0) {
+    benzerlerHTML = `
+        <div class="benzer-urunler-alani">
+            <h4 style="margin: 20px 0 10px 0;">Bunlar da İlginizi Çekebilir:</h4>
+            <div class="benzer-urunler-izgara" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px;">
+    `;
     
-    if (benzerUrunler.length > 0) {
-        benzerlerHTML = `
-            <div class="benzer-urunler-alani">
-                <h4>Bunlar da İlginizi Çekebilir:</h4>
-                <div class="benzer-urunler-izgara">
-        `;
-        
-        benzerUrunler.forEach(b => {
-            let bResim = b.gorseller && Array.isArray(b.gorseller) ? b.gorseller[0] : (b.gorsel ? b.gorsel : 'resim-yok.jpg');
-            benzerlerHTML += `
-                <div class="benzer-urun-kart" onclick="detayModalAc(${b.id})">
-                    <img src="${bResim}" alt="">
-                    <h5>${b.isim || ''}</h5>
-                    <span>${b.fiyat || '0 TL'}</span>
-                </div>
-            `;
-        });
-        
+    benzerUrunler.forEach(b => {
+        // Görsel yolunu güvenli al
+        let bResim = (b.gorseller && b.gorseller.length > 0) ? b.gorseller[0] : 'resim-yok.jpg';
         benzerlerHTML += `
-                </div>
+            <div class="benzer-urun-kart" onclick="detayModalAc(${b.id})" style="min-width: 100px; text-align: center; cursor: pointer; border: 1px solid #eee; padding: 5px; border-radius: 8px;">
+                <img src="${bResim}" alt="" style="width: 100%; height: 80px; object-fit: cover; border-radius: 4px;">
+                <h5 style="font-size: 11px; margin: 5px 0; height: 30px; overflow: hidden;">${b.isim || ''}</h5>
+                <span style="color:var(--ana-renk); font-size: 12px; font-weight: bold;">${b.fiyat || '0 TL'}</span>
             </div>
         `;
-    }
+    });
+    
+    benzerlerHTML += `</div></div>`;
+}
 
     // 3. Tüm parçaları birleştirip Pop-up içine basıyoruz
     alani.innerHTML = `
