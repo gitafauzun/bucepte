@@ -1,3 +1,16 @@
+// app.js'in en üstüne ekle
+window.favoriDegistir = async (id, isim, fiyat) => {
+    console.log("Butona tıklandı! Ürün ID:", id);
+    
+    // index.html'deki fonksiyonu çağır
+    if (window.favoriyeEkle) {
+        await window.favoriyeEkle(id, isim, fiyat);
+    } else {
+        console.error("HATA: window.favoriyeEkle fonksiyonu bulunamadı!");
+        alert("Sistem hatası: Favori fonksiyonu yüklenmemiş.");
+    }
+};
+
 let tumUrunler = [];
 let aktifKategori = "Tümü";
 let aramaMetni = "";
