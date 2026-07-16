@@ -1,49 +1,33 @@
 let tumUrunler = [];
 
-// Sayfa yüklendiğinde çalışacak ana tetikleyici
 document.addEventListener('DOMContentLoaded', () => {
     urunleriYukle();
 });
 
 async function urunleriYukle() {
     try {
-        // GitHub'da dosya yolları önemlidir, './' ile aynı dizine bakıyoruz
         const response = await fetch('./urunler.json');
-        if (!response.ok) throw new Error("JSON dosyası sunucuda bulunamadı!");
-        
+        if (!response.ok) throw new Error("Dosya bulunamadı");
         tumUrunler = await response.json();
-        
-        // Veri başarıyla gelince ekranı çiz
         urunleriEkranaBas(tumUrunler);
     } catch (error) {
-        console.error("Yükleme Hatası:", error);
-        document.getElementById('urun-vitrini').innerHTML = `<p>Ürünler yüklenemedi. Lütfen konsolu kontrol edin.</p>`;
+        console.error("Hata:", error);
     }
 }
 
 function urunleriEkranaBas(urunler) {
     const vitrin = document.getElementById('urun-vitrini');
-    if (!vitrin) return;
     vitrin.innerHTML = '';
-    
     urunler.forEach(urun => {
-        // Görsel yoksa placeholder göster
         let gorsel = (urun.gorseller && urun.gorseller.length > 0) ? urun.gorseller[0] : 'placeholder.jpg';
-        
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
-        kart.onclick = () => detayModalAc(urun.id); // Tıklanınca detay aç
-        
+        kart.onclick = () => detayModalAc(urun.id);
         kart.innerHTML = `
-            ${urun.etiket ? `<span class="urun-etiket">${urun.etiket}</span>` : ''}
-            <div class="urun-resim-wrapper">
-                <img src="${gorsel}" alt="${urun.isim}" class="urun-resim-tek">
-            </div>
-            <div class="urun-bilgi-alani">
-                <p class="kategori-etiket">${urun.kategori || ''}</p>
-                <h3 class="urun-isim">${urun.isim || ''}</h3>
-                <p class="urun-fiyat">${urun.fiyat || '0 TL'}</p>
-            </div>
+            <img src="${gorsel}" class="urun-resim-tek">
+            <p class="kategori-etiket">${urun.kategori}</p>
+            <h3 class="urun-isim">${urun.isim}</h3>
+            <p class="urun-fiyat">${urun.fiyat}</p>
         `;
         vitrin.appendChild(kart);
     });
@@ -51,30 +35,26 @@ function urunleriEkranaBas(urunler) {
 
 function detayModalAc(id) {
     const urun = tumUrunler.find(u => u.id === id);
-    if (!urun) return;
-    
     const modal = document.getElementById('urun-detay-modal');
     const modalDetay = document.getElementById('modal-detay-alani');
     
-    // Stokta yok durumunu kontrol et
-    const satinAlHTML = urun.fiyat === "Stokta yok" 
-        ? `<button class="satin-al-btn disabled" disabled>Şu an Stokta Yok</button>`
-        : `<a href="${urun.dolapLink}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>`;
-
+    const isStoktaYok = urun.fiyat === "Stokta yok";
+    
     modalDetay.innerHTML = `
-        <div class="modal-icerik">
-            <button class="kapat-btn" onclick="detayModalKapat()">×</button>
-            <img src="${urun.gorseller ? urun.gorseller[0] : 'placeholder.jpg'}" class="modal-gorsel">
-            <div class="modal-metin">
-                <p class="kategori-etiket">${urun.kategori}</p>
-                <h2>${urun.isim}</h2>
-                <p class="modal-aciklama">${urun.aciklama}</p>
-                <div class="modal-fiyat-alani">
-                    <span class="fiyat-etiketi">Fiyat</span>
-                    <h3 class="fiyat-degeri">${urun.fiyat}</h3>
-                </div>
-                ${satinAlHTML}
+        <button class="kapat-btn" onclick="detayModalKapat()">×</button>
+        <img src="${urun.gorseller ? urun.gorseller[0] : 'placeholder.jpg'}" class="modal-gorsel">
+        <div class="modal-metin">
+            <p class="kategori-etiket">${urun.kategori}</p>
+            <h2>${urun.isim}</h2>
+            <p class="modal-aciklama">${urun.aciklama}</p>
+            <div class="modal-fiyat-alani">
+                <span class="fiyat-etiketi">Fiyat</span>
+                <h3 class="fiyat-degeri">${urun.fiyat}</h3>
             </div>
+            <a href="${isStoktaYok ? '#' : urun.dolapLink}" target="_blank" 
+               class="satin-al-btn ${isStoktaYok ? 'disabled' : ''}">
+               ${isStoktaYok ? 'Stokta Yok' : 'Dolap\'tan Satın Al'}
+            </a>
         </div>
     `;
     modal.style.display = "block";
@@ -82,12 +62,4 @@ function detayModalAc(id) {
 
 function detayModalKapat() {
     document.getElementById('urun-detay-modal').style.display = "none";
-}
-
-// Dışarı tıklayınca kapatma
-window.onclick = function(event) {
-    const modal = document.getElementById('urun-detay-modal');
-    if (event.target == modal) {
-        detayModalKapat();
-    }
 }
