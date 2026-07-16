@@ -72,12 +72,32 @@ function urunleriGuncelle() {
     urunleriEkranaBas(filtrelenmis);
 }
 
+// Favori işlemini tetikleyen ana fonksiyon
+async function favoriDegistir(urunId, urunIsim, urunFiyat) {
+    // 1. Önce Firebase üzerinden veritabanına ekle
+    if (typeof window.favoriyeEkle === 'function') {
+        await window.favoriyeEkle(urunId, urunIsim, urunFiyat);
+    }
+
+    // 2. Yerel (localStorage) güncellemeyi yap
+    let favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
+    if (favoriler.includes(urunId)) {
+        favoriler = favoriler.filter(id => id !== urunId);
+    } else {
+        favoriler.push(urunId);
+    }
+    localStorage.setItem('favoriler', JSON.stringify(favoriler));
+    
+    // 3. Arayüzü güncelle
+    location.reload(); 
+}
+
+// Ürünleri ekrana basan ana fonksiyon
 function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
-    const vitrin = document.getElementById(hedefId); // Artık gönderdiğiniz ID'yi kullanır
+    const vitrin = document.getElementById(hedefId);
     if (!vitrin) return;
     vitrin.innerHTML = '';
     
-    // Eğer favoriler boşsa profesyonel bir mesaj göster
     if (urunler.length === 0) {
         vitrin.innerHTML = `
             <div style="text-align:center; grid-column:1/-1; padding: 50px;">
@@ -88,7 +108,6 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
         `;
         return;
     }
-    // ... geri kalan kodlar aynı ...
     
     const favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
     
@@ -114,7 +133,6 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
                 <button class="carousel-btn sonraki" onclick="event.stopPropagation(); carouselKaydir(this, 1)">❯</button>
             ` : '';
 
-            // Resim alanına tıklandığında detay pop-up'ını açar (event.stopPropagation butonları korur)
             gorselWrapperHTML = `
                 <div class="urun-resim-wrapper" onclick="detayModalAc(${urun.id})">
                     <div class="urun-resim-carousel">${resimlerHTML}</div>
@@ -125,9 +143,11 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
 
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
+        // ÖNEMLİ: favoriDegistir fonksiyonuna ürün bilgilerini gönderiyoruz
         kart.innerHTML = `
             ${etiketHTML}
-            <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="event.stopPropagation(); favoriDegistir(${urun.id})">
+            <button class="favori-btn ${isFavori ? 'aktif' : ''}" 
+                    onclick="event.stopPropagation(); favoriDegistir(${urun.id}, '${urun.isim}', '${urun.fiyat}')">
                 ${kalpIkonu}
             </button>
             ${gorselWrapperHTML}
