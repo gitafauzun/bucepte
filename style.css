@@ -47,5 +47,70 @@ body {
 .urun-karti:hover { transform: translateY(-10px); }
 .urun-karti img { width: 100%; aspect-ratio: 1/1; object-fit: contain; }
 
+/* Apple Tarzı Kart Tasarımı */
+.urun-karti {
+    background: #f5f5f7; /* Hafif gri Apple arka planı */
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    position: relative;
+    border: none;
+    overflow: hidden;
+}
+
+.urun-karti:hover {
+    transform: scale(1.02);
+}
+
+.urun-resim-tek {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.urun-bilgi-alani {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.kategori-etiket {
+    font-size: 12px;
+    color: #86868b; /* Apple gri */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.urun-isim {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+    color: #1d1d1f;
+}
+
+.urun-fiyat {
+    font-size: 16px;
+    color: #1d1d1f;
+}
+
+/* Favori butonu Apple tarzı küçük/zarif */
+.favori-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.7);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
 .urun-adi { font-size: 14px; font-weight: 500; margin-top: 15px; }
 .urun-fiyat { font-size: 14px; color: #86868b; margin-top: 5px; }
