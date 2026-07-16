@@ -111,73 +111,47 @@
     </div>
 </div>
 
-    <script type="module">
-  // Firebase SDK'larını içe aktar
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyARzZZuHOHe_kqOhqbPeIJDh5xTj1XtoGc",
-    authDomain: "bucepte-app.firebaseapp.com",
-    projectId: "bucepte-app",
-    storageBucket: "bucepte-app.firebasestorage.app",
-    messagingSenderId: "762991517276",
-    appId: "1:762991517276:web:72bd254af63b45c8241099",
-    measurementId: "G-Q7D83GT748"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  // Auth servisini burada tanımlıyoruz
-  export const auth = getAuth(app);
-</script>
-
-    <script type="module">
+ <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
-    const auth = getAuth();
-    const profilLink = document.querySelector('.profile-link'); // Profilim linki
+    const firebaseConfig = {
+        apiKey: "AIzaSyARzZZuHOHe_kqOhqbPeIJDh5xTj1XtoGc",
+        authDomain: "bucepte-app.firebaseapp.com",
+        projectId: "bucepte-app",
+        storageBucket: "bucepte-app.firebasestorage.app",
+        messagingSenderId: "762991517276",
+        appId: "1:762991517276:web:72bd254af63b45c8241099",
+        measurementId: "G-Q7D83GT748"
+    };
 
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const profilLink = document.querySelector('.profile-link');
+
+    // 1. Giriş durumunu kontrol et ve ismi güncelle
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // Kullanıcı giriş yaptıysa
-            profilLink.innerText = "👤 " + user.email.split('@')[0]; // İsmini göster
+            profilLink.innerText = "👤 " + user.email.split('@')[0];
         } else {
-            // Kullanıcı çıkış yaptıysa
-            profilLink.innerText = "👤 Giriş Yap";
+            profilLink.innerText = "👤 Profilim";
             profilLink.href = "login.html";
         }
     });
-</script>
-    <script type="module">
-    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-    
-    const auth = getAuth();
-    document.getElementById('cikis-yap').addEventListener('click', (e) => {
-        e.preventDefault(); // Sayfanın en üste gitmesini engeller
-        signOut(auth).then(() => {
-            alert("Başarıyla çıkış yapıldı.");
-            window.location.href = "index.html"; // Ana sayfaya dön
-        }).catch((error) => {
-            alert("Çıkış yapılırken bir hata oluştu.");
+
+    // 2. Çıkış yap butonunu dinle
+    const cikisBtn = document.getElementById('cikis-yap');
+    if (cikisBtn) {
+        cikisBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            signOut(auth).then(() => {
+                alert("Başarıyla çıkış yapıldı.");
+                window.location.href = "index.html";
+            }).catch((error) => {
+                console.error("Çıkış hatası:", error);
+            });
         });
-    });
-</script>
-
-    <script type="module">
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-    
-    const auth = getAuth();
-    const profilLink = document.querySelector('.profile-link'); 
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // Kullanıcı giriş yaptıysa ismini göster
-            profilLink.innerText = "👤 " + user.email.split('@')[0];
-        } else {
-            // Giriş yapmadıysa normal haline döndür
-            profilLink.innerText = "👤 Profilim";
-        }
-    });
+    }
 </script>
     
 </body>
