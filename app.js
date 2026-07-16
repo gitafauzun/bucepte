@@ -163,19 +163,21 @@ function detayModalAc(id) {
         benzerlerHTML += `</div></div>`;
     }
 
-    // 3. Tek seferde ve doğru şekilde basıyoruz
+  // 3. Tek seferde ve doğru şekilde basıyoruz
     alani.innerHTML = `
+        <button onclick="detayModalKapat()" style="position:absolute; top:10px; right:15px; border:none; background:none; font-size:30px; cursor:pointer; z-index:10000; color:#333;">&times;</button>
+        
         <div class="modal-detay-tasarim">
-            <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px;">
+            <div class="urun-resim-wrapper modal-resim-wrapper" style="height: 280px; position:relative;">
                 <div class="urun-resim-carousel">${resimlerHTML}</div>
                 ${oklarHTML}
             </div>
-            <div class="modal-bilgi">
+            <div class="modal-bilgi" style="padding: 15px;">
                 <p style="color:var(--gri-metin); margin:0;">${urun.kategori || ''}</p>
                 <h2 style="margin: 10px 0; font-size: 20px;">${urun.isim || ''}</h2>
                 <h3 style="color:var(--ana-renk); margin: 0; font-size: 22px;">${urun.fiyat || '0 TL'}</h3>
-                <div class="modal-aciklama">${urun.aciklama || 'Açıklama girilmemiş.'}</div>
-                <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none;">Dolap'tan Satın Al</a>
+                <div class="modal-aciklama" style="margin: 15px 0;">${urun.aciklama || 'Açıklama girilmemiş.'}</div>
+                <a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn" style="text-align:center; display:block; text-decoration:none; padding:10px; background:var(--ana-renk); color:white; border-radius:5px;">Dolap'tan Satın Al</a>
             </div>
             ${benzerlerHTML}
         </div>
