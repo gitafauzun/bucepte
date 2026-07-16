@@ -1,41 +1,32 @@
 let tumUrunler = [];
+let sliderInterval; // Global değişken burada tanımlı
 
-// Sayfa yüklendiğinde çalışacak ana tetikleyici
 document.addEventListener('DOMContentLoaded', () => {
     urunleriYukle();
 });
 
 async function urunleriYukle() {
     try {
-        // GitHub Pages üzerinde dosyanın ana dizinde olduğunu varsayıyoruz
         const response = await fetch('./urunler.json');
-        if (!response.ok) throw new Error("JSON dosyası sunucuda bulunamadı!");
-        
+        if (!response.ok) throw new Error("JSON yüklenemedi");
         tumUrunler = await response.json();
-        
-        // Veri başarıyla gelince ekranı çiz
         urunleriEkranaBas(tumUrunler);
     } catch (error) {
-        console.error("Yükleme Hatası:", error);
-        document.getElementById('urun-vitrini').innerHTML = `<p style="text-align:center;">Ürünler yüklenemedi.</p>`;
+        console.error("Hata:", error);
     }
 }
 
-// 1. Anasayfa vitrini için güncelleme
 function urunleriEkranaBas(urunler) {
     const vitrin = document.getElementById('urun-vitrini');
     if (!vitrin) return;
     vitrin.innerHTML = '';
     
     urunler.forEach(urun => {
-        // İlk görseli vitrin için seç
         let gorsel = (urun.gorseller && urun.gorseller.length > 0) ? urun.gorseller[0] : 'placeholder.jpg';
         
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
-        
         kart.innerHTML = `
-            ${urun.etiket ? `<span class="urun-etiket">${urun.etiket}</span>` : ''}
             <div class="urun-resim-wrapper" onclick="detayModalAc(${urun.id})">
                 <img src="${gorsel}" alt="${urun.isim}" class="urun-resim-tek">
             </div>
@@ -50,8 +41,6 @@ function urunleriEkranaBas(urunler) {
     });
 }
 
-// ... üst kısımlar aynı ...
-
 function detayModalAc(id) {
     const urun = tumUrunler.find(u => u.id === id);
     if (!urun) return;
@@ -60,61 +49,37 @@ function detayModalAc(id) {
     const modalDetay = document.getElementById('modal-detay-alani');
     
     const gorseller = (urun.gorseller && urun.gorseller.length > 0) ? urun.gorseller : ['placeholder.jpg'];
-    let gorsellerHTML = gorseller.map(img => `<img src="${img}" class="modal-gorsel-kucuk" loading="lazy">`).join('');
+    let gorsellerHTML = gorseller.map(img => `<img src="${img}" class="modal-gorsel-kucuk">`).join('');
     
-   // app.js içinde modal HTML'i oluştururken:
-modalDetay.innerHTML = `
-    <button class="kapat-btn" onclick="detayModalKapat()">×</button>
-    
-    <div class="gorsel-galerisi" id="gorsel-slider" style="justify-content: center;">
-        ${gorsellerHTML}
-    </div>
-    ...
-`;
+    modalDetay.innerHTML = `
+        <button class="kapat-btn" onclick="detayModalKapat()">×</button>
+        <div class="gorsel-galerisi" id="gorsel-slider">
+            ${gorsellerHTML}
+        </div>
         <div class="modal-metin">
-            <p class="kategori-etiket">${urun.kategori}</p>
             <h2>${urun.isim}</h2>
-            <p class="modal-aciklama">${urun.aciklama}</p>
-            <div class="modal-fiyat-alani">
-                <span class="fiyat-etiketi">Fiyat</span>
-                <h3 class="fiyat-degeri">${urun.fiyat}</h3>
-            </div>
+            <p>${urun.aciklama}</p>
+            <h3>${urun.fiyat}</h3>
             <a href="${urun.dolapLink}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>
         </div>
     `;
     modal.style.display = "block";
 
-    // --- BURAYA EKLİYORUZ ---
+    // Otomatik Geçiş
     const slider = document.getElementById('gorsel-slider');
-    
-    // Önceki interval varsa temizle (çakışmaması için)
-    clearInterval(sliderInterval); 
-    
-    // Otomatik Geçiş Başlatma
+    clearInterval(sliderInterval);
     sliderInterval = setInterval(() => {
-        if (!slider) return;
-        // Eğer son görselde değilse kaydır, son görseldeyse başa dön
-        if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) {
-            slider.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-            slider.scrollBy({ left: slider.offsetWidth, behavior: 'smooth' });
+        if (slider) {
+            if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) {
+                slider.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: slider.offsetWidth, behavior: 'smooth' });
+            }
         }
-    }, 3000); 
-    // -------------------------
+    }, 3000);
 }
 
-// Global değişkeni dosyanın en başına (let tumUrunler = []; altına) ekle:
-let sliderInterval; 
-
-// ... detayModalKapat fonksiyonu ...
 function detayModalKapat() {
-    clearInterval(sliderInterval); // Modal kapanınca döngüyü durdur
+    clearInterval(sliderInterval);
     document.getElementById('urun-detay-modal').style.display = "none";
-}
-// Dışarı tıklayınca kapatma
-window.onclick = function(event) {
-    const modal = document.getElementById('urun-detay-modal');
-    if (event.target == modal) {
-        detayModalKapat();
-    }
 }
