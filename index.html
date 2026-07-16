@@ -162,6 +162,23 @@
         });
     });
 </script>
+
+    <script type="module">
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+    
+    const auth = getAuth();
+    const profilLink = document.querySelector('.profile-link'); 
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Kullanıcı giriş yaptıysa ismini göster
+            profilLink.innerText = "👤 " + user.email.split('@')[0];
+        } else {
+            // Giriş yapmadıysa normal haline döndür
+            profilLink.innerText = "👤 Profilim";
+        }
+    });
+</script>
     
 </body>
 
