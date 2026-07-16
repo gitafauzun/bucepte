@@ -65,44 +65,37 @@ function urunleriEkranaBas(urunler) {
     if (!vitrin) return;
     vitrin.innerHTML = '';
     
-    if (urunler.length === 0) {
-        vitrin.innerHTML = `<p style="text-align:center; grid-column:1/-1; color:var(--gri-metin);">Ürün bulunamadı.</p>`;
-        return;
-    }
-    
     const favoriler = JSON.parse(localStorage.getItem('favoriler') || '[]');
     
     urunler.forEach(urun => {
         const isFavori = favoriler.includes(urun.id);
         const etiketHTML = (urun.etiket) ? `<span class="urun-etiket">${urun.etiket}</span>` : '';
-        const kalpIkonu = isFavori ? '❤️' : '🤍';
         
-        const satinAlHTML = (urun.etiket === "Tükendi") 
-            ? `<button class="satin-al-btn" style="background-color:var(--gri-metin); cursor:not-allowed;" disabled>Tükendi</button>`
-            : `<a href="${urun.dolapLink || '#'}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>`;
-
-        let gorselWrapperHTML = '';
+        // Apple tarzı resim alanı
         let resimDizisi = urun.gorseller && Array.isArray(urun.gorseller) ? urun.gorseller : (urun.gorsel ? [urun.gorsel] : []);
+        let gorsel = resimDizisi.length > 0 ? resimDizisi[0] : 'placeholder.jpg';
 
-        if (resimDizisi.length > 0) {
-            let resimlerHTML = '';
-            resimDizisi.forEach((gorsel) => {
-                resimlerHTML += `<img src="${gorsel}" alt="" class="urun-resim">`;
-            });
-            const oklarHTML = resimDizisi.length > 1 ? `
-                <button class="carousel-btn onceki" onclick="event.stopPropagation(); carouselKaydir(this, -1)">❮</button>
-                <button class="carousel-btn sonraki" onclick="event.stopPropagation(); carouselKaydir(this, 1)">❯</button>
-            ` : '';
-
-            // Resim alanına tıklandığında detay pop-up'ını açar (event.stopPropagation butonları korur)
-            gorselWrapperHTML = `
-                <div class="urun-resim-wrapper" onclick="detayModalAc(${urun.id})">
-                    <div class="urun-resim-carousel">${resimlerHTML}</div>
-                    ${oklarHTML}
-                </div>
-            `;
-        }
-
+        const kart = document.createElement('div');
+        kart.className = 'urun-karti';
+        kart.onclick = () => detayModalAc(urun.id); // Kartın tamamına tıklanabilir
+        
+        kart.innerHTML = `
+            ${etiketHTML}
+            <button class="favori-btn ${isFavori ? 'aktif' : ''}" onclick="event.stopPropagation(); favoriDegistir(${urun.id})">
+                ${isFavori ? '❤️' : '🤍'}
+            </button>
+            <div class="urun-resim-wrapper">
+                <img src="${gorsel}" alt="${urun.isim}" class="urun-resim-tek">
+            </div>
+            <div class="urun-bilgi-alani">
+                <p class="kategori-etiket">${urun.kategori || ''}</p>
+                <h3 class="urun-isim">${urun.isim || ''}</h3>
+                <p class="urun-fiyat">${urun.fiyat || '0 TL'}</p>
+            </div>
+        `;
+        vitrin.appendChild(kart);
+    });
+}
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
         kart.innerHTML = `
