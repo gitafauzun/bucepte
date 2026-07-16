@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kayıt Ol | bucepte.com</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="hakkimizda-kart" style="width: 100%; max-width: 400px;">
+            <h2>Kayıt Ol</h2>
+            <input type="email" id="email" placeholder="E-posta" class="arama-input" style="width: 100%; margin: 10px 0;">
+            <input type="password" id="password" placeholder="Şifre" class="arama-input" style="width: 100%; margin: 10px 0;">
+            <button id="kayit-btn" class="satin-al-btn" style="width: 100%;">Hesap Oluştur</button>
+            <p style="margin-top: 15px;">Zaten hesabın var mı? <a href="login.html">Giriş Yap</a></p>
+        </div>
+    </div>
 
+    <script type="module">
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+        
+        const auth = getAuth();
+
+        document.getElementById('kayit-btn').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    alert("Kayıt başarılı! Giriş yapabilirsin.");
+                    window.location.href = "login.html";
+                })
+                .catch((error) => {
+                    alert("Hata: " + error.message);
+                });
+        });
+    </script>
+</body>
+</html>
