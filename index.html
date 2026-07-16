@@ -148,6 +148,20 @@
         }
     });
 </script>
+    <script type="module">
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+    
+    const auth = getAuth();
+    document.getElementById('cikis-yap').addEventListener('click', (e) => {
+        e.preventDefault(); // Sayfanın en üste gitmesini engeller
+        signOut(auth).then(() => {
+            alert("Başarıyla çıkış yapıldı.");
+            window.location.href = "index.html"; // Ana sayfaya dön
+        }).catch((error) => {
+            alert("Çıkış yapılırken bir hata oluştu.");
+        });
+    });
+</script>
     
 </body>
 
