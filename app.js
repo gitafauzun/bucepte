@@ -147,7 +147,7 @@ function urunleriEkranaBas(urunler, hedefId = 'urun-vitrini') {
         kart.innerHTML = `
             ${etiketHTML}
             <button class="favori-btn ${isFavori ? 'aktif' : ''}" 
-                    onclick="event.stopPropagation(); favoriDegistir(${urun.id}, '${urun.isim}', '${urun.fiyat}')">
+                   onclick="event.stopPropagation(); favoriDegistir('${urun.id}', '${urun.isim}', '${urun.fiyat}')"
                 ${kalpIkonu}
             </button>
             ${gorselWrapperHTML}
