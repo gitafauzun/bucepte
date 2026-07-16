@@ -1,71 +1,47 @@
-/* --- 1. SİSTEM DEĞİŞKENLERİ --- */
 :root {
-    --ana-renk: #ff5000;
-    --koyu-renk: #111827;
-    --gri-metin: #6b7280;
-    --arkaplan: #f3f4f6;
-    --kart-arkaplan: #ffffff;
-    --font-ailesi: 'Inter', sans-serif;
-    --gecis: all 0.3s ease;
+    --ty-orange: #ff6000;
+    --ty-grey: #333;
+    --bg-color: #f5f5f5;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-color); margin: 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 10px; }
 
-body { font-family: var(--font-ailesi); background-color: var(--arkaplan); color: var(--koyu-renk); line-height: 1.5; }
+/* Header */
+.site-header { background: #fff; padding: 15px 0; border-bottom: 1px solid #ddd; text-align: center; }
+.site-logo { width: 150px; }
+.nav-menu a { margin: 0 10px; text-decoration: none; color: var(--ty-grey); font-weight: bold; }
 
-.container { max-width: 1300px; margin: 0 auto; padding: 0 15px; }
-
-/* --- HEADER --- */
-.site-header { padding: 20px 0; background: #fff; border-bottom: 1px solid #eee; }
-.header-container { display: flex; flex-direction: column; align-items: center; }
-.site-logo { max-width: 140px; }
-.nav-menu { margin-top: 10px; }
-.nav-menu a { margin: 0 10px; text-decoration: none; color: var(--koyu-renk); font-weight: 600; font-size: 14px; }
-
-/* --- ARAMA VE SIRALAMA --- */
-.filtre-alani { display: flex; gap: 10px; margin: 20px 0; justify-content: center; }
-.arama-input, .siralama-select { padding: 10px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
-.arama-input { flex: 1; max-width: 400px; }
-
-/* --- ÜRÜN KARTLARI (GRID SİSTEMİ) --- */
-.grid-layout { 
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); /* Mobilde 2'li */
-    gap: 10px; 
-    padding: 10px 0; 
+/* Grid Düzeni */
+.grid-layout {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr); /* Mobil */
+    padding: 15px 0;
+}
+@media (min-width: 1024px) {
+    .grid-layout { grid-template-columns: repeat(6, 1fr); } /* Masaüstü 6'lı */
 }
 
-@media (min-width: 768px) { .grid-layout { grid-template-columns: repeat(4, 1fr); gap: 15px; } }
-@media (min-width: 1200px) { .grid-layout { grid-template-columns: repeat(6, 1fr); gap: 15px; } }
-
-.urun-karti { 
-    background: #fff; 
-    border-radius: 8px; 
-    padding: 10px; 
-    display: flex; 
-    flex-direction: column; 
-    border: 1px solid #eee;
-    transition: var(--gecis);
-    position: relative;
+/* Ürün Kartı */
+.urun-karti {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
 }
-.urun-karti:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.urun-karti:hover { border-color: #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.urun-karti img { width: 100%; aspect-ratio: 1/1; object-fit: contain; }
 
-/* --- CAROUSEL VE GÖRSEL --- */
-.urun-resim-wrapper { width: 100%; height: 180px; margin-bottom: 10px; overflow: hidden; position: relative; }
-.urun-resim-carousel { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-.urun-resim-carousel::-webkit-scrollbar { display: none; }
-.urun-resim { flex: 0 0 100%; width: 100%; height: 100%; object-fit: contain; scroll-snap-align: center; }
+.urun-adi { font-size: 13px; color: #444; margin: 8px 0; height: 35px; overflow: hidden; }
+.urun-fiyat { font-weight: bold; color: var(--ty-orange); font-size: 16px; margin-top: auto; }
 
-/* --- METİN VE BUTONLAR --- */
-.urun-adi { font-size: 13px; height: 35px; overflow: hidden; margin-bottom: 5px; color: #333; }
-.urun-fiyat { font-weight: 700; color: var(--ana-renk); margin-bottom: 10px; }
-.satin-al-btn { background: var(--ana-renk); color: white; text-align: center; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600; }
+/* Butonlar */
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; z-index: 99; }
+.whatsapp-float img { width: 50px; }
 
-.favori-btn { position: absolute; top: 5px; right: 5px; cursor: pointer; border: none; background: rgba(255,255,255,0.8); padding: 5px; border-radius: 50%; z-index: 2; }
-
-/* --- WHATSAPP --- */
-.whatsapp-float { position: fixed; bottom: 25px; right: 25px; z-index: 1000; transition: var(--gecis); }
-.whatsapp-float:hover { transform: scale(1.1); }
-
-/* --- FOOTER --- */
-footer { margin-top: 40px; padding: 30px 0; border-top: 1px solid #eee; text-align: center; color: #888; font-size: 12px; }
+.filtre-alani { display: flex; gap: 10px; justify-content: center; margin: 20px 0; }
+.arama-input, .siralama-select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
