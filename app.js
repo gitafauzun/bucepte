@@ -45,17 +45,29 @@ function kategoriMenuOlustur(urunler) {
 }
 
 function urunleriGuncelle() {
-    let filtrelenmis = [...tumUrunler];
-    if (aktifKategori !== "Tümü") filtrelenmis = filtrelenmis.filter(u => u.kategori === aktifKategori);
-    if (aramaMetni !== "") filtrelenmis = filtrelenmis.filter(u => u.isim && u.isim.toLowerCase().includes(aramaMetni));
+    // 1. ADIM: Listeyi ID'ye göre tersten sırala (En büyük ID en son eklenendir)
+    let filtrelenmis = [...tumUrunler].sort((a, b) => b.id - a.id); 
+
+    // 2. ADIM: Filtrelemeleri bu sıralanmış liste üzerinden yap
+    if (aktifKategori !== "Tümü") {
+        filtrelenmis = filtrelenmis.filter(u => u.kategori === aktifKategori);
+    }
     
+    if (aramaMetni !== "") {
+        filtrelenmis = filtrelenmis.filter(u => u.isim && u.isim.toLowerCase().includes(aramaMetni));
+    }
+    
+    // 3. ADIM: Eğer kullanıcı fiyat sıralaması seçtiyse, mevcut sıralamayı ez
     const fiyatNum = (fiyatStr) => {
         if (!fiyatStr) return 0;
         return parseFloat(fiyatStr.toString().replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
     };
 
-    if (siralamaTipi === "artan") filtrelenmis.sort((a, b) => fiyatNum(a.fiyat) - fiyatNum(b.fiyat));
-    else if (siralamaTipi === "azalan") filtrelenmis.sort((a, b) => fiyatNum(b.fiyat) - fiyatNum(a.fiyat));
+    if (siralamaTipi === "artan") {
+        filtrelenmis.sort((a, b) => fiyatNum(a.fiyat) - fiyatNum(b.fiyat));
+    } else if (siralamaTipi === "azalan") {
+        filtrelenmis.sort((a, b) => fiyatNum(b.fiyat) - fiyatNum(a.fiyat));
+    }
 
     urunleriEkranaBas(filtrelenmis);
 }
