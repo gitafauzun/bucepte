@@ -56,14 +56,25 @@ function detayModalAc(id) {
     const modal = document.getElementById('urun-detay-modal');
     const modalDetay = document.getElementById('modal-detay-alani');
     
+    // Stokta yok durumunu kontrol et
+    const satinAlHTML = urun.fiyat === "Stokta yok" 
+        ? `<button class="satin-al-btn disabled" disabled>Şu an Stokta Yok</button>`
+        : `<a href="${urun.dolapLink}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>`;
+
     modalDetay.innerHTML = `
         <div class="modal-icerik">
             <button class="kapat-btn" onclick="detayModalKapat()">×</button>
-            <img src="${urun.gorseller ? urun.gorseller[0] : 'placeholder.jpg'}" style="width:100%; border-radius:15px;">
-            <h2>${urun.isim}</h2>
-            <p>${urun.aciklama}</p>
-            <h3 style="color:#0066cc;">${urun.fiyat}</h3>
-            ${urun.dolapLink ? `<a href="${urun.dolapLink}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>` : ''}
+            <img src="${urun.gorseller ? urun.gorseller[0] : 'placeholder.jpg'}" class="modal-gorsel">
+            <div class="modal-metin">
+                <p class="kategori-etiket">${urun.kategori}</p>
+                <h2>${urun.isim}</h2>
+                <p class="modal-aciklama">${urun.aciklama}</p>
+                <div class="modal-fiyat-alani">
+                    <span class="fiyat-etiketi">Fiyat</span>
+                    <h3 class="fiyat-degeri">${urun.fiyat}</h3>
+                </div>
+                ${satinAlHTML}
+            </div>
         </div>
     `;
     modal.style.display = "block";
