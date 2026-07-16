@@ -28,7 +28,6 @@ function urunleriEkranaBas(urunler) {
     
     urunler.forEach(urun => {
         let gorsel = (urun.gorseller && urun.gorseller.length > 0) ? urun.gorseller[0] : 'placeholder.jpg';
-        const isStoktaYok = urun.fiyat === "Stokta yok";
         
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
@@ -43,11 +42,10 @@ function urunleriEkranaBas(urunler) {
                 <h3 class="urun-isim">${urun.isim || ''}</h3>
                 <p class="urun-fiyat">${urun.fiyat || '0 TL'}</p>
             </div>
-            <a href="${isStoktaYok ? '#' : urun.dolapLink}" 
+            <a href="${urun.dolapLink || '#'}" 
                target="_blank" 
-               class="satin-al-btn-kucuk ${isStoktaYok ? 'disabled' : ''}"
-               onclick="${isStoktaYok ? 'return false;' : ''}">
-               ${isStoktaYok ? 'Tükendi' : 'Satın Al'}
+               class="satin-al-btn-kucuk">
+               Dolap'tan Satın Al
             </a>
         `;
         vitrin.appendChild(kart);
