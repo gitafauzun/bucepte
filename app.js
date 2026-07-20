@@ -79,6 +79,13 @@ function detayModalAc(id) {
     }, 3000);
 }
 
+window.onclick = function(event) {
+    const modal = document.getElementById('urun-detay-modal');
+    if (event.target == modal) {
+        detayModalKapat();
+    }
+}
+
 function detayModalKapat() {
     clearInterval(sliderInterval);
     document.getElementById('urun-detay-modal').style.display = "none";
