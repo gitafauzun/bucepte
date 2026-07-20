@@ -116,3 +116,14 @@ window.onclick = function(event) {
         detayModalKapat();
     }
 }
+
+function detayModalKapat() {
+    document.getElementById('urun-detay-modal').style.display = "none";
+}
+window.onclick = function(event) {
+    const modal = document.getElementById('urun-detay-modal');
+    // Eğer tıklanan yer doğrudan modal'ın kendisi ise (yani içerik değil, dışı ise)
+    if (event.target == modal) {
+        detayModalKapat();
+    }
+}
