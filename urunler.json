@@ -5,7 +5,8 @@
     "fiyat": "320 TL",
     "gorseller": ["images/17promax.png", "images/17promax.png", "images/17promax.png"],
     "kategori": "Kılıf",
-"altKategori": "iPHONE",
+    "marka": "iPhone",
+    "model": "iPhone 17 Promax",
   "dolapLink": "https://link.dolap.com/7z121",
     "etiket": "yeni",
     "aciklama": "Şeffaf yapısı ile telefonunuzun rengini gösterir, Magsafe uyumludur."
@@ -16,7 +17,8 @@
     "fiyat": "249 TL",
     "gorseller": ["images/buzmag1.png"],
     "kategori": "Kılıf",
-"altKategori": "İPHONE",
+    "marka": "iPhone",
+    "model": "iPhone 13",
     "dolapLink": "https://link.dolap.com/0whmzx",
     "etiket": "indirimde",
     "aciklama": "Kaliteli silikonu sayesinde telefonunuzu korur. Şık tasarımı ve mat duruşuyla estetik katar. Magsafe özelliği ile telefonunuzu kablosuz şarj etmeye uygundur."
@@ -27,7 +29,8 @@
     "fiyat": "Stokta yok",
     "gorseller": ["images/şarj1.png"],
     "kategori": "Şarj Cihazı",
-"altKategori": "HZILI ŞARJ",
+    "marka": "Sunix",
+    "model": "S-35 ",
     "dolapLink": "",
     "etiket": "yakında",
     "aciklama": "Hızlı şarj destekli güç adaptörü."
@@ -37,8 +40,9 @@
     "isim": "iPhone 15 Pro Kamera Koruyucu",
     "fiyat": "249 TL",
     "gorseller": ["images/lens1.png", "images/lens2.png", "images/lens3.png"],
-    "kategori": "Kamera Koruyucu",
-"altKategori": "İPHONE",
+    "kategori": "Kılıf",
+    "marka": "iPhone",
+    "model": "iPhone 13",
     "dolapLink": "https://dolap.com/urun/kamera-koruyucu-link",
     "etiket": "yeni",
     "aciklama": "Kamera lenslerinizi çizilmelere karşı korur."
@@ -49,6 +53,8 @@
     "fiyat": "180 TL",
     "gorseller": ["images/ip13.png"],
     "kategori": "Kılıf",
+    "marka": "iPhone",
+    "model": "iPhone 13",
     "dolapLink": "https://link.dolap.com/scs8tk",
     "etiket": "avantajlı",
     "aciklama": "iPhone 13 ile tam uyumlu Apple logolu lansman silikon kılıf; mikrofiber iç yüzeyi, darbe emici yapısı ve ince tasarımıyla telefonunuza koruma sunar."
@@ -109,7 +115,9 @@
     "isim": "iPhone 17 ProMax Premium Ekran Koruyucu",
     "fiyat": "499 TL",
     "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
-    "kategori": "Ekran Koruyucu",
+    "kategori": "Kılıf",
+    "marka": "iPhone",
+    "model": "iPhone 17 Promax",
     "dolapLink": "https://link.dolap.com/q47vy",
     "etiket": "yeni",
     "aciklama": "Kaliteli üretim malzemesi ile telefon ekranına koruma sağlar."
@@ -120,6 +128,8 @@
     "fiyat": "799 TL",
     "gorseller": ["images/airpods2.png", "images/airpods1.png", "images/airpods3.png"],
     "kategori": "Kulaklık",
+    "marka": "Linkage",
+    "model": "Pro9S",
     "dolapLink": "https://link.dolap.com/qwoy5j",
     "etiket": "yeni",
     "aciklama": "Kaliteli ve temiz sesi, ideal şarj süresi ile müziğin keyfini çıkarın."
@@ -190,6 +200,8 @@
     "fiyat": "499 TL",
     "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
+    "marka": "iPhone",
+    "model": "iPhone 16 Plus",
     "dolapLink": "https://link.dolap.com/pkfpb2",
     "etiket": "yeni",
     "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
