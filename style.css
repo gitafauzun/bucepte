@@ -2,7 +2,7 @@
     --text-color: #1d1d1f;
     --bg-color: #ffffff;
     --card-bg: #f5f5f7;
-    --accent: #0071e3; /* Apple Mavi */
+    --accent: #0071e3;
 }
 
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg-color); color: var(--text-color); margin: 0; }
@@ -18,319 +18,52 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 @media (min-width: 1024px) { .grid-layout { grid-template-columns: repeat(4, 1fr); } }
 
 /* Kartlar */
-.urun-karti { background: var(--card-bg); border-radius: 20px; padding: 20px; cursor: pointer; transition: transform 0.3s ease; position: relative; display: flex; flex-direction: column; }
+.urun-karti { background: var(--card-bg); border-radius: 20px; padding: 20px; cursor: pointer; transition: transform 0.3s ease; display: flex; flex-direction: column; }
 .urun-karti:hover { transform: translateY(-5px); }
-.urun-resim-wrapper { flex-grow: 1; }
 .urun-resim-tek { width: 100%; aspect-ratio: 1/1; object-fit: contain; }
 .kategori-etiket { font-size: 11px; color: #86868b; text-transform: uppercase; margin: 10px 0 5px 0; }
-.urun-isim { font-size: 15px; font-weight: 600; margin: 0; min-height: 2.4em; }
-.urun-fiyat { font-size: 14px; color: #515154; margin-top: 5px; }
+.urun-isim { font-size: 15px; font-weight: 600; margin: 0; min-height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-/* Modal Tasarımı */
+/* Modal */
 .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; backdrop-filter: blur(8px); }
-.modal-content { background: #fff; width: 90%; max-width: 500px; margin: 5vh auto; padding: 24px; border-radius: 24px; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+.modal-content { background: #fff; width: 90%; max-width: 500px; margin: 5vh auto; padding: 24px; border-radius: 24px; position: relative; max-height: 90vh; overflow-y: auto; }
 
-.kapat-btn { background: #f5f5f7; border: none; font-size: 20px; cursor: pointer; position: absolute; right: 15px; top: 15px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.kapat-btn { background: #f5f5f7; border: none; font-size: 20px; cursor: pointer; position: absolute; right: 15px; top: 15px; width: 32px; height: 32px; border-radius: 50%; z-index: 10; }
 
+/* Galeri ve Kaydırma Düzeni */
 .gorsel-galerisi { 
     display: flex; 
-    gap: 10px; 
     overflow-x: auto; 
-    padding: 10px 0; 
-    scroll-behavior: smooth; /* Kaydırmanın yumuşak olmasını sağlar */
     scroll-snap-type: x mandatory; 
+    gap: 0; 
+    width: 100%;
     scrollbar-width: none; 
+    -webkit-overflow-scrolling: touch; 
+    aspect-ratio: 1/1;
+    margin-bottom: 10px;
 }
-
 .gorsel-galerisi::-webkit-scrollbar { display: none; }
 
-.modal-gorsel-kucuk {
-    /* Görsel boyutunu büyüterek modal genişliğine yaklaştırıyoruz */
-    width: 320px; 
-    height: 320px; 
-    object-fit: cover; 
-    border-radius: 20px; 
-    border: 1px solid #d2d2d7; 
-    flex-shrink: 0; 
-    scroll-snap-align: center;
+.modal-gorsel-kucuk { 
+    width: 100%; 
+    flex: 0 0 100%; 
+    object-fit: contain; 
+    scroll-snap-align: start; 
+    background: #f9f9f9;
 }
 
-/* Mobil cihazlarda ekranı tam kaplaması için */
+/* Thumbnail */
+.thumbnail-container { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding: 5px; }
+.thumbnail-img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; cursor: pointer; opacity: 0.5; border: 2px solid transparent; }
+.thumbnail-img.aktif-thumbnail { opacity: 1; border-color: var(--accent); }
+
+/* Metin ve Buton */
+.modal-metin { display: flex; flex-direction: column; }
+.satin-al-btn { display: block; width: 100%; padding: 15px; background-color: var(--accent); color: white; text-align: center; border-radius: 12px; text-decoration: none; font-weight: 600; margin-top: 15px; }
+
+/* Mobil Optimizasyon */
 @media (max-width: 480px) {
-    .modal-gorsel-kucuk {
-        width: 85vw; /* Ekran genişliğinin %85'i */
-        height: 85vw;
-    }
-}
-
-/* Metin ve Fiyat */
-.modal-metin h2 { margin: 12px 0; font-size: 22px; }
-.modal-aciklama { color: #515154; font-size: 14px; line-height: 1.6; }
-.modal-fiyat-alani { margin: 20px 0; border-top: 1px solid #d2d2d7; padding-top: 15px; }
-.fiyat-etiketi { font-size: 12px; color: #86868b; }
-.fiyat-degeri { font-size: 28px; font-weight: 600; color: #1d1d1f; margin: 5px 0 0 0; }
-
-/* Butonlar */
-.satin-al-btn { display: block; width: 100%; padding: 15px; background-color: var(--accent); color: white; text-align: center; border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s; }
-.satin-al-btn:hover { background-color: #0077ed; }
-
-.satin-al-btn-kucuk { display: block; margin-top: 10px; padding: 8px; background-color: var(--accent); color: white; text-align: center; border-radius: 8px; text-decoration: none; font-size: 12px; font-weight: 600; transition: 0.2s; cursor: pointer; }
-.satin-al-btn-kucuk:hover { opacity: 0.9; }
-
-/* Mobil Optimizasyonu */
-@media (max-width: 480px) {
-    .modal-content { width: 95%; margin: 2vh auto; padding: 20px; }
-    .modal-gorsel-kucuk { width: 75px; height: 75px; }
-}
-/* --------------------------------------------------
-   MEVCUT KODLARIN ÜZERİNE EKLENECEK MOBİL OPTİMİZASYONLARI
-   -------------------------------------------------- */
-
-/* 1. Ürün Kartları İçin Küçük Düzeltmeler */
-@media (max-width: 768px) {
-    /* Tablet ve altında kart padding'ini biraz azaltalım */
-    .urun-karti { padding: 15px; }
-    
-    /* Ürün isminin çok uzun olup kartı bozmaması için satır sınırlaması (opsiyonel) */
-    .urun-isim { 
-        font-size: 14px; 
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        */
-    }
-}
-
-/* 2. Modal (Pop-up) Mobil Optimizasyonu - KRİTİK BÖLÜM */
-@media (max-width: 480px) {
-    /* Modalın tamamı */
-    .modal-content { 
-        width: 100%;        /* Tam ekran genişliği */
-        height: 100%;       /* Tam ekran yüksekliği */
-        margin: 0;          /* Boşlukları sıfırla */
-        border-radius: 0;   /* Köşeleri keskinleştir */
-        padding: 15px;      /* İç boşluk */
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Kapatma butonu mobil için daha belirgin */
-    .kapat-btn { 
-        right: 10px; 
-        top: 10px; 
-        background: rgba(0,0,0,0.1); /* Arka planı hafiflet */
-        color: #fff;
-    }
-
-    /* Görsel Galerisi */
-    .gorsel-galerisi { 
-        margin-top: 40px; /* Kapat butonunun altına inmesi için */
-        gap: 5px;
-        padding: 5px 0;
-    }
-
-    /* Görselleri mobilde büyütüyoruz (Önemli Değişiklik) */
-    .modal-gorsel-kucuk { 
-        width: 80vw;  /* Ekran genişliğinin %80'i kadar */
-        height: 80vw; /* Kare olması için */
-        max-height: 300px; /* Çok büyük ekranlarda aşırı büyümemesi için sınır */
-        border-radius: 16px;
-    }
-
-    /* Metin alanı */
-    .modal-metin {
-        padding: 10px 0;
-        flex-grow: 1; /* Boşluğu doldurmasını sağla */
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .modal-metin h2 { font-size: 20px; margin-top: 5px; }
-    
-    /* Açıklama metni mobilde daha okunaklı */
-    .modal-aciklama { 
-        font-size: 13px; 
-        line-height: 1.5;
-        overflow-y: auto; /* Açıklama uzunsa kaydırılabilir */
-        margin-bottom: 10px;
-    }
-
-    /* Fiyat alanı ve Satın Al butonu en alta yapışsın */
-    .modal-fiyat-alani {
-        margin-top: auto; /* İtici güç */
-        border-top: 1px solid #ddd;
-        padding-top: 10px;
-        margin-bottom: 5px;
-    }
-
-    .fiyat-degeri { font-size: 24px; }
-    .satin-al-btn { padding: 12px; font-size: 16px; }
-}
-
-@media (max-width: 480px) {
-    /* Modal içeriğini esnek yap */
-    .modal-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    /* Butonu modalın en altına it */
-    .satin-al-btn {
-        position: sticky;
-        bottom: 0;
-        margin-top: 20px;
-        padding: 18px; /* Dokunma alanını genişletmek için */
-    }
-}
-.gorsel-galerisi {
-    -webkit-overflow-scrolling: touch; /* iOS için daha yumuşak kaydırma */
-}
-.satin-al-btn:active {
-    transform: scale(0.98); /* Basıldığında hafif küçülme efekti */
-    background-color: #005bb5;
-}
-
-/* Görsel galerisini modal genişliğine tam oturtalım */
-.gorsel-galerisi {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 15px; /* Resimler arası boşluk */
-    padding: 10px 0;
-    margin: 0 -24px; /* Modal padding'ini aşması için */
-    padding-left: 24px; /* Başlangıç hizası */
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-}
-
-.modal-gorsel-kucuk {
-    width: 80%; /* Tek resim genişliği */
-    aspect-ratio: 1/1; /* Kare görünüm */
-    object-fit: cover;
-    border-radius: 20px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-/* --- Slider İndikatör Stilleri --- */
-.slider-indikatör {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin: 15px 0;
-}
-
-.slider-indikatör span {
-    width: 8px;
-    height: 8px;
-    background: #d2d2d7;
-    border-radius: 50%;
-    transition: background 0.3s ease;
-}
-
-.slider-indikatör span.aktif {
-    background: var(--accent);
-}
-
-/* --- Modal İçerik Hiyerarşisi Düzenlemesi --- */
-.modal-content {
-    display: flex;
-    flex-direction: column;
-    /* Modalın içindeki boşlukları korumak için */
-    box-sizing: border-box;
-}
-
-/* Görsel galerisinin metinle çakışmaması için boşluk */
-.gorsel-galerisi {
-    margin-bottom: 5px;
-}
-
-/* Metin alanının fiyat ve buton ile esnekliği */
-.modal-metin {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Dolap butonu mobilde sabit kalması için */
-@media (max-width: 480px) {
-    .satin-al-btn {
-        margin-top: auto;
-        margin-bottom: 10px;
-    }
-}
-/* --- GÜNCEL GALERİ STİLLERİ --- */
-
-/* Ana büyük görsel konteyneri */
-.gorsel-galerisi {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 0; /* Boşluğu kapattık, tam ekran kayacak */
-    padding: 0;
-    margin: 0 -24px; /* Modal padding'ini sıfırlar */
-    scrollbar-width: none; /* Firefox scrollbar gizleme */
-    -webkit-overflow-scrolling: touch; /* iOS kaydırma ivmesi */
-    aspect-ratio: 1/1; /* Büyük görseli kare tutar */
-}
-
-.gorsel-galerisi::-webkit-scrollbar {
-    display: none; /* Chrome/Safari scrollbar gizleme */
-}
-
-.modal-gorsel-kucuk {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Resmin tamamı görünsün, kesilmesin */
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    background-color: #f9f9f9; /* Çok açık gri arka plan */
-}
-
-/* --- YENİ: KÜÇÜK ÖNİZLEME RESİMLERİ (THUMBNAİLS) --- */
-.thumbnail-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
-    padding: 0 10px;
-    overflow-x: auto; /* Çoklu resim olursa kaydırılabilirsin */
-    padding-bottom: 5px;
-}
-
-.thumbnail-img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    opacity: 0.6; /* Pasif resimler hafif soluk */
-    transition: all 0.3s ease;
-}
-
-.thumbnail-img:hover {
-    opacity: 1;
-}
-
-.thumbnail-img.aktif-thumbnail {
-    border-color: var(--accent); /* Seçili olanı mavi çerçevele */
-    opacity: 1;
-}
-
-/* Mobilde büyük görseli biraz daha küçültelim ki thumbnail'ler görünsün */
-@media (max-width: 480px) {
-    .modal-content {
-        padding-bottom: 15px;
-    }
-    .gorsel-galerisi {
-        margin: 0 -15px; /* Modal padding'i kadar negatif margin */
-    }
-    .thumbnail-img {
-        width: 50px;
-        height: 50px;
-    }
+    .modal-content { width: 100%; height: 100%; margin: 0; border-radius: 0; padding: 15px; }
+    .gorsel-galerisi { margin-top: 30px; }
+    .satin-al-btn { position: sticky; bottom: 0; }
 }
