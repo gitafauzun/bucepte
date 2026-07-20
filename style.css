@@ -61,6 +61,31 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     color: #ffffff;
     border-color: var(--accent);
 }
+/* Çok Seviyeli Kategori Menü Stilleri */
+.alt-kategori-stili {
+    margin-top: 10px !important;
+    padding-left: 10px;
+    border-left: 2px solid #d2d2d7;
+}
+
+.alt-kategori-stili .kategori-btn {
+    background: #ffffff;
+    border: 1px solid #d2d2d7;
+    font-size: 13px;
+    padding: 6px 14px;
+}
+
+.alt-kategori-stili .kategori-btn.aktif {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+}
+
+/* Model menüsü için ekstra hafif içeriden başlatma */
+.model-alt-kategori {
+    border-left-color: #86868b;
+    margin-left: 10px;
+}
 
 /* Grid */
 .grid-layout { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
