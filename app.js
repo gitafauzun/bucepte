@@ -24,132 +24,123 @@ function kategorileriOlustur(urunler) {
     const kategoriMenu = document.getElementById('kategori-menusu');
     if (!kategoriMenu) return;
 
-    // Ana kategorileri topla
     const kategoriler = ['Tümü', ...new Set(urunler.map(urun => urun.kategori).filter(Boolean))];
-
     kategoriMenu.innerHTML = '';
 
     kategoriler.forEach(kategori => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'dropdown-wrapper';
+
         const btn = document.createElement('button');
         btn.className = `kategori-btn ${kategori === aktifKategori ? 'aktif' : ''}`;
         btn.textContent = kategori;
-        btn.onclick = () => kategoriDegistir(kategori);
-        kategoriMenu.appendChild(btn);
-    });
-
-    markalariOlustur(urunler);
-}
-
-function markalariOlustur(urunler) {
-    const eskiMarkaMenu = document.getElementById('marka-kategori-menusu');
-    if (eskiMarkaMenu) eskiMarkaMenu.remove();
-
-    const eskiModelMenu = document.getElementById('model-kategori-menusu');
-    if (eskiModelMenu) eskiModelMenu.remove();
-
-    if (aktifKategori === 'Tümü') return;
-
-    // Seçilen ana kategoriye ait ürünleri bul
-    const anaKategoriUrunleri = urunler.filter(u => u.kategori === aktifKategori);
-    const markalar = [...new Set(anaKategoriUrunleri.map(u => u.marka).filter(Boolean))];
-
-    if (markalar.length === 0) return;
-
-    const markaMenuContainer = document.createElement('div');
-    markaMenuContainer.id = 'marka-kategori-menusu';
-    markaMenuContainer.className = 'kategori-menusu alt-kategori-stili';
-
-    const tumuBtn = document.createElement('button');
-    tumuBtn.className = `kategori-btn ${aktifMarka === 'Tümü' ? 'aktif' : ''}`;
-    tumuBtn.textContent = `Tüm ${aktifKategori}`;
-    tumuBtn.onclick = () => markaDegistir('Tümü');
-    markaMenuContainer.appendChild(tumuBtn);
-
-    markalar.forEach(marka => {
-        const btn = document.createElement('button');
-        btn.className = `kategori-btn ${marka === aktifMarka ? 'aktif' : ''}`;
-        btn.textContent = marka;
-        btn.onclick = () => markaDegistir(marka);
-        markaMenuContainer.appendChild(btn);
-    });
-
-    const kategoriMenu = document.getElementById('kategori-menusu');
-    kategoriMenu.parentNode.insertBefore(markaMenuContainer, kategoriMenu.nextSibling);
-
-    modelleriOlustur(urunler);
-}
-
-function modelleriOlustur(urunler) {
-    const eskiModelMenu = document.getElementById('model-kategori-menusu');
-    if (eskiModelMenu) eskiModelMenu.remove();
-
-    if (aktifMarka === 'Tümü') return;
-
-    // Seçilen ana kategori ve markaya ait ürünleri bul
-    const markaUrunleri = urunler.filter(u => u.kategori === aktifKategori && u.marka === aktifMarka);
-    const modeller = [...new Set(markaUrunleri.map(u => u.model).filter(Boolean))];
-
-    if (modeller.length === 0) return;
-
-    const modelMenuContainer = document.createElement('div');
-    modelMenuContainer.id = 'model-kategori-menusu';
-    modelMenuContainer.className = 'kategori-menusu alt-kategori-stili model-alt-kategori';
-
-    const tumuBtn = document.createElement('button');
-    tumuBtn.className = `kategori-btn ${aktifModel === 'Tümü' ? 'aktif' : ''}`;
-    tumuBtn.textContent = `Tüm ${aktifMarka}`;
-    tumuBtn.onclick = () => modelDegistir('Tümü');
-    modelMenuContainer.appendChild(tumuBtn);
-
-    modeller.forEach(model => {
-        const btn = document.createElement('button');
-        btn.className = `kategori-btn ${model === aktifModel ? 'aktif' : ''}`;
-        btn.textContent = model;
-        btn.onclick = () => modelDegistir(model);
-        modelMenuContainer.appendChild(btn);
-    });
-
-    const markaMenu = document.getElementById('marka-kategori-menusu');
-    markaMenu.parentNode.insertBefore(modelMenuContainer, markaMenu.nextSibling);
-}
-
-function kategoriDegistir(kategori) {
-    aktifKategori = kategori;
-    aktifMarka = 'Tümü';
-    aktifModel = 'Tümü';
-
-    kategorileriOlustur(tumUrunler);
-    filtreliUrunleriGoster();
-}
-
-function markaDegistir(marka) {
-    aktifMarka = marka;
-    aktifModel = 'Tümü';
-
-    document.querySelectorAll('#marka-kategori-menusu .kategori-btn').forEach(btn => {
-        if (btn.textContent === marka || (marka === 'Tümü' && btn.textContent === `Tüm ${aktifKategori}`)) {
-            btn.classList.add('aktif');
+        
+        // "Tümü" seçeneği için açılır menü gerekmez
+        if (kategori === 'Tümü') {
+            btn.onclick = () => {
+                kategoriDegistir('Tümü', 'Tümü', 'Tümü');
+                dropdownlariKapat();
+            };
+            wrapper.appendChild(btn);
         } else {
-            btn.classList.remove('aktif');
+            // Tıklandığında veya üzerine gelindiğinde açılması için
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                dropdownToggle(wrapper);
+                kategoriDegistir(kategori, 'Tümü', 'Tümü');
+            };
+            wrapper.appendChild(btn);
+
+            // Marka ve Modelleri içeren Açılır Pencere (Dropdown Content)
+            const dropdownContent = document.createElement('div');
+            dropdownContent.className = 'dropdown-content';
+
+            const anaKategoriUrunleri = urunler.filter(u => u.kategori === kategori);
+            const markalar = [...new Set(anaKategoriUrunleri.map(u => u.marka).filter(Boolean))];
+
+            markalar.forEach(marka => {
+                const markaGrup = document.createElement('div');
+                markaGrup.className = 'dropdown-grup';
+
+                const markaBaslik = document.createElement('div');
+                markaBaslik.className = 'dropdown-marka-baslik';
+                markaBaslik.textContent = marka;
+                markaBaslik.onclick = () => {
+                    kategoriDegistir(kategori, marka, 'Tümü');
+                    dropdownlariKapat();
+                };
+                markaGrup.appendChild(markaBaslik);
+
+                // Modele göre ayır (Örn: iPhone 13, iPhone 14)
+                const markaUrunleri = anaKategoriUrunleri.filter(u => u.marka === marka);
+                const modeller = [...new Set(markaUrunleri.map(u => u.model).filter(Boolean))];
+
+                if (modeller.length > 0) {
+                    const modelListesi = document.createElement('div');
+                    modelListesi.className = 'dropdown-model-listesi';
+
+                    modeller.forEach(model => {
+                        const modelItem = document.createElement('span');
+                        modelItem.className = 'dropdown-model-item';
+                        modelItem.textContent = model;
+                        modelItem.onclick = (e) => {
+                            e.stopPropagation();
+                            kategoriDegistir(kategori, marka, model);
+                            dropdownlariKapat();
+                        };
+                        modelListesi.appendChild(modelItem);
+                    });
+                    markaGrup.appendChild(modelListesi);
+                }
+
+                dropdownContent.appendChild(markaGrup);
+            });
+
+            wrapper.appendChild(dropdownContent);
+        }
+
+        kategoriMenu.appendChild(wrapper);
+    });
+}
+
+function dropdownToggle(aktifWrapper) {
+    const tumWrapperlar = document.querySelectorAll('.dropdown-wrapper');
+    tumWrapperlar.forEach(w => {
+        if (w !== aktifWrapper) {
+            w.classList.remove('acik');
         }
     });
-
-    modelleriOlustur(tumUrunler);
-    filtreliUrunleriGoster();
+    aktifWrapper.classList.toggle('acik');
 }
 
-function modelDegistir(model) {
+function dropdownlariKapat() {
+    document.querySelectorAll('.dropdown-wrapper').forEach(w => {
+        w.classList.remove('acik');
+    });
+}
+
+// Sayfa içinde başka bir yere tıklandığında açık menüleri kapat
+window.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown-wrapper')) {
+        dropdownlariKapat();
+    }
+});
+
+function kategoriDegistir(kategori, marka, model) {
+    aktifKategori = kategori;
+    aktifMarka = marka;
     aktifModel = model;
 
-    document.querySelectorAll('#model-kategori-menusu .kategori-btn').forEach(btn => {
-        if (btn.textContent === model || (model === 'Tümü' && btn.textContent === `Tüm ${aktifMarka}`)) {
+    filtreliUrunleriGoster();
+    
+    // Buton aktiflik sınıflarını güncelle
+    document.querySelectorAll('.kategori-btn').forEach(btn => {
+        if (btn.textContent === kategori) {
             btn.classList.add('aktif');
         } else {
             btn.classList.remove('aktif');
         }
     });
-
-    filtreliUrunleriGoster();
 }
 
 function filtreliUrunleriGoster() {
@@ -158,11 +149,9 @@ function filtreliUrunleriGoster() {
     if (aktifKategori !== 'Tümü') {
         sonuc = sonuc.filter(urun => urun.kategori === aktifKategori);
     }
-
     if (aktifMarka !== 'Tümü') {
         sonuc = sonuc.filter(urun => urun.marka === aktifMarka);
     }
-
     if (aktifModel !== 'Tümü') {
         sonuc = sonuc.filter(urun => urun.model === aktifModel);
     }
@@ -211,22 +200,16 @@ function detayModalAc(id) {
     
     modalDetay.innerHTML = `
         <button class="kapat-btn" onclick="detayModalKapat()">×</button>
-        
         <div class="gorsel-galerisi" id="gorsel-slider">
             ${gorsellerHTML}
         </div>
-        
         ${gorseller.length > 1 ? `
             <div class="thumbnail-container" id="thumbnail-listesi">
                 ${gorseller.map((img, index) => `
-                    <img src="${img}" 
-                         class="thumbnail-img ${index === 0 ? 'aktif-thumbnail' : ''}" 
-                         onclick="thumbnailTiklandi(${index})"
-                         alt="Görsel ${index + 1}">
+                    <img src="${img}" class="thumbnail-img ${index === 0 ? 'aktif-thumbnail' : ''}" onclick="thumbnailTiklandi(${index})" alt="Görsel ${index + 1}">
                 `).join('')}
             </div>
         ` : ''}
-
         <div class="modal-metin">
             <h2>${urun.isim}</h2>
             <p class="modal-aciklama">${urun.aciklama || ''}</p>
