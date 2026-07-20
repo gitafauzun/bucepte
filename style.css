@@ -193,3 +193,26 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     background-color: #005bb5;
 }
 
+/* Görsel galerisini modal genişliğine tam oturtalım */
+.gorsel-galerisi {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px; /* Resimler arası boşluk */
+    padding: 10px 0;
+    margin: 0 -24px; /* Modal padding'ini aşması için */
+    padding-left: 24px; /* Başlangıç hizası */
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.modal-gorsel-kucuk {
+    width: 80%; /* Tek resim genişliği */
+    aspect-ratio: 1/1; /* Kare görünüm */
+    object-fit: cover;
+    border-radius: 20px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
