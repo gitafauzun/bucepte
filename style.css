@@ -262,3 +262,75 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
         margin-bottom: 10px;
     }
 }
+/* --- GÜNCEL GALERİ STİLLERİ --- */
+
+/* Ana büyük görsel konteyneri */
+.gorsel-galerisi {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0; /* Boşluğu kapattık, tam ekran kayacak */
+    padding: 0;
+    margin: 0 -24px; /* Modal padding'ini sıfırlar */
+    scrollbar-width: none; /* Firefox scrollbar gizleme */
+    -webkit-overflow-scrolling: touch; /* iOS kaydırma ivmesi */
+    aspect-ratio: 1/1; /* Büyük görseli kare tutar */
+}
+
+.gorsel-galerisi::-webkit-scrollbar {
+    display: none; /* Chrome/Safari scrollbar gizleme */
+}
+
+.modal-gorsel-kucuk {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Resmin tamamı görünsün, kesilmesin */
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    background-color: #f9f9f9; /* Çok açık gri arka plan */
+}
+
+/* --- YENİ: KÜÇÜK ÖNİZLEME RESİMLERİ (THUMBNAİLS) --- */
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 0 10px;
+    overflow-x: auto; /* Çoklu resim olursa kaydırılabilirsin */
+    padding-bottom: 5px;
+}
+
+.thumbnail-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.6; /* Pasif resimler hafif soluk */
+    transition: all 0.3s ease;
+}
+
+.thumbnail-img:hover {
+    opacity: 1;
+}
+
+.thumbnail-img.aktif-thumbnail {
+    border-color: var(--accent); /* Seçili olanı mavi çerçevele */
+    opacity: 1;
+}
+
+/* Mobilde büyük görseli biraz daha küçültelim ki thumbnail'ler görünsün */
+@media (max-width: 480px) {
+    .modal-content {
+        padding-bottom: 15px;
+    }
+    .gorsel-galerisi {
+        margin: 0 -15px; /* Modal padding'i kadar negatif margin */
+    }
+    .thumbnail-img {
+        width: 50px;
+        height: 50px;
+    }
+}
