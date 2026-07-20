@@ -65,6 +65,8 @@
     "fiyat": "320 TL",
     "gorseller": ["images/s25fe.png"],
     "kategori": "Kılıf",
+    "marka": "Samsung",
+    "model": "Galaxy S25 FE",
     "dolapLink": "https://link.dolap.com/l5pr9v",
     "etiket": "yeni",
     "aciklama": "Galaxy S25 FE MagSafe uyumlu kılıf ile telefonunuzu güvenle koruyun."
@@ -75,6 +77,8 @@
     "fiyat": "189 TL",
     "gorseller": ["images/kedi1.png"],
     "kategori": "Kılıf",
+    "marka": "iPhone",
+    "model": "iPhone 13",
     "dolapLink": "https://link.dolap.com/muoflf",
     "etiket": "yeni",
     "aciklama": "Sevimli kedi figürü ile şık ve eğlenceli görünüme sahiptir."
@@ -85,6 +89,8 @@
     "fiyat": "189 TL",
     "gorseller": ["images/kedi2.png"],
     "kategori": "Kılıf",
+    "marka": "iPhone",
+    "model": "iPhone 13",
     "dolapLink": "https://link.dolap.com/pzsyk6",
     "etiket": "yeni",
     "aciklama": "Sevimli kedi figürü ile şık ve eğlenceli görünüme sahiptir."
@@ -95,6 +101,8 @@
     "fiyat": "249 TL",
     "gorseller": ["images/pembe1.png", "images/pembe2.png", "images/pembe3.png"],
     "kategori": "Kılıf",
+    "marka": "iPhone",
+    "model": "iPhone 13",
     "dolapLink": "https://link.dolap.com/t2aumz",
     "etiket": "indirimde",
     "aciklama": "Pembe zemin üzerinde fiyonk ve çiçek desenleri bulunan kapitone kılıfdır."
@@ -105,7 +113,8 @@
     "fiyat": "220 TL",
     "gorseller": ["images/dalgali1.png", "images/dalgali3.png", "images/dalgali5.png"],
     "kategori": "Kılıf",
-"altKategori": "SAMSUNG",
+    "marka": "iPhone",
+    "model": "iPhone 11",
     "dolapLink": "https://link.dolap.com/n9ssoj",
     "etiket": "yeni",
     "aciklama": "Kamera çerçevesi taşlıdır. Dalgalı parlak görüntüsü ile tarzınızı yansıtır."
@@ -115,7 +124,7 @@
     "isim": "iPhone 17 ProMax Premium Ekran Koruyucu",
     "fiyat": "499 TL",
     "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
-    "kategori": "Kılıf",
+    "kategori": "Ekran Koruyucu",
     "marka": "iPhone",
     "model": "iPhone 17 Promax",
     "dolapLink": "https://link.dolap.com/q47vy",
@@ -140,6 +149,8 @@
     "fiyat": "499 TL",
     "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
+    "marka": "iPhone",
+    "model": "iPhone 17 Pro",
     "dolapLink": "https://link.dolap.com/47txb",
     "etiket": "yeni",
     "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
@@ -150,6 +161,8 @@
     "fiyat": "499 TL",
     "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
+    "marka": "iPhone",
+    "model": "iPhone 17 Air",
     "dolapLink": "https://link.dolap.com/pl92s8",
     "etiket": "yeni",
     "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
@@ -160,6 +173,8 @@
     "fiyat": "499 TL",
     "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
+    "marka": "iPhone",
+    "model": "iPhone 17",
     "dolapLink": "https://link.dolap.com/gjxhcm",
     "etiket": "yeni",
     "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
