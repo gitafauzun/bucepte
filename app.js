@@ -1,5 +1,5 @@
 let tumUrunler = [];
-let sliderInterval; // Global değişken burada tanımlı
+let sliderInterval;
 
 document.addEventListener('DOMContentLoaded', () => {
     urunleriYukle();
@@ -63,10 +63,28 @@ function detayModalAc(id) {
             <a href="${urun.dolapLink}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>
         </div>
     `;
+
+    // İndikatörleri Ekle
+    if (gorseller.length > 1) {
+        const indicator = document.createElement('div');
+        indicator.className = 'slider-indikatör';
+        indicator.innerHTML = gorseller.map((_, i) => `<span class="${i === 0 ? 'aktif' : ''}"></span>`).join('');
+        modalDetay.appendChild(indicator);
+    }
+
     modal.style.display = "block";
 
-    // Otomatik Geçiş
+    // Slider ve İndikatör Güncelleme Mantığı
     const slider = document.getElementById('gorsel-slider');
+    
+    // Scroll olayını dinle ve indikatörleri güncelle
+    slider.addEventListener('scroll', () => {
+        const index = Math.round(slider.scrollLeft / slider.offsetWidth);
+        const spans = document.querySelectorAll('.slider-indikatör span');
+        spans.forEach((s, i) => s.classList.toggle('aktif', i === index));
+    });
+
+    // Otomatik Geçiş
     clearInterval(sliderInterval);
     sliderInterval = setInterval(() => {
         if (slider) {
@@ -79,14 +97,15 @@ function detayModalAc(id) {
     }, 3000);
 }
 
+function detayModalKapat() {
+    clearInterval(sliderInterval);
+    document.getElementById('urun-detay-modal').style.display = "none";
+}
+
+// Modal dışına tıklayınca kapatma
 window.onclick = function(event) {
     const modal = document.getElementById('urun-detay-modal');
     if (event.target == modal) {
         detayModalKapat();
     }
-}
-
-function detayModalKapat() {
-    clearInterval(sliderInterval);
-    document.getElementById('urun-detay-modal').style.display = "none";
 }
