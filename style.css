@@ -13,6 +13,55 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
 .logo { font-weight: 600; font-size: 25px; text-decoration: none; color: var(--text-color); }
 
+/* Kategori Menüsü (YENİ EKLENEN KISIM) */
+.kategori-menusu {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+}
+.kategori-menusu::-webkit-scrollbar {
+    display: none;
+}
+.kategori-btn {
+    background: var(--card-bg);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.3s, color 0.3s;
+}
+.kategori-btn:hover {
+    background: #e5e5ea;
+}
+.kategori-btn.aktif {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+/* Alt Kategori Menü Stili */
+.alt-kategori-stili {
+    margin-top: 10px !important;
+    padding-left: 10px;
+    border-left: 2px solid #d2d2d7;
+}
+.alt-kategori-stili .kategori-btn {
+    background: #ffffff;
+    border: 1px solid #d2d2d7;
+    font-size: 13px;
+    padding: 6px 14px;
+}
+.alt-kategori-stili .kategori-btn.aktif {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+}
+
 /* Grid */
 .grid-layout { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
 @media (min-width: 1024px) { .grid-layout { grid-template-columns: repeat(4, 1fr); } }
@@ -30,14 +79,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 
 .kapat-btn { background: #f5f5f7; border: none; font-size: 20px; cursor: pointer; position: absolute; right: 15px; top: 15px; width: 32px; height: 32px; border-radius: 50%; z-index: 10; }
 
-/* GALERİ VE GÖRSEL DÜZENİ -*/
-/* GALERİ VE GÖRSEL DÜZENİ - GÜNCEL VE ZORLAYICI */
+/* GALERİ VE GÖRSEL DÜZENİ */
 .gorsel-galerisi { 
     display: flex !important; 
     overflow-x: auto !important; 
     scroll-snap-type: x mandatory !important; 
     width: 100% !important; 
-    height: 350px !important; /* Yüksekliği sabitledik */
+    height: 350px !important; 
     margin-bottom: 10px !important;
     scrollbar-width: none !important;
     -webkit-overflow-scrolling: touch !important;
@@ -46,12 +94,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 
 .modal-gorsel-kucuk { 
     width: 100% !important; 
-    flex: 0 0 100% !important; /* ÖNEMLİ: Her görselin tam genişlikte kalmasını zorunlu kılar */
-    height: 100% !important;   /* Yüksekliği galeriden alır */
+    flex: 0 0 100% !important; 
+    height: 100% !important;   
     object-fit: contain !important; 
     scroll-snap-align: start !important; 
     background: #f9f9f9;
 }
+
 /* Thumbnail */
 .thumbnail-container { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding: 5px; }
 .thumbnail-img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; cursor: pointer; opacity: 0.5; border: 2px solid transparent; }
