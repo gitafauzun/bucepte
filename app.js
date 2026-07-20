@@ -1,6 +1,7 @@
 let tumUrunler = [];
 let aktifKategori = 'Tümü';
-let aktifAltKategori = 'Tümü';
+let aktifMarka = 'Tümü';
+let aktifModel = 'Tümü';
 
 document.addEventListener('DOMContentLoaded', () => {
     urunleriYukle();
@@ -36,62 +37,112 @@ function kategorileriOlustur(urunler) {
         kategoriMenu.appendChild(btn);
     });
 
-    // Eğer seçilen ana kategorinin alt kategorileri varsa onları da göster
-    altKategorileriOlustur(urunler);
+    markalariOlustur(urunler);
 }
 
-function altKategorileriOlustur(urunler) {
-    // Eski alt kategori menüsü varsa kaldır
-    const eskiAltMenu = document.getElementById('alt-kategori-menusu');
-    if (eskiAltMenu) eskiAltMenu.remove();
+function markalariOlustur(urunler) {
+    const eskiMarkaMenu = document.getElementById('marka-kategori-menusu');
+    if (eskiMarkaMenu) eskiMarkaMenu.remove();
+
+    const eskiModelMenu = document.getElementById('model-kategori-menusu');
+    if (eskiModelMenu) eskiModelMenu.remove();
 
     if (aktifKategori === 'Tümü') return;
 
     // Seçilen ana kategoriye ait ürünleri bul
     const anaKategoriUrunleri = urunler.filter(u => u.kategori === aktifKategori);
-    const altKategoriler = [...new Set(anaKategoriUrunleri.map(u => u.altKategori).filter(Boolean))];
+    const markalar = [...new Set(anaKategoriUrunleri.map(u => u.marka).filter(Boolean))];
 
-    // Eğer alt kategori yoksa menü açma
-    if (altKategoriler.length === 0) return;
+    if (markalar.length === 0) return;
 
-    // Alt kategori kapsayıcısını oluştur
-    const altMenuContainer = document.createElement('div');
-    altMenuContainer.id = 'alt-kategori-menusu';
-    altMenuContainer.className = 'kategori-menusu alt-kategori-stili';
+    const markaMenuContainer = document.createElement('div');
+    markaMenuContainer.id = 'marka-kategori-menusu';
+    markaMenuContainer.className = 'kategori-menusu alt-kategori-stili';
 
     const tumuBtn = document.createElement('button');
-    tumuBtn.className = `kategori-btn ${aktifAltKategori === 'Tümü' ? 'aktif' : ''}`;
+    tumuBtn.className = `kategori-btn ${aktifMarka === 'Tümü' ? 'aktif' : ''}`;
     tumuBtn.textContent = `Tüm ${aktifKategori}`;
-    tumuBtn.onclick = () => altKategoriDegistir('Tümü');
-    altMenuContainer.appendChild(tumuBtn);
+    tumuBtn.onclick = () => markaDegistir('Tümü');
+    markaMenuContainer.appendChild(tumuBtn);
 
-    altKategoriler.forEach(altKat => {
+    markalar.forEach(marka => {
         const btn = document.createElement('button');
-        btn.className = `kategori-btn ${altKat === aktifAltKategori ? 'aktif' : ''}`;
-        btn.textContent = altKat;
-        btn.onclick = () => altKategoriDegistir(altKat);
-        altMenuContainer.appendChild(btn);
+        btn.className = `kategori-btn ${marka === aktifMarka ? 'aktif' : ''}`;
+        btn.textContent = marka;
+        btn.onclick = () => markaDegistir(marka);
+        markaMenuContainer.appendChild(btn);
     });
 
-    // Ana kategori menüsünün hemen altına ekle
     const kategoriMenu = document.getElementById('kategori-menusu');
-    kategoriMenu.parentNode.insertBefore(altMenuContainer, kategoriMenu.nextSibling);
+    kategoriMenu.parentNode.insertBefore(markaMenuContainer, kategoriMenu.nextSibling);
+
+    modelleriOlustur(urunler);
+}
+
+function modelleriOlustur(urunler) {
+    const eskiModelMenu = document.getElementById('model-kategori-menusu');
+    if (eskiModelMenu) eskiModelMenu.remove();
+
+    if (aktifMarka === 'Tümü') return;
+
+    // Seçilen ana kategori ve markaya ait ürünleri bul
+    const markaUrunleri = urunler.filter(u => u.kategori === aktifKategori && u.marka === aktifMarka);
+    const modeller = [...new Set(markaUrunleri.map(u => u.model).filter(Boolean))];
+
+    if (modeller.length === 0) return;
+
+    const modelMenuContainer = document.createElement('div');
+    modelMenuContainer.id = 'model-kategori-menusu';
+    modelMenuContainer.className = 'kategori-menusu alt-kategori-stili model-alt-kategori';
+
+    const tumuBtn = document.createElement('button');
+    tumuBtn.className = `kategori-btn ${aktifModel === 'Tümü' ? 'aktif' : ''}`;
+    tumuBtn.textContent = `Tüm ${aktifMarka}`;
+    tumuBtn.onclick = () => modelDegistir('Tümü');
+    modelMenuContainer.appendChild(tumuBtn);
+
+    modeller.forEach(model => {
+        const btn = document.createElement('button');
+        btn.className = `kategori-btn ${model === aktifModel ? 'aktif' : ''}`;
+        btn.textContent = model;
+        btn.onclick = () => modelDegistir(model);
+        modelMenuContainer.appendChild(btn);
+    });
+
+    const markaMenu = document.getElementById('marka-kategori-menusu');
+    markaMenu.parentNode.insertBefore(modelMenuContainer, markaMenu.nextSibling);
 }
 
 function kategoriDegistir(kategori) {
     aktifKategori = kategori;
-    aktifAltKategori = 'Tümü'; // Ana kategori değişince alt kategoriyi sıfırla
+    aktifMarka = 'Tümü';
+    aktifModel = 'Tümü';
 
     kategorileriOlustur(tumUrunler);
     filtreliUrunleriGoster();
 }
 
-function altKategoriDegistir(altKategori) {
-    aktifAltKategori = altKategori;
+function markaDegistir(marka) {
+    aktifMarka = marka;
+    aktifModel = 'Tümü';
 
-    // Alt kategori butonlarının aktiflik durumunu güncelle
-    document.querySelectorAll('#alt-kategori-menusu .kategori-btn').forEach(btn => {
-        if (btn.textContent === altKategori || (altKategori === 'Tümü' && btn.textContent === `Tüm ${aktifKategori}`)) {
+    document.querySelectorAll('#marka-kategori-menusu .kategori-btn').forEach(btn => {
+        if (btn.textContent === marka || (marka === 'Tümü' && btn.textContent === `Tüm ${aktifKategori}`)) {
+            btn.classList.add('aktif');
+        } else {
+            btn.classList.remove('aktif');
+        }
+    });
+
+    modelleriOlustur(tumUrunler);
+    filtreliUrunleriGoster();
+}
+
+function modelDegistir(model) {
+    aktifModel = model;
+
+    document.querySelectorAll('#model-kategori-menusu .kategori-btn').forEach(btn => {
+        if (btn.textContent === model || (model === 'Tümü' && btn.textContent === `Tüm ${aktifMarka}`)) {
             btn.classList.add('aktif');
         } else {
             btn.classList.remove('aktif');
@@ -108,8 +159,12 @@ function filtreliUrunleriGoster() {
         sonuc = sonuc.filter(urun => urun.kategori === aktifKategori);
     }
 
-    if (aktifAltKategori !== 'Tümü') {
-        sonuc = sonuc.filter(urun => urun.altKategori === aktifAltKategori);
+    if (aktifMarka !== 'Tümü') {
+        sonuc = sonuc.filter(urun => urun.marka === aktifMarka);
+    }
+
+    if (aktifModel !== 'Tümü') {
+        sonuc = sonuc.filter(urun => urun.model === aktifModel);
     }
 
     urunleriEkranaBas(sonuc);
@@ -123,6 +178,10 @@ function urunleriEkranaBas(urunler) {
     urunler.forEach(urun => {
         let gorsel = (urun.gorseller && urun.gorseller.length > 0) ? urun.gorseller[0] : 'placeholder.jpg';
         
+        let etiketMetin = urun.kategori || '';
+        if (urun.marka) etiketMetin += ` / ${urun.marka}`;
+        if (urun.model) etiketMetin += ` / ${urun.model}`;
+
         const kart = document.createElement('div');
         kart.className = 'urun-karti';
         kart.innerHTML = `
@@ -130,7 +189,7 @@ function urunleriEkranaBas(urunler) {
                 <img src="${gorsel}" alt="${urun.isim}" class="urun-resim-tek">
             </div>
             <div class="urun-bilgi-alani" onclick="detayModalAc(${urun.id})">
-                <p class="kategori-etiket">${urun.altKategori ? `${urun.kategori} / ${urun.altKategori}` : (urun.kategori || '')}</p>
+                <p class="kategori-etiket">${etiketMetin}</p>
                 <h3 class="urun-isim">${urun.isim || ''}</h3>
                 <p class="urun-fiyat">${urun.fiyat || '0 TL'}</p>
             </div>
