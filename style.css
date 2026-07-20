@@ -82,3 +82,89 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     .modal-content { width: 95%; margin: 2vh auto; padding: 20px; }
     .modal-gorsel-kucuk { width: 75px; height: 75px; }
 }
+/* --------------------------------------------------
+   MEVCUT KODLARIN ÜZERİNE EKLENECEK MOBİL OPTİMİZASYONLARI
+   -------------------------------------------------- */
+
+/* 1. Ürün Kartları İçin Küçük Düzeltmeler */
+@media (max-width: 768px) {
+    /* Tablet ve altında kart padding'ini biraz azaltalım */
+    .urun-karti { padding: 15px; }
+    
+    /* Ürün isminin çok uzun olup kartı bozmaması için satır sınırlaması (opsiyonel) */
+    .urun-isim { 
+        font-size: 14px; 
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        */
+    }
+}
+
+/* 2. Modal (Pop-up) Mobil Optimizasyonu - KRİTİK BÖLÜM */
+@media (max-width: 480px) {
+    /* Modalın tamamı */
+    .modal-content { 
+        width: 100%;        /* Tam ekran genişliği */
+        height: 100%;       /* Tam ekran yüksekliği */
+        margin: 0;          /* Boşlukları sıfırla */
+        border-radius: 0;   /* Köşeleri keskinleştir */
+        padding: 15px;      /* İç boşluk */
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Kapatma butonu mobil için daha belirgin */
+    .kapat-btn { 
+        right: 10px; 
+        top: 10px; 
+        background: rgba(0,0,0,0.1); /* Arka planı hafiflet */
+        color: #fff;
+    }
+
+    /* Görsel Galerisi */
+    .gorsel-galerisi { 
+        margin-top: 40px; /* Kapat butonunun altına inmesi için */
+        gap: 5px;
+        padding: 5px 0;
+    }
+
+    /* Görselleri mobilde büyütüyoruz (Önemli Değişiklik) */
+    .modal-gorsel-kucuk { 
+        width: 80vw;  /* Ekran genişliğinin %80'i kadar */
+        height: 80vw; /* Kare olması için */
+        max-height: 300px; /* Çok büyük ekranlarda aşırı büyümemesi için sınır */
+        border-radius: 16px;
+    }
+
+    /* Metin alanı */
+    .modal-metin {
+        padding: 10px 0;
+        flex-grow: 1; /* Boşluğu doldurmasını sağla */
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .modal-metin h2 { font-size: 20px; margin-top: 5px; }
+    
+    /* Açıklama metni mobilde daha okunaklı */
+    .modal-aciklama { 
+        font-size: 13px; 
+        line-height: 1.5;
+        overflow-y: auto; /* Açıklama uzunsa kaydırılabilir */
+        margin-bottom: 10px;
+    }
+
+    /* Fiyat alanı ve Satın Al butonu en alta yapışsın */
+    .modal-fiyat-alani {
+        margin-top: auto; /* İtici güç */
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .fiyat-degeri { font-size: 24px; }
+    .satin-al-btn { padding: 12px; font-size: 16px; }
+}
