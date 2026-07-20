@@ -35,23 +35,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     display: flex; 
     overflow-x: auto; 
     scroll-snap-type: x mandatory; 
-    gap: 0; 
-    width: 100%;
-    scrollbar-width: none; 
-    -webkit-overflow-scrolling: touch; 
-    aspect-ratio: 1/1;
+    width: 100%; 
+    aspect-ratio: 1/1; /* Kare alan */
     margin-bottom: 10px;
 }
-.gorsel-galerisi::-webkit-scrollbar { display: none; }
 
 .modal-gorsel-kucuk { 
-    width: 100%; 
-    flex: 0 0 100%; 
+    width: 100%;       /* Her görsel ekranın %100'ünü kaplasın */
+    flex: 0 0 100%;    /* Görselin yanına sıkışmasını engelle */
     object-fit: contain; 
     scroll-snap-align: start; 
-    background: #f9f9f9;
 }
-
 /* Thumbnail */
 .thumbnail-container { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding: 5px; }
 .thumbnail-img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; cursor: pointer; opacity: 0.5; border: 2px solid transparent; }
