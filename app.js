@@ -1,5 +1,4 @@
 let tumUrunler = [];
-let sliderInterval;
 
 document.addEventListener('DOMContentLoaded', () => {
     urunleriYukle();
@@ -49,60 +48,68 @@ function detayModalAc(id) {
     const modalDetay = document.getElementById('modal-detay-alani');
     
     const gorseller = (urun.gorseller && urun.gorseller.length > 0) ? urun.gorseller : ['placeholder.jpg'];
-    let gorsellerHTML = gorseller.map(img => `<img src="${img}" class="modal-gorsel-kucuk">`).join('');
+    let gorsellerHTML = gorseller.map(img => `<img src="${img}" alt="${urun.isim}" class="modal-gorsel-kucuk">`).join('');
     
     modalDetay.innerHTML = `
         <button class="kapat-btn" onclick="detayModalKapat()">×</button>
+        
         <div class="gorsel-galerisi" id="gorsel-slider">
             ${gorsellerHTML}
         </div>
+        
+        ${gorseller.length > 1 ? `
+            <div class="thumbnail-container" id="thumbnail-listesi">
+                ${gorseller.map((img, index) => `
+                    <img src="${img}" 
+                         class="thumbnail-img ${index === 0 ? 'aktif-thumbnail' : ''}" 
+                         onclick="thumbnailTiklandi(${index})"
+                         alt="Görsel ${index + 1}">
+                `).join('')}
+            </div>
+        ` : ''}
+
         <div class="modal-metin">
             <h2>${urun.isim}</h2>
-            <p>${urun.aciklama}</p>
-            <h3>${urun.fiyat}</h3>
+            <p class="modal-aciklama">${urun.aciklama || ''}</p>
+            <div class="modal-fiyat-alani">
+                <p class="fiyat-etiketi">Fiyatı</p>
+                <p class="fiyat-degeri">${urun.fiyat}</p>
+            </div>
             <a href="${urun.dolapLink}" target="_blank" class="satin-al-btn">Dolap'tan Satın Al</a>
         </div>
     `;
 
-    // İndikatörleri Ekle
-    if (gorseller.length > 1) {
-        const indicator = document.createElement('div');
-        indicator.className = 'slider-indikatör';
-        indicator.innerHTML = gorseller.map((_, i) => `<span class="${i === 0 ? 'aktif' : ''}"></span>`).join('');
-        modalDetay.appendChild(indicator);
-    }
-
     modal.style.display = "block";
 
-    // Slider ve İndikatör Güncelleme Mantığı
+    // Slider ve Thumbnail Senkronizasyonu
     const slider = document.getElementById('gorsel-slider');
-    
-    // Scroll olayını dinle ve indikatörleri güncelle
+    const thumbnails = document.querySelectorAll('.thumbnail-img');
+
     slider.addEventListener('scroll', () => {
         const index = Math.round(slider.scrollLeft / slider.offsetWidth);
-        const spans = document.querySelectorAll('.slider-indikatör span');
-        spans.forEach((s, i) => s.classList.toggle('aktif', i === index));
-    });
-
-    // Otomatik Geçiş
-    clearInterval(sliderInterval);
-    sliderInterval = setInterval(() => {
-        if (slider) {
-            if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) {
-                slider.scrollTo({ left: 0, behavior: 'smooth' });
+        thumbnails.forEach((thumb, i) => {
+            if (i === index) {
+                thumb.classList.add('aktif-thumbnail');
+                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
             } else {
-                slider.scrollBy({ left: slider.offsetWidth, behavior: 'smooth' });
+                thumb.classList.remove('aktif-thumbnail');
             }
-        }
-    }, 3000);
+        });
+    });
+}
+
+function thumbnailTiklandi(index) {
+    const slider = document.getElementById('gorsel-slider');
+    slider.scrollTo({
+        left: slider.offsetWidth * index,
+        behavior: 'smooth'
+    });
 }
 
 function detayModalKapat() {
-    clearInterval(sliderInterval);
     document.getElementById('urun-detay-modal').style.display = "none";
 }
 
-// Modal dışına tıklayınca kapatma
 window.onclick = function(event) {
     const modal = document.getElementById('urun-detay-modal');
     if (event.target == modal) {
