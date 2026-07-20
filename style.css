@@ -61,31 +61,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     color: #ffffff;
     border-color: var(--accent);
 }
-/* Çok Seviyeli Kategori Menü Stilleri */
-.alt-kategori-stili {
-    margin-top: 10px !important;
-    padding-left: 10px;
-    border-left: 2px solid #d2d2d7;
-}
-
-.alt-kategori-stili .kategori-btn {
-    background: #ffffff;
-    border: 1px solid #d2d2d7;
-    font-size: 13px;
-    padding: 6px 14px;
-}
-
-.alt-kategori-stili .kategori-btn.aktif {
-    background: var(--accent);
-    color: #ffffff;
-    border-color: var(--accent);
-}
-
-/* Model menüsü için ekstra hafif içeriden başlatma */
-.model-alt-kategori {
-    border-left-color: #86868b;
-    margin-left: 10px;
-}
 
 /* Grid */
 .grid-layout { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
@@ -140,4 +115,94 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     .modal-content { width: 100%; height: 100%; margin: 0; border-radius: 0; padding: 15px; }
     .gorsel-galerisi { margin-top: 30px; }
     .satin-al-btn { position: sticky; bottom: 0; }
+}
+/* Trendyol Tarzı Açılır Kategori Menüsü */
+.dropdown-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    position: relative;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+}
+.dropdown-container::-webkit-scrollbar {
+    display: none;
+}
+
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Açılır Pencere (Dropdown Kutu) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: #ffffff;
+    min-width: 240px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    padding: 15px;
+    z-index: 100;
+    border: 1px solid #d2d2d7;
+    animation: fadeIn 0.2s ease;
+}
+
+/* Sınıf eklendiğinde pencere görünür olur */
+.dropdown-wrapper.acik .dropdown-content {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dropdown İçi Marka ve Model Yapısı */
+.dropdown-grup {
+    margin-bottom: 12px;
+}
+.dropdown-grup:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-marka-baslik {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-color);
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #f5f5f7;
+    transition: background 0.2s;
+}
+.dropdown-marka-baslik:hover {
+    background: #e5e5ea;
+}
+
+.dropdown-model-listesi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+    padding-left: 5px;
+}
+
+.dropdown-model-item {
+    font-size: 12px;
+    background: #ffffff;
+    border: 1px solid #d2d2d7;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #48484a;
+    transition: all 0.2s;
+}
+.dropdown-model-item:hover {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
 }
