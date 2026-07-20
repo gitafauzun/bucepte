@@ -5,7 +5,8 @@
     "fiyat": "320 TL",
     "gorseller": ["images/17promax.png", "images/17promax.png", "images/17promax.png"],
     "kategori": "Kılıf",
-    "dolapLink": "https://link.dolap.com/7z121",
+"altKategori": "iPHONE",
+  "dolapLink": "https://link.dolap.com/7z121",
     "etiket": "yeni",
     "aciklama": "Şeffaf yapısı ile telefonunuzun rengini gösterir, Magsafe uyumludur."
   },
@@ -15,6 +16,7 @@
     "fiyat": "249 TL",
     "gorseller": ["images/buzmag1.png"],
     "kategori": "Kılıf",
+"altKategori": "İPHONE",
     "dolapLink": "https://link.dolap.com/0whmzx",
     "etiket": "indirimde",
     "aciklama": "Kaliteli silikonu sayesinde telefonunuzu korur. Şık tasarımı ve mat duruşuyla estetik katar. Magsafe özelliği ile telefonunuzu kablosuz şarj etmeye uygundur."
@@ -25,6 +27,7 @@
     "fiyat": "Stokta yok",
     "gorseller": ["images/şarj1.png"],
     "kategori": "Şarj Cihazı",
+"altKategori": "HZILI ŞARJ",
     "dolapLink": "",
     "etiket": "yakında",
     "aciklama": "Hızlı şarj destekli güç adaptörü."
@@ -35,6 +38,7 @@
     "fiyat": "249 TL",
     "gorseller": ["images/lens1.png", "images/lens2.png", "images/lens3.png"],
     "kategori": "Kamera Koruyucu",
+"altKategori": "İPHONE",
     "dolapLink": "https://dolap.com/urun/kamera-koruyucu-link",
     "etiket": "yeni",
     "aciklama": "Kamera lenslerinizi çizilmelere karşı korur."
@@ -95,6 +99,7 @@
     "fiyat": "220 TL",
     "gorseller": ["images/dalgali1.png", "images/dalgali3.png", "images/dalgali5.png"],
     "kategori": "Kılıf",
+"altKategori": "SAMSUNG",
     "dolapLink": "https://link.dolap.com/n9ssoj",
     "etiket": "yeni",
     "aciklama": "Kamera çerçevesi taşlıdır. Dalgalı parlak görüntüsü ile tarzınızı yansıtır."
@@ -215,6 +220,7 @@
     "fiyat": "499 TL",
     "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
     "kategori": "Ekran Koruyucu",
+"altKategori": "İPHONE",
     "dolapLink": "https://link.dolap.com/zfrh27",
     "etiket": "yeni",
     "aciklama": "Kaliteli cam malzeme, yüksek dokunma hassasiyeti."
