@@ -9,25 +9,25 @@
 </head>
 <body>
 
-   <!-- Üst Menü / Navbar (Logo, Mağaza ve Hakkımızda Alanı) -->
-    <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100;">
+    <!-- Üst Menü / Navbar (Logo, Mağaza ve Hakkımızda Alanı) -->
+    <header class="main-header">
         <div class="logo">
             <a href="index.html">
-                <img src="images/logobey.png" alt="BuCepte Logo" style="height: 40px; display: block; object-fit: contain;">
+                <img src="images/logobey.png" alt="BuCepte Logo" class="logo-img">
             </a>
         </div>
-        <nav style="display: flex; gap: 20px; align-items: center;">
-            <a href="index.html" style="text-decoration: none; color: var(--text-color, #333); font-weight: 500;">Ana Sayfa</a>
-            <a href="https://link.dolap.com/rwtwfl" target="_blank" style="text-decoration: none; color: #007bff; font-weight: 600;">Dolap E-Mağaza</a>
-            <a href="hakkimizda.html" style="text-decoration: none; color: var(--text-color, #333); font-weight: 500;">Hakkımızda</a>
+        <nav class="nav-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="https://link.dolap.com/rwtwfl" target="_blank" class="nav-magaza-btn">Dolap E-Mağaza</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
         </nav>
     </header>
 
     <!-- Hero / Üst Karşılama Alanı -->
-    <section class="hero" style="text-align: center; padding: 40px 20px; background: var(--card-bg, #f8f9fa);">
+    <section class="hero">
         <div class="hero-content">
-            <h1 style="color: var(--text-color, #333); margin-bottom: 10px;">En Trend Mobil Aksesuarlar</h1>
-            <p style="color: var(--text-light, #666);">Telefonunuz için en şık kılıflar, koruyucular ve aksesuarlar burada.</p>
+            <h1>En Trend Cep Aksesuarları BuCepte</h1>
+            <p>Şık Kılıflar, Kaliteli Ekran Koruyucular ve Premium Elektronik Ürünler.</p>
         </div>
     </section>
 
@@ -44,27 +44,26 @@
     </div>
 
     <!-- Kategori Menüsü -->
-    <div id="kategori-menusu" style="display: flex; justify-content: center; gap: 10px; margin: 20px 0; flex-wrap: wrap; padding: 0 10px;">
+    <div id="kategori-menusu" class="kategori-menusu-container">
         <button class="kategori-btn aktif">Tümü</button>
     </div>
 
     <!-- Ürünlerin Listeleneceği Izgara (Grid) Alanı -->
-    <main style="max-width: 1200px; margin: 0 auto; padding: 20px;">
-        <!-- JavaScript'in aradığı doğru ID: urun-vitrini -->
-        <div id="urun-vitrini" class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+    <main class="main-content">
+        <div id="urun-vitrini" class="products-grid">
             <p style="text-align:center; grid-column: 1 / -1; color: #888;">Ürünler yükleniyor...</p>
         </div>
     </main>
 
     <!-- Hakkında Bölümü -->
-    <section id="hakkinda" style="max-width: 800px; margin: 40px auto; padding: 20px; text-align: center; color: var(--text-light, #666);">
-        <h3 style="color: var(--text-color, #333); margin-bottom: 10px;">Hakkımızda</h3>
+    <section id="hakkinda" class="hakkinda-section">
+        <h3>Hakkımızda</h3>
         <p>BuCepte, telefonunuz için en kaliteli ve trend mobil aksesuarları güvenli bir şekilde sizlerle buluşturur. Tüm ürünlerimizi Dolap mağazamız üzerinden kolayca sipariş verebilirsiniz.</p>
     </section>
 
-    <!-- Detay Modalı (Eğer style.css içinde tanımlı değilse alt yapı için gerekli) -->
-    <div id="urun-detay-modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5);">
-        <div id="modal-detay-alani" style="background-color: #fff; margin: 10% auto; padding: 20px; width: 80%; max-width: 600px; border-radius: 8px; position: relative;">
+    <!-- Detay Modalı -->
+    <div id="urun-detay-modal" class="modal-arkaplan">
+        <div id="modal-detay-alani" class="modal-icerik">
             <!-- Modal içeriği JS tarafından doldurulacak -->
         </div>
     </div>
