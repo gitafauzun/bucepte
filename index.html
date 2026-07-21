@@ -3,38 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BuCepte - Telefona dair her şey BuCepte</title>
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <title>Mobil Aksesuar Mağazası</title>
+    <!-- CSS Dosyanı Buraya Bağlıyoruz -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="site-header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo">bucepte</a>
-            <div class="nav-links">
-                <a href="index.html">Mağaza</a>
-                <a href="hakkimizda.html">Hakkımızda</a>
-            </div>
-        </nav>
-    </header>
+    <!-- Hero / Üst Karşılama Alanı -->
+    <section class="hero" style="text-align: center; padding: 40px 20px; background: var(--card-bg, #f8f9fa);">
+        <div class="hero-content">
+            <h1 style="color: var(--text-color, #333); margin-bottom: 10px;">En Trend Mobil Aksesuarlar</h1>
+            <p style="color: var(--text-light, #666);">Telefonunuz için en şık kılıflar, koruyucular ve aksesuarlar burada.</p>
+        </div>
+    </section>
 
-    <main class="container">
-        <section class="hero">
-            <h1>BuCepte</h1>
-            <p>Telefona dair her şey BuCepte</p>
-        </section>
+    <!-- Arama Alanı Başlangıcı -->
+    <div class="search-container">
+        <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Ürün ara (Örn: 14 Pro Kılıf)...">
+            <button id="searchButton" class="search-btn">Ara</button>
+        </div>
+    </div>
+    <!-- Arama Alanı Sonu -->
 
-        <div id="kategori-menusu" class="dropdown-container"></div>
+    <!-- Kategori Menüsü -->
+    <!-- Not: İsimler app.js'deki JSON kategorilerinle birebir aynı olmalı -->
+    <div id="kategori-menusu" style="display: flex; justify-content: center; gap: 10px; margin: 20px 0; flex-wrap: wrap; padding: 0 10px;">
+        <button class="kategori-btn active">Tümü</button>
+        <button class="kategori-btn">Kılıf</button>
+        <button class="kategori-btn">Şarj Cihazı</button>
+        <button class="kategori-btn">Ekran Koruyucu</button>
+        <button class="kategori-btn">Kulaklık</button>
+    </div>
 
-        <div id="urun-vitrini" class="grid-layout">
-            <!-- Ürünler JavaScript ile buraya yüklenecek -->
+    <!-- Ürünlerin Listeleneceği Izgara (Grid) Alanı -->
+    <main style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <!-- Javascript (app.js) ürün kartlarını bu div'in içine basacak -->
+        <div id="urunler" class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+            <!-- Ürünler yükleniyor mesajı (JS devreye girene kadar görünür) -->
+            <p style="text-align:center; grid-column: 1 / -1; color: #888;">Ürünler yükleniyor...</p>
         </div>
     </main>
 
-    <div id="urun-detay-modal" class="modal">
-        <div class="modal-content" id="modal-detay-alani"></div>
-    </div>
-
+    <!-- Javascript Dosyanı Buraya Bağlıyoruz -->
     <script src="app.js"></script>
 </body>
 </html>
