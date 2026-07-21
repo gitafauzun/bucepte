@@ -10,10 +10,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 
 /* Header */
 .site-header { padding: 20px 0; border-bottom: 1px solid #d2d2d7; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
-.logo { font-weight: 600; font-size: 25px; text-decoration: none; color: var(--text-color); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.logo { font-weight: 600; font-size: 25px; text-decoration: none; color: var(--text-color); display: flex; align-items: center; }
 
-/* Kategori Menüsü (YENİ EKLENEN KISIM) */
+/* Hero Alanı */
+.hero { text-align: center; padding: 30px 20px; }
+.hero h1 { font-size: 2.2rem; margin-bottom: 5px; color: var(--text-color); }
+.hero p { color: #6e6e73; font-size: 1.1rem; margin: 0; }
+
+/* Kategori Menüsü */
 .kategori-menusu {
     display: flex;
     gap: 10px;
@@ -44,6 +49,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     background: var(--text-color);
     color: var(--bg-color);
 }
+
 /* Alt Kategori Menü Stili */
 .alt-kategori-stili {
     margin-top: 10px !important;
@@ -61,31 +67,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     color: #ffffff;
     border-color: var(--accent);
 }
-/* Çok Seviyeli Kategori Menü Stilleri */
-.alt-kategori-stili {
-    margin-top: 10px !important;
-    padding-left: 10px;
-    border-left: 2px solid #d2d2d7;
-}
-
-.alt-kategori-stili .kategori-btn {
-    background: #ffffff;
-    border: 1px solid #d2d2d7;
-    font-size: 13px;
-    padding: 6px 14px;
-}
-
-.alt-kategori-stili .kategori-btn.aktif {
-    background: var(--accent);
-    color: #ffffff;
-    border-color: var(--accent);
-}
-
-/* Model menüsü için ekstra hafif içeriden başlatma */
-.model-alt-kategori {
-    border-left-color: #86868b;
-    margin-left: 10px;
-}
 
 /* Grid */
 .grid-layout { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
@@ -98,13 +79,52 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .kategori-etiket { font-size: 11px; color: #86868b; text-transform: uppercase; margin: 10px 0 5px 0; }
 .urun-isim { font-size: 15px; font-weight: 600; margin: 0; min-height: 2.4em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-/* Modal */
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; backdrop-filter: blur(8px); }
-.modal-content { background: #fff; width: 90%; max-width: 500px; margin: 5vh auto; padding: 24px; border-radius: 24px; position: relative; max-height: 90vh; overflow-y: auto; }
+/* Modal (Pop-up) Yapısı */
+.modal { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5); 
+    z-index: 1000; 
+    backdrop-filter: blur(8px); 
+}
+.modal-content { 
+    background: #fff; 
+    width: 90%; 
+    max-width: 500px; 
+    margin: 5vh auto; 
+    padding: 24px; 
+    border-radius: 24px; 
+    position: relative; 
+    max-height: 90vh; 
+    overflow-y: auto; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.kapat-btn { 
+    background: #f5f5f7; 
+    border: none; 
+    font-size: 20px; 
+    cursor: pointer; 
+    position: absolute; 
+    right: 15px; 
+    top: 15px; 
+    width: 32px; 
+    height: 32px; 
+    border-radius: 50%; 
+    z-index: 10; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.kapat-btn:hover {
+    background: #e5e5ea;
+}
 
-.kapat-btn { background: #f5f5f7; border: none; font-size: 20px; cursor: pointer; position: absolute; right: 15px; top: 15px; width: 32px; height: 32px; border-radius: 50%; z-index: 10; }
-
-/* GALERİ VE GÖRSEL DÜZENİ */
+/* Modal İçi Galeri ve Görseller */
 .gorsel-galerisi { 
     display: flex !important; 
     overflow-x: auto !important; 
@@ -115,32 +135,63 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     scrollbar-width: none !important;
     -webkit-overflow-scrolling: touch !important;
     scroll-behavior: smooth;
+    border-radius: 12px;
 }
-
+.gorsel-galerisi::-webkit-scrollbar {
+    display: none !important;
+}
 .modal-gorsel-kucuk { 
     width: 100% !important; 
     flex: 0 0 100% !important; 
-    height: 100% !important;   
+    height: 100% !important;    
     object-fit: contain !important; 
     scroll-snap-align: start !important; 
     background: #f9f9f9;
 }
 
 /* Thumbnail */
-.thumbnail-container { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; overflow-x: auto; padding: 5px; }
-.thumbnail-img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; cursor: pointer; opacity: 0.5; border: 2px solid transparent; }
-.thumbnail-img.aktif-thumbnail { opacity: 1; border-color: var(--accent); }
-
-/* Metin ve Buton */
-.modal-metin { display: flex; flex-direction: column; }
-.satin-al-btn { display: block; width: 100%; padding: 15px; background-color: var(--accent); color: white; text-align: center; border-radius: 12px; text-decoration: none; font-weight: 600; margin-top: 15px; }
-
-/* Mobil Optimizasyon */
-@media (max-width: 480px) {
-    .modal-content { width: 100%; height: 100%; margin: 0; border-radius: 0; padding: 15px; }
-    .gorsel-galerisi { margin-top: 30px; }
-    .satin-al-btn { position: sticky; bottom: 0; }
+.thumbnail-container { 
+    display: flex; 
+    justify-content: center; 
+    gap: 8px; 
+    margin-bottom: 20px; 
+    overflow-x: auto; 
+    padding: 5px; 
 }
+.thumbnail-img { 
+    width: 50px; 
+    height: 50px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    opacity: 0.5; 
+    border: 2px solid transparent; 
+    transition: opacity 0.2s, border-color 0.2s;
+}
+.thumbnail-img.aktif-thumbnail { 
+    opacity: 1; 
+    border-color: var(--accent); 
+}
+
+/* Modal Metin ve Buton */
+.modal-metin { display: flex; flex-direction: column; }
+.satin-al-btn { 
+    display: block; 
+    width: 100%; 
+    padding: 15px; 
+    background-color: var(--accent); 
+    color: white; 
+    text-align: center; 
+    border-radius: 12px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    margin-top: 15px; 
+    transition: background 0.3s;
+}
+.satin-al-btn:hover {
+    background-color: #005bb5;
+}
+
 /* Trendyol Tarzı Açılır Kategori Menüsü */
 .dropdown-container {
     display: flex;
@@ -154,13 +205,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .dropdown-container::-webkit-scrollbar {
     display: none;
 }
-
 .dropdown-wrapper {
     position: relative;
     display: inline-block;
 }
-
-/* Açılır Pencere (Dropdown Kutu) */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -175,25 +223,19 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     border: 1px solid #d2d2d7;
     animation: fadeIn 0.2s ease;
 }
-
-/* Sınıf eklendiğinde pencere görünür olur */
 .dropdown-wrapper.acik .dropdown-content {
     display: block;
 }
-
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-/* Dropdown İçi Marka ve Model Yapısı */
 .dropdown-grup {
     margin-bottom: 12px;
 }
 .dropdown-grup:last-child {
     margin-bottom: 0;
 }
-
 .dropdown-marka-baslik {
     font-weight: 600;
     font-size: 14px;
@@ -207,7 +249,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .dropdown-marka-baslik:hover {
     background: #e5e5ea;
 }
-
 .dropdown-model-listesi {
     display: flex;
     flex-wrap: wrap;
@@ -215,7 +256,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     margin-top: 6px;
     padding-left: 5px;
 }
-
 .dropdown-model-item {
     font-size: 12px;
     background: #ffffff;
@@ -231,14 +271,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     color: #ffffff;
     border-color: var(--accent);
 }
-/* --- ARAMA KUTUSU TASARIMI --- */
+
+/* Arama Kutusu Tasarımı */
 .search-container {
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
-    padding: 0 20px;
 }
-
 .search-box {
     display: flex;
     align-items: center;
@@ -249,19 +288,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     border: 1px solid rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
-
 .search-box:focus-within {
     box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     border-color: var(--accent, #007aff);
 }
-
 .search-icon {
     width: 20px;
     height: 20px;
     color: #888;
     margin-right: 10px;
+    flex-shrink: 0;
 }
-
 .search-box input {
     flex: 1;
     border: none;
@@ -271,7 +308,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     color: var(--text-color, #333);
     width: 100%;
 }
-
 .search-btn {
     background: var(--accent, #007aff);
     color: white;
@@ -282,240 +318,80 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     cursor: pointer;
     transition: background 0.3s ease;
 }
-
 .search-btn:hover {
     background: #005bb5;
 }
 
-@media (max-width: 480px) {
-    .search-container {
-        margin: 15px auto;
-    }
-    .search-box {
-        padding: 5px 5px 5px 15px;
-    }
-    .search-btn {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
+/* Footer ve Sosyal Medya Alanı */
+.site-footer {
+    background-color: var(--card-bg, #f5f5f7);
+    border-top: 1px solid #d2d2d7;
+    padding: 30px 20px;
+    margin-top: 50px;
 }
-/* ========================================= */
-/* MOBİL UYUMLULUK VE RESPONSIVE DÜZENLEMELERİ */
-/* ========================================= */
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 13px;
+    color: #6e6e73;
+}
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: #ffffff;
+    border: 1px solid #d2d2d7;
+    border-radius: 50%;
+    color: var(--text-color, #1d1d1f);
+    transition: all 0.3s ease;
+}
+.social-icon:hover {
+    background: var(--accent, #0071e3);
+    color: #ffffff;
+    border-color: var(--accent, #0071e3);
+    transform: translateY(-3px);
+}
 
+/* Mobil Uyumluluk */
 @media (max-width: 768px) {
-    /* Navbar Mobil Düzeni */
-    .main-header {
-        padding: 12px 15px !important;
+    .nav-container {
         flex-direction: column;
         gap: 12px;
     }
-    
-    .main-header nav {
-        gap: 12px !important;
-        width: 100%;
-        justify-content: center;
-        font-size: 0.9rem;
+    .nav-links {
+        gap: 15px !important;
+        font-size: 0.95rem;
     }
-
-    .main-header .logo img {
-        height: 32px !important;
-    }
-
-    /* Hero Alanı Mobil */
-    .hero {
-        padding: 25px 15px !important;
-    }
-    
-    .hero h1 {
-        font-size: 1.4rem !important;
-    }
-
-    .hero p {
-        font-size: 0.9rem !important;
-    }
-
-    /* Arama Çubuğu Mobil */
-    .search-container {
-        padding: 0 15px !important;
-        margin: 15px auto !important;
-    }
-
-    .search-box {
-        padding: 4px 4px 4px 12px !important;
-    }
-
-    .search-box input {
-        font-size: 0.9rem !important;
-    }
-
-    .search-btn {
-        padding: 8px 16px !important;
-        font-size: 0.85rem !important;
-    }
-
-    /* Kategori Menüsü Yatay Kaydırma Düzeltmesi */
-    .kategori-menusu {
-        padding: 0 15px 10px 15px !important;
-        margin: 10px 0 !important;
-    }
-
-    /* Ana İçerik ve Grid Mobil */
-    .main-content {
-        padding: 10px 15px !important;
-    }
-
-    .grid-layout, .products-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* Mobilde 2'li şık kart dizilimi */
-        gap: 12px !important;
-        margin-top: 20px !important;
-    }
-
-    .urun-karti {
-        padding: 12px !important;
-        border-radius: 16px !important;
-    }
-
-    .urun-isim {
-        font-size: 13px !important;
-    }
-
-    /* Hakkında Bölümü Mobil */
-    .hakkinda-section {
-        margin: 20px 15px !important;
-        padding: 15px !important;
-    }
-}
-
-/* Küçük Ekranlar İçin (iPhone SE vb. 480px altı) */
-@media (max-width: 480px) {
-    .grid-layout, .products-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* Çok küçük ekranlarda bile daraltılmış 2'li yapı */
-        gap: 10px !important;
-    }
-
-    .urun-karti {
-        padding: 8px !important;
-    }
-
-    .urun-isim {
-        font-size: 12px !important;
-        min-height: 2.8em;
-    }
-    
-    .kategori-etiket {
-        font-size: 10px !important;
-        margin: 6px 0 3px 0 !important;
-    }
-}
-/* ========================================= */
-/* MOBİL UYUMLULUK VE RESPONSIVE DÜZENLEMELERİ */
-/* ========================================= */
-
-@media (max-width: 768px) {
-    /* Navbar Mobil Düzeni */
-    .main-header {
-        padding: 12px 15px !important;
+    .footer-content {
         flex-direction: column;
-        gap: 12px;
+        text-align: center;
     }
-    
-    .main-header nav {
-        gap: 12px !important;
-        width: 100%;
-        justify-content: center;
-        font-size: 0.9rem;
-    }
-
-    .main-header .logo img {
-        height: 32px !important;
-    }
-
-    /* Hero Alanı Mobil */
-    .hero {
-        padding: 25px 15px !important;
-    }
-    
-    .hero h1 {
-        font-size: 1.4rem !important;
-    }
-
-    .hero p {
-        font-size: 0.9rem !important;
-    }
-
-    /* Arama Çubuğu Mobil */
-    .search-container {
-        padding: 0 15px !important;
-        margin: 15px auto !important;
-    }
-
-    .search-box {
-        padding: 4px 4px 4px 12px !important;
-    }
-
-    .search-box input {
-        font-size: 0.9rem !important;
-    }
-
-    .search-btn {
-        padding: 8px 16px !important;
-        font-size: 0.85rem !important;
-    }
-
-    /* Kategori Menüsü Yatay Kaydırma Düzeltmesi */
-    .kategori-menusu {
-        padding: 0 15px 10px 15px !important;
-        margin: 10px 0 !important;
-    }
-
-    /* Ana İçerik ve Grid Mobil */
-    .main-content {
-        padding: 10px 15px !important;
-    }
-
-    .grid-layout, .products-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* Mobilde 2'li şık kart dizilimi */
-        gap: 12px !important;
-        margin-top: 20px !important;
-    }
-
-    .urun-karti {
-        padding: 12px !important;
-        border-radius: 16px !important;
-    }
-
-    .urun-isim {
-        font-size: 13px !important;
-    }
-
-    /* Hakkında Bölümü Mobil */
-    .hakkinda-section {
-        margin: 20px 15px !important;
-        padding: 15px !important;
+    .footer-logo {
+        flex-direction: column;
+        gap: 8px;
     }
 }
 
-/* Küçük Ekranlar İçin (iPhone SE vb. 480px altı) */
 @media (max-width: 480px) {
-    .grid-layout, .products-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* Çok küçük ekranlarda bile daraltılmış 2'li yapı */
-        gap: 10px !important;
-    }
-
-    .urun-karti {
-        padding: 8px !important;
-    }
-
-    .urun-isim {
-        font-size: 12px !important;
-        min-height: 2.8em;
-    }
-    
-    .kategori-etiket {
-        font-size: 10px !important;
-        margin: 6px 0 3px 0 !important;
-    }
+    .modal-content { width: 100%; height: 100%; margin: 0; border-radius: 0; padding: 15px; }
+    .gorsel-galerisi { margin-top: 30px; }
+    .satin-al-btn { position: sticky; bottom: 0; }
+    .search-box { padding: 4px 4px 4px 12px; }
+    .search-btn { padding: 8px 16px; font-size: 0.9rem; }
 }
-
-
