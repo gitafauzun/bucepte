@@ -30,20 +30,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function urunleriYukle() {
     try {
-        const response = await fetch('./urunler.json');
-        if (!response.ok) throw new Error("JSON yüklenemedi");
+        console.log("JSON yüklenmeye çalışılıyor...");
+        const response = await fetch('urunler.json');
+        
+        console.log("Sunucu yanıt kodu:", response.status);
+        if (!response.ok) throw new Error("JSON yüklenemedi, HTTP Kod: " + response.status);
+        
         tumUrunler = await response.json();
+        console.log("Ürünler başarıyla yüklendi:", tumUrunler.length);
         
         kategorileriOlustur(tumUrunler);
         urunleriEkranaBas(tumUrunler);
     } catch (error) {
-        console.error("Hata:", error);
+        console.error("Yükleme sırasında hata yakalandı:", error);
+        const vitrin = document.getElementById('urun-vitrini');
+        if (vitrin) {
+            vitrin.innerHTML = `<p style="text-align:center; color:red; grid-column: 1/-1;">Hata: ${error.message}</p>`;
+        }
     }
 }
 
-function kategorileriOlustur(urunler) {
-    const kategoriMenu = document.getElementById('kategori-menusu');
-    if (!kategoriMenu) return;
 
     // Ana kategorileri topla
     const kategoriler = ['Tümü', ...new Set(urunler.map(urun => urun.kategori).filter(Boolean))];
