@@ -2,70 +2,108 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome ikonları için (opsiyonel ama öneririm) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda - BuCepte</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <!-- Modern SVG ikonları ve Apple estetiği ile uyumlu yapı -->
 </head>
 <body>
 
-<main class="container hakkimizda-container">
-    <div class="hakkimizda-kart">
-        <h1>BuCepte Hakkında</h1>
-        <p class="ozet-yazi">
-            Teknoloji dünyasının hızına ayak uydururken, telefonunuzu sadece korumakla kalmıyor, tarzınızı da yansıtmanızı sağlıyoruz. 
-            <strong>BuCepte</strong> olarak, kaliteyi ve estetiği uygun fiyatla buluşturmayı misyon edindik.
-        </p>
+    <!-- Üst Menü -->
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logobey.png" alt="BuCepte Logo" style="height: 35px; object-fit: contain;">
+            </a>
+            <div class="nav-links" style="display: flex; gap: 20px; align-items: center;">
+                <a href="https://link.dolap.com/rwtwfl" target="_blank" style="text-decoration: none; color: #007bff; font-weight: 600;">Dolap E-Mağaza</a>
+                <a href="index.html">Mağaza</a>
+                <a href="hakkimizda.html" style="color: var(--accent); font-weight: 600;">Hakkımızda</a>
+            </div>
+        </nav>
+    </header>
 
-        <h2 class="alt-baslik">Neden Bizi Tercih Etmelisiniz?</h2>
-        
-        <div class="ozellikler-grid">
-            <div class="ozellik">
-                <i class="fas fa-truck-fast"></i>
-                <h3>Hızlı Kargo</h3>
-                <p>Ürünleriniz, özenle paketlenip en kısa sürede adresinize doğru yola çıkar.</p>
+    <!-- Ana İçerik - Ultra Lüks Tasarım -->
+    <main class="container" style="max-width: 900px; padding: 60px 20px;">
+        <div style="background: var(--card-bg, #f5f5f7); border-radius: 30px; padding: 50px 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.04);">
+            
+            <div style="text-align: center; margin-bottom: 40px;">
+                <span style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 2px;">Hikayemiz</span>
+                <h1 style="font-size: 2.8rem; margin: 10px 0 20px 0; font-weight: 700; color: var(--text-color);">Telefona Dair Her Şey</h1>
+                <p style="font-size: 1.15rem; color: #6e6e73; line-height: 1.8; max-width: 700px; margin: 0 auto;">
+                    Teknoloji dünyasının dinamik hızına ayak uydururken, telefonunuzu sadece korumakla kalmıyor; benzersiz bir estetik ve tarz kazandırıyoruz. <strong>BuCepte</strong> olarak; kaliteyi, zarafeti ve güveni en erişilebilir standartlarda sunmayı misyon edindik.
+                </p>
             </div>
-            <div class="ozellik">
-                <i class="fas fa-shield-halved"></i>
-                <h3>Güvenli Alışveriş</h3>
-                <p>Tüm satış süreçlerimizi, şeffaflık ve güvenlik garantisiyle <strong>Dolap</strong> üzerinden yürütüyoruz.</p>
+
+            <hr style="border: none; border-top: 1px solid #d2d2d7; margin: 40px 0;">
+
+            <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 30px; font-weight: 600;">Neden BuCepte?</h2>
+            
+            <!-- Özellikler Grid Yapısı -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-bottom: 50px;">
+                
+                <!-- Kart 1 -->
+                <div style="background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #d2d2d7; transition: transform 0.3s ease;">
+                    <div style="width: 48px; height: 48px; background: rgba(0,113,227,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--accent);">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; font-weight: 600;">Hızlı Kargo</h3>
+                    <p style="color: #6e6e73; font-size: 0.95rem; line-height: 1.5; margin: 0;">Siparişleriniz büyük bir titizlikle paketlenir ve en kısa sürede güvenle yola çıkarılır.</p>
+                </div>
+
+                <!-- Kart 2 -->
+                <div style="background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #d2d2d7; transition: transform 0.3s ease;">
+                    <div style="width: 48px; height: 48px; background: rgba(0,113,227,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--accent);">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; font-weight: 600;">Güvenli Alışveriş</h3>
+                    <p style="color: #6e6e73; font-size: 0.95rem; line-height: 1.5; margin: 0;">Tüm ödeme ve satış süreçlerimiz şeffaflık ilkesiyle <strong>Dolap</strong> güvencesi altındadır.</p>
+                </div>
+
+                <!-- Kart 3 -->
+                <div style="background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #d2d2d7; transition: transform 0.3s ease;">
+                    <div style="width: 48px; height: 48px; background: rgba(0,113,227,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--accent);">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; font-weight: 600;">Üstün Kalite</h3>
+                    <p style="color: #6e6e73; font-size: 0.95rem; line-height: 1.5; margin: 0;">Yalnızca kendi cihazlarımızda güvenle kullanabileceğimiz onaylanmış aksesuarları listeliyoruz.</p>
+                </div>
+
             </div>
-            <div class="ozellik">
-                <i class="fas fa-check-double"></i>
-                <h3>Kalite Kontrol</h3>
-                <p>Sadece kendi telefonumuzda kullanacağımız, onaylanmış aksesuarları listeliyoruz.</p>
+
+            <!-- Ana Sayfaya Dön Butonu -->
+            <div style="text-align: center;">
+                <a href="index.html" class="satin-al-btn" style="display: inline-block; width: 220px; padding: 14px; text-decoration: none; border-radius: 25px; font-weight: 600;">Mağazaya Dön</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Sosyal Medya ve Alt Bilgi (Footer) Alanı -->
+    <footer class="site-footer">
+        <div class="footer-content" style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div class="footer-logo" style="display: flex; align-items: center; gap: 15px; font-size: 13px; color: #6e6e73;">
+                <img src="images/logobey.png" alt="BuCepte Logo" style="height: 25px; object-fit: contain;">
+                <span>© 2026 BuCepte. Tüm hakları saklıdır.</span>
+            </div>
+            
+            <div class="social-links" style="display: flex; gap: 12px;">
+                <!-- Instagram -->
+                <a href="https://instagram.com/buceptecom" target="_blank" aria-label="Instagram" class="social-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/profile.php?id=61591525273576&mibextid=wwXIfr" target="_blank" aria-label="Facebook" class="social-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <!-- WhatsApp İletişim -->
+                <a href="https://wa.me/905319813938" target="_blank" aria-label="WhatsApp" class="social-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </a>
+               
             </div>
         </div>
+    </footer>
 
-        <a href="index.html" class="satin-al-btn" style="width: 200px; margin: 30px auto;">Ana Sayfaya Dön</a>
-    </div>
-</main>
-<section class="footer-iletisim" style="margin-top: 40px; padding: 20px; text-align: center;">
-        <p style="margin-bottom: 15px; color: var(--gri-metin);">Bizi sosyal medyada takip edin:</p>
-        
-        <div class="sosyal-medya">
-            <a href="https://wa.me/905319813938?text=Merhaba, ürünleriniz hakkında bilgi almak istiyorum." target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="35" alt="WhatsApp">
-            </a>
-
-            <a href="https://www.facebook.com/profile.php?id=61591525273576" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="35" alt="Facebook">
-            </a>
-
-            <a href="https://instagram.com/buceptecom" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="35" alt="Instagram">
-            </a>
-
-            <a href="https://tiktok.com/@buceptte.com" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="35" alt="TikTok">
-            </a>
-        </div>
-    </section>
-
-    <div style="text-align: center; margin-bottom: 40px;">
-        <a href="index.html" class="satin-al-btn" style="width: 200px; display: inline-block;">Ana Sayfaya Dön</a>
-    </div>
-
-</body>
-</html>
 </body>
 </html>
