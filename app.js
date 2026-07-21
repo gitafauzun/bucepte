@@ -2,12 +2,11 @@ let tumUrunler = [];
 let aktifKategori = 'Tümü';
 let aktifMarka = 'Tümü';
 let aktifModel = 'Tümü';
-let aktifAramaMetni = ''; // Arama metnini tutacak değişken
+let aktifAramaMetni = '';
 
 document.addEventListener('DOMContentLoaded', () => {
     urunleriYukle();
 
-    // Arama kutusuna her harf yazıldığında canlı arama yapılması
     const aramaKutusu = document.getElementById('searchInput');
     if (aramaKutusu) {
         aramaKutusu.addEventListener('input', (e) => {
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Arama butonuna tıklandığında filtrelemeyi tetikle
     const aramaButonu = document.getElementById('searchButton');
     if (aramaButonu) {
         aramaButonu.addEventListener('click', () => {
@@ -30,14 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function urunleriYukle() {
     try {
-        console.log("JSON yüklenmeye çalışılıyor...");
-        const response = await fetch('urunler.json');
-        
-        console.log("Sunucu yanıt kodu:", response.status);
+        const response = await fetch('./urunler.json');
         if (!response.ok) throw new Error("JSON yüklenemedi, HTTP Kod: " + response.status);
         
         tumUrunler = await response.json();
-        console.log("Ürünler başarıyla yüklendi:", tumUrunler.length);
         
         kategorileriOlustur(tumUrunler);
         urunleriEkranaBas(tumUrunler);
@@ -45,13 +39,15 @@ async function urunleriYukle() {
         console.error("Yükleme sırasında hata yakalandı:", error);
         const vitrin = document.getElementById('urun-vitrini');
         if (vitrin) {
-            vitrin.innerHTML = `<p style="text-align:center; color:red; grid-column: 1/-1;">Hata: ${error.message}</p>`;
+            vitrin.innerHTML = `<p style="text-align:center; color:red; grid-column: 1/-1;">Ürünler yüklenirken hata oluştu.</p>`;
         }
     }
 }
 
+function kategorileriOlustur(urunler) {
+    const kategoriMenu = document.getElementById('kategori-menusu');
+    if (!kategoriMenu) return;
 
-    // Ana kategorileri topla
     const kategoriler = ['Tümü', ...new Set(urunler.map(urun => urun.kategori).filter(Boolean))];
 
     kategoriMenu.innerHTML = '';
@@ -76,7 +72,6 @@ function markalariOlustur(urunler) {
 
     if (aktifKategori === 'Tümü') return;
 
-    // Seçilen ana kategoriye ait ürünleri bul
     const anaKategoriUrunleri = urunler.filter(u => u.kategori === aktifKategori);
     const markalar = [...new Set(anaKategoriUrunleri.map(u => u.marka).filter(Boolean))];
 
@@ -112,7 +107,6 @@ function modelleriOlustur(urunler) {
 
     if (aktifMarka === 'Tümü') return;
 
-    // Seçilen ana kategori ve markaya ait ürünleri bul
     const markaUrunleri = urunler.filter(u => u.kategori === aktifKategori && u.marka === aktifMarka);
     const modeller = [...new Set(markaUrunleri.map(u => u.model).filter(Boolean))];
 
@@ -182,22 +176,18 @@ function modelDegistir(model) {
 function filtreliUrunleriGoster() {
     let sonuc = tumUrunler;
 
-    // Kategori Filtresi
     if (aktifKategori !== 'Tümü') {
         sonuc = sonuc.filter(urun => urun.kategori === aktifKategori);
     }
 
-    // Marka Filtresi
     if (aktifMarka !== 'Tümü') {
         sonuc = sonuc.filter(urun => urun.marka === aktifMarka);
     }
 
-    // Model Filtresi
     if (aktifModel !== 'Tümü') {
         sonuc = sonuc.filter(urun => urun.model === aktifModel);
     }
 
-    // Arama Filtresi (İsim, marka, model veya açıklama içinde arama yapar)
     if (aktifAramaMetni !== '') {
         sonuc = sonuc.filter(urun => {
             const isim = (urun.isim || '').toLowerCase();
@@ -220,7 +210,6 @@ function urunleriEkranaBas(urunler) {
     if (!vitrin) return;
     vitrin.innerHTML = '';
     
-    // Eğer arama veya filtreleme sonucunda ürün bulunamazsa şık bir mesaj gösterelim
     if (urunler.length === 0) {
         vitrin.innerHTML = `
             <div style="text-align: center; width: 100%; padding: 40px 20px; grid-column: 1 / -1;">
@@ -335,4 +324,4 @@ window.onclick = function(event) {
     if (event.target === modal) {
         detayModalKapat();
     }
-}
+};
