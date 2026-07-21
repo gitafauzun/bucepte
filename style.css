@@ -408,3 +408,114 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
         margin: 6px 0 3px 0 !important;
     }
 }
+/* ========================================= */
+/* MOBİL UYUMLULUK VE RESPONSIVE DÜZENLEMELERİ */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    /* Navbar Mobil Düzeni */
+    .main-header {
+        padding: 12px 15px !important;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .main-header nav {
+        gap: 12px !important;
+        width: 100%;
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+
+    .main-header .logo img {
+        height: 32px !important;
+    }
+
+    /* Hero Alanı Mobil */
+    .hero {
+        padding: 25px 15px !important;
+    }
+    
+    .hero h1 {
+        font-size: 1.4rem !important;
+    }
+
+    .hero p {
+        font-size: 0.9rem !important;
+    }
+
+    /* Arama Çubuğu Mobil */
+    .search-container {
+        padding: 0 15px !important;
+        margin: 15px auto !important;
+    }
+
+    .search-box {
+        padding: 4px 4px 4px 12px !important;
+    }
+
+    .search-box input {
+        font-size: 0.9rem !important;
+    }
+
+    .search-btn {
+        padding: 8px 16px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Kategori Menüsü Yatay Kaydırma Düzeltmesi */
+    .kategori-menusu {
+        padding: 0 15px 10px 15px !important;
+        margin: 10px 0 !important;
+    }
+
+    /* Ana İçerik ve Grid Mobil */
+    .main-content {
+        padding: 10px 15px !important;
+    }
+
+    .grid-layout, .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Mobilde 2'li şık kart dizilimi */
+        gap: 12px !important;
+        margin-top: 20px !important;
+    }
+
+    .urun-karti {
+        padding: 12px !important;
+        border-radius: 16px !important;
+    }
+
+    .urun-isim {
+        font-size: 13px !important;
+    }
+
+    /* Hakkında Bölümü Mobil */
+    .hakkinda-section {
+        margin: 20px 15px !important;
+        padding: 15px !important;
+    }
+}
+
+/* Küçük Ekranlar İçin (iPhone SE vb. 480px altı) */
+@media (max-width: 480px) {
+    .grid-layout, .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Çok küçük ekranlarda bile daraltılmış 2'li yapı */
+        gap: 10px !important;
+    }
+
+    .urun-karti {
+        padding: 8px !important;
+    }
+
+    .urun-isim {
+        font-size: 12px !important;
+        min-height: 2.8em;
+    }
+    
+    .kategori-etiket {
+        font-size: 10px !important;
+        margin: 6px 0 3px 0 !important;
+    }
+}
+
+
