@@ -12,18 +12,6 @@
     "aciklama": "Şeffaf yapısı ile telefonunuzun rengini gösterir, Magsafe uyumludur."
   },
   {
-    "id": 2,
-    "isim": "iphone 13 Mat Şeffaf Siyah Magsafe Telefon Kılıfı",
-    "fiyat": "249 TL",
-    "gorseller": ["images/buzmag1.png"],
-    "kategori": "Kılıf",
-    "marka": "iPhone",
-    "model": "iPhone 13",
-    "dolapLink": "https://link.dolap.com/0whmzx",
-    "etiket": "indirimde",
-    "aciklama": "Kaliteli silikonu sayesinde telefonunuzu korur. Şık tasarımı ve mat duruşuyla estetik katar. Magsafe özelliği ile telefonunuzu kablosuz şarj etmeye uygundur."
-  },
-  {
     "id": 3,
     "isim": "35W Type-C Hızlı Şarj Seti",
     "fiyat": "Stokta yok",
@@ -45,20 +33,8 @@
     "model": "iPhone 13",
     "dolapLink": "https://dolap.com/urun/kamera-koruyucu-link",
     "etiket": "yeni",
-    "aciklama": "Kamera lenslerinizi çizilmelere karşı korur."
-  },
-  {
-    "id": 6,
-    "isim": "Iphone 13 Silikon Lansman Telefon Kılıfı",
-    "fiyat": "180 TL",
-    "gorseller": ["images/ip13.png"],
-    "kategori": "Kılıf",
-    "marka": "iPhone",
-    "model": "iPhone 13",
-    "dolapLink": "https://link.dolap.com/scs8tk",
-    "etiket": "avantajlı",
-    "aciklama": "iPhone 13 ile tam uyumlu Apple logolu lansman silikon kılıf; mikrofiber iç yüzeyi, darbe emici yapısı ve ince tasarımıyla telefonunuza koruma sunar."
-  },
+    "aciklama": "Kamera lenslerinizi çizilmelere karşı korur.
+    },
   {
     "id": 7,
     "isim": "Galaxy S25 FE Kılıf Magsafe Wireless Kablosuz Şarj Destekli Kılıf",
