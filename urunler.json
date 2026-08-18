@@ -7,7 +7,7 @@
     "kategori": "Kılıf",
     "marka": "iPhone",
     "model": "iPhone 17 Promax",
-  "dolapLink": "https://link.dolap.com/7z121",
+  "dolapLink": "https://link.dolap.com/zmng7",
     "etiket": "yeni",
     "aciklama": "Mika malzeme yapısı sayesinde sararma yapmaz, Magsafe uyumludur."
   },
@@ -22,6 +22,66 @@
     "dolapLink": "https://link.dolap.com/ddjx6c",
     "etiket": "yeni",
     "aciklama": "Mika sert ince kılıftır.Karbon desenlidir.Magsafe uyumludur."
+  },
+   {
+    "id": 4,
+    "isim": "Galaxy S26 Ultra Sararmaz Mika Şeffaf Kılıf ",
+    "fiyat": "249 TL",
+    "gorseller": ["images/s25fe.png"],
+    "kategori": "Kılıf",
+    "marka": "Samsung",
+    "model": "Galaxy S26 Ultra",
+    "dolapLink": "https://link.dolap.com/agynal",
+    "etiket": "yeni",
+    "aciklama": "Galaxy S26 Ultra MagSafe uyumlu kılıf ile telefonunuzu güvenle koruyun."
+  },
+  {
+    "id": 5,
+    "isim": "iPhone 17 ProMax Premium Ekran Koruyucu",
+    "fiyat": "399 TL",
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
+    "kategori": "Ekran Koruyucu",
+    "marka": "iPhone",
+    "model": "iPhone 17 Promax",
+    "dolapLink": "https://link.dolap.com/wrxbmhj",
+    "etiket": "yeni",
+    "aciklama": "Kaliteli malzemesi sayesinde ekranınızı korur.Full ekrandır.Şeffaftır.Kendin tak aparatlıdır."
+  },
+  {
+    "id": 6,
+    "isim": "iPhone 17 Pro Premium Ekran Koruyucu",
+    "fiyat": "399 TL",
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
+    "kategori": "Ekran Koruyucu",
+    "marka": "iPhone",
+    "model": "iPhone 17 Pro",
+    "dolapLink": "https://link.dolap.com/mzgirl",
+    "etiket": "yeni",
+    "aciklama": "Kaliteli malzemesi sayesinde ekranınızı korur.Full ekrandır.Şeffaftır.Kendin tak aparatlıdır."
+  },
+  {
+    "id": 7,
+    "isim": "iPhone 17 Premium Ekran Koruyucu",
+    "fiyat": "399 TL",
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
+    "kategori": "Ekran Koruyucu",
+    "marka": "iPhone",
+    "model": "iPhone 17",
+    "dolapLink": "https://link.dolap.com/uumjjv",
+    "etiket": "yeni",
+    "aciklama": "Kaliteli malzemesi sayesinde ekranınızı korur.Full ekrandır.Şeffaftır.Kendin tak aparatlıdır."
+  },
+  {
+    "id": 8,
+    "isim": "iPhone 17 Premium Ekran Koruyucu",
+    "fiyat": "399 TL",
+    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
+    "kategori": "Ekran Koruyucu",
+    "marka": "iPhone",
+    "model": "iPhone 17",
+    "dolapLink": "https://link.dolap.com/gjxhcm",
+    "etiket": "yeni",
+    "aciklama": "Kaliteli malzemesi sayesinde ekranınızı korur.Full ekrandır.Şeffaftır.Kendin tak aparatlıdır."
   },
   {
     "id": 2,
@@ -47,66 +107,6 @@
     "etiket": "yeni",
     "aciklama": "Kamera lenslerinizi çizilmelere karşı korur.Görüntü kalitesini etkilemez."
     },
-  {
-    "id": 4,
-    "isim": "Galaxy S25 FE Sararmaz Mika Şeffaf Kılıf ",
-    "fiyat": "249 TL",
-    "gorseller": ["images/s25fe.png"],
-    "kategori": "Kılıf",
-    "marka": "Samsung",
-    "model": "Galaxy S25 FE",
-    "dolapLink": "https://link.dolap.com/l5pr9v",
-    "etiket": "yeni",
-    "aciklama": "Galaxy S25 FE MagSafe uyumlu kılıf ile telefonunuzu güvenle koruyun."
-  },
-  {
-    "id": 5,
-    "isim": "iPhone 17 ProMax Premium Ekran Koruyucu",
-    "fiyat": "399 TL",
-    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
-    "kategori": "Ekran Koruyucu",
-    "marka": "iPhone",
-    "model": "iPhone 17 Promax",
-    "dolapLink": "https://link.dolap.com/q47vy",
-    "etiket": "yeni",
-    "aciklama": "Kaliteli malzemesi sayesinde ekranınızı korur.Full ekrandır.Şeffaftır.Kendin tak aparatlıdır."
-  },
-  {
-    "id": 6,
-    "isim": "iPhone 17 Pro Premium Ekran Koruyucu",
-    "fiyat": "399 TL",
-    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
-    "kategori": "Ekran Koruyucu",
-    "marka": "iPhone",
-    "model": "iPhone 17 Pro",
-    "dolapLink": "https://link.dolap.com/47txb",
-    "etiket": "yeni",
-    "aciklama": "Kaliteli malzemesi sayesinde ekranınızı korur.Full ekrandır.Şeffaftır.Kendin tak aparatlıdır."
-  },
-  {
-    "id": 7,
-    "isim": "iPhone 17 Air Premium Ekran Koruyucu",
-    "fiyat": "399 TL",
-    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
-    "kategori": "Ekran Koruyucu",
-    "marka": "iPhone",
-    "model": "iPhone 17 Air",
-    "dolapLink": "https://link.dolap.com/pl92s8",
-    "etiket": "yeni",
-    "aciklama": "Kaliteli malzemesi sayesinde ekranınızı korur.Full ekrandır.Şeffaftır.Kendin tak aparatlıdır."
-  },
-  {
-    "id": 8,
-    "isim": "iPhone 17 Premium Ekran Koruyucu",
-    "fiyat": "399 TL",
-    "gorseller": ["images/cam1.png", "images/cam22.png", "images/cam3.png"],
-    "kategori": "Ekran Koruyucu",
-    "marka": "iPhone",
-    "model": "iPhone 17",
-    "dolapLink": "https://link.dolap.com/gjxhcm",
-    "etiket": "yeni",
-    "aciklama": "Kaliteli malzemesi sayesinde ekranınızı korur.Full ekrandır.Şeffaftır.Kendin tak aparatlıdır."
-  },
   {
     "id": 9,
     "isim": "iPhone 16e Premium Ekran Koruyucu",
