@@ -11,6 +11,18 @@
     "etiket": "yeni",
     "aciklama": "Mika malzeme yapısı sayesinde sararma yapmaz, Magsafe uyumludur."
   },
+   {
+    "id": 2,
+    "isim": "İphone 17 Karbon Desenli Mika Kılıf",
+    "fiyat": "749",
+    "gorseller": ["images/17karbon.jpg"],
+    "kategori": "Kılıf",
+    "marka": "iPhone",
+    "model": "iPhone 17",
+    "dolapLink": "https://link.dolap.com/ddjx6c",
+    "etiket": "yeni",
+    "aciklama": "Mika sert ince kılıftır.Karbon desenlidir.Magsafe uyumludur."
+  },
   {
     "id": 2,
     "isim": "35W Type-C Hızlı Şarj Seti",
